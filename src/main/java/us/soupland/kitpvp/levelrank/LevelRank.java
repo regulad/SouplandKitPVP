@@ -31,13 +31,15 @@ public class LevelRank {
 
     public static void loadRanks() {
         ConfigurationSection section = config.getConfigurationSection("RANKS");
-        section.getKeys(false).forEach(key -> {
-            LevelRank rank = new LevelRank(ChatColor.stripColor(key));
-            rank.setDisplayName(key);
-            rank.setRequiredExp(section.getInt(key + ".REQUIRED-EXPERIENCE"));
-            rank.setCommandsToExecute(section.getStringList(key + ".EXECUTE-COMMANDS").toArray(new String[]{}));
-            levelRanks.add(rank);
-        });
+        if (section != null) {
+            section.getKeys(false).forEach(key -> {
+                LevelRank rank = new LevelRank(ChatColor.stripColor(key));
+                rank.setDisplayName(key);
+                rank.setRequiredExp(section.getInt(key + ".REQUIRED-EXPERIENCE"));
+                rank.setCommandsToExecute(section.getStringList(key + ".EXECUTE-COMMANDS").toArray(new String[]{}));
+                levelRanks.add(rank);
+            });
+        }
         levelRanks = levelRanks.stream().sorted(Comparator.comparingInt(LevelRank::getRequiredExp)).collect(Collectors.toList());
         /*levelRanks = levelRanks.stream()
                 .sorted(new LevelComparator())

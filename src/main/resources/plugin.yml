@@ -1,4 +1,7 @@
-  name: kitpvp
-  main: us.soupland.kitpvp.KitPvP
-  version: Beta
-  author: ignDolx
+name: kitpvp
+main: us.soupland.kitpvp.KitPvP
+version: ${project.version}
+author: regulad
+depend:
+  - WorldEdit
+  - FastAsyncWorldEdit

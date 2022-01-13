@@ -5,8 +5,19 @@
     <artifactId>KitPvP</artifactId>
     <version>1.0</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <build>
         <defaultGoal>clean install</defaultGoal>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
         <plugins>
             <plugin>
@@ -18,28 +29,180 @@
                     <source>1.8</source>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.3.0-SNAPSHOT</version>
+                <configuration>
+                    <minimizeJar>true</minimizeJar>
+                    <relocations>
+                        <relocation>
+                            <pattern>org.bstats</pattern>
+                            <shadedPattern>us.soupland.kitpvp.dep.org.bstats</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>org.bson</pattern>
+                            <shadedPattern>us.soupland.kitpvp.dep.org.bson</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.mongodb</pattern>
+                            <shadedPattern>us.soupland.kitpvp.dep.com.mongodb</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>org.slf4j</pattern>
+                            <shadedPattern>us.soupland.kitpvp.dep.org.slf4j</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>org.xerial.snappy</pattern>
+                            <shadedPattern>us.soupland.kitpvp.dep.org.xerial.snappy</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>jnr.unixsocket</pattern>
+                            <shadedPattern>us.soupland.kitpvp.dep.jnr.unixsocket</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>jnr.ffi</pattern>
+                            <shadedPattern>us.soupland.kitpvp.dep.jnr.ffi</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>org.objectweb</pattern>
+                            <shadedPattern>us.soupland.kitpvp.dep.org.objectweb</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--Tools-->
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>1.18.20.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>delombok</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--Need Java>=9 for obfuscation-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>enforce-java</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>9+</version>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--Obfuscation-->
+            <plugin>
+                <groupId>com.github.wvengen</groupId>
+                <artifactId>proguard-maven-plugin</artifactId>
+                <version>2.5.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>proguard</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <obfuscate>true</obfuscate>
+                    <injar>${project.build.finalName}.jar</injar>
+                    <outjar>${project.build.finalName}-small.jar</outjar>
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <options>
+                        <option>-dontwarn</option>
+                        <option>-allowaccessmodification</option>
+                        <option>-keepattributes *Annotation*</option>
+                        <option>-keepattributes Signature</option>
+                        <option>-keepattributes InnerClasses</option>
+                        <option>-keep public class us.soupland.kitpvp.KitPvP { *; }</option>
+                        <option>-keep public class us.soupland.kitpvp.dep. { *; }</option>
+                        <option>-keep public class us.soupland.kitpvp.events.** { *; }</option>
+                    </options>
+                    <libs>
+                        <lib>${java.home}/jmods</lib>
+                    </libs>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>com.sk89q.worldedit</groupId>
+                            <artifactId>worldedit</artifactId> <!--Employs some odd obfuscation-->
+                        </exclusion>
+                    </exclusions>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <repositories>
         <repository>
             <id>sk89q-repo</id>
-            <url>http://maven.sk89q.com/repo/</url>
+            <url>https://maven.enginehub.org/repo/</url>
         </repository>
         <repository>
-            <id>fawe-repo</id>
-            <url>http://ci.athion.net/job/FastAsyncWorldEdit/ws/mvn/</url>
+            <id>S01 Sonatype Snapshots</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
     <dependencies>
+        <!--Server APIs-->
         <dependency>
-            <groupId>pt.foxspigot.jar</groupId>
-            <artifactId>FoxSpigot</artifactId>
+            <groupId>org.github.paperspigot</groupId>
+            <artifactId>paperspigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/FoxSpigot-v0.5.9-Cracked-HotFix.jar</systemPath>
+            <systemPath>${project.basedir}/lib/patched_1.8.8.jar</systemPath>
         </dependency>
+        <!--Dependencies-->
         <dependency>
             <groupId>net.polymc</groupId>
             <artifactId>protocollib</artifactId>
@@ -50,7 +213,7 @@
         <dependency>
             <groupId>com.boydti</groupId>
             <artifactId>FastAsyncWorldEdit</artifactId>
-            <version>1.0</version>
+            <version>19.11.13-5505943-1282-22.3.5</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/FastAsyncWorldEdit-bukkit-19.11.13-5505943-1282-22.3.5.jar</systemPath>
         </dependency>
@@ -62,33 +225,63 @@
             <systemPath>${project.basedir}/lib/PlaceholderAPI-2.10.9.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
-        </dependency>
-        <dependency>
             <groupId>com.sk89q.worldedit</groupId>
-            <artifactId>worldedit-bukkit</artifactId>
-            <version>6.1.5</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.sk89q.worldedit</groupId>
-            <artifactId>worldedit-core</artifactId>
-            <version>6.0.0-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.cheatbreaker</groupId>
-            <artifactId>WorldEdit</artifactId>
-            <version>1.0</version>
+            <artifactId>worldedit</artifactId>
+            <version>6.1.7</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/WorldEdit.jar</systemPath>
         </dependency>
+        <!--Analytics-->
         <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.9</version>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+        <!--Tools-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--Database (From FoxSpigot)-->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.10.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>bson</artifactId>
+            <version>3.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb.morphia</groupId>
+            <artifactId>morphia</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.6</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial.snappy</groupId>
+            <artifactId>snappy-java</artifactId>
+            <version>1.1.4</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jnr</groupId>
+            <artifactId>jnr-unixsocket</artifactId>
+            <version>0.18</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

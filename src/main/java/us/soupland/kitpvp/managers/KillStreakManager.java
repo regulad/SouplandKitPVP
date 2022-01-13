@@ -38,7 +38,7 @@ public class KillStreakManager {
                 PlayerInventory inventory = player.getInventory();
 
                 if (inventory.firstEmpty() < 1) {
-                    inventory.removeAmount((profile.getRefill() == Refill.SOUP ? Material.MUSHROOM_SOUP : Material.POTION), 1);
+                    inventory.remove((profile.getRefill() == Refill.SOUP ? Material.MUSHROOM_SOUP : Material.POTION));
                 }
 
                 inventory.addItem(new ItemMaker(Material.GOLDEN_APPLE).setAmount(amount).create());
@@ -61,7 +61,7 @@ public class KillStreakManager {
                 PlayerInventory inventory = player.getInventory();
 
                 if (!inventory.contains(Material.ENDER_PEARL)) {
-                    inventory.removeAmount((profile.getRefill() == Refill.SOUP ? Material.MUSHROOM_SOUP : Material.POTION), 1);
+                    inventory.remove((profile.getRefill() == Refill.SOUP ? Material.MUSHROOM_SOUP : Material.POTION));
                 }
 
                 inventory.addItem(new ItemMaker(Material.ENDER_PEARL).setAmount(amount).create());
