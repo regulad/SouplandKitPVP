@@ -4,7 +4,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import us.soupland.kitpvp.sidebar.team.arguments.*;
-import us.soupland.kitpvp.team.arguments.*;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
