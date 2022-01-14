@@ -31,12 +31,12 @@ public class GameLeaveArgument extends KitPvPArgument {
 
         if (gameHandler.getSpectators().contains(player)) {
             gameHandler.removeSpectator(player);
-            player.sendMessage(ColorText.translate("&eYou're no longer in the event."));
+            player.sendMessage(ColorText.translateAmpersand("&eYou're no longer in the event."));
             return;
         }
         if (gameHandler.getPlayers().contains(player)) {
             gameHandler.leave(player);
-            player.sendMessage(ColorText.translate("&eYou're no longer in the event."));
+            player.sendMessage(ColorText.translateAmpersand("&eYou're no longer in the event."));
             return;
         }
         if ((game = gameHandler.getUpcomingGame()) != null && game.getPlayers().containsKey(player)) {
@@ -44,7 +44,7 @@ public class GameLeaveArgument extends KitPvPArgument {
                 game.eliminate(player);
             }
             game.getPlayers().put(player, GamePlayerState.REMOVED);
-            player.sendMessage(ColorText.translate("&eYou're no longer in the event."));
+            player.sendMessage(ColorText.translateAmpersand("&eYou're no longer in the event."));
             PlayerUtils.resetPlayer(player, false, true);
             new PlayerLeaveGameEvent(player, game).call();
             return;
@@ -59,11 +59,11 @@ public class GameLeaveArgument extends KitPvPArgument {
                     team.getPlayers().put(player, GamePlayerState.REMOVED);
                 }
             }*/
-            player.sendMessage(ColorText.translate("&eYou're no longer in the event."));
+            player.sendMessage(ColorText.translateAmpersand("&eYou're no longer in the event."));
             PlayerUtils.resetPlayer(player, false, true);
             new PlayerLeaveGameEvent(player, game).call();
             return;
         }
-        player.sendMessage(ColorText.translate("&cYou're not in an events."));
+        player.sendMessage(ColorText.translateAmpersand("&cYou're not in an events."));
     }
 }

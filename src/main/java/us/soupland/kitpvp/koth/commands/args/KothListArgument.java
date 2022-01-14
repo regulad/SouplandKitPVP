@@ -19,10 +19,10 @@ public class KothListArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (Koth.getKoths().isEmpty()) {
-            sender.sendMessage(ColorText.translate("&cThere are no koths created."));
+            sender.sendMessage(ColorText.translateAmpersand("&cThere are no koths created."));
             return;
         }
-        sender.sendMessage(ColorText.translate("&6KOTHS (" + Koth.getKoths().size() + ')'));
-        Koth.getKoths().forEach((s, koth) -> sender.sendMessage(ColorText.translate("&6" + koth.getName() + ": &7" + koth.getRemaining() + (koth.isActive() ? " &a[ACTIVE]" : ""))));
+        sender.sendMessage(ColorText.translateAmpersand("&6KOTHS (" + Koth.getKoths().size() + ')'));
+        Koth.getKoths().forEach((s, koth) -> sender.sendMessage(ColorText.translateAmpersand("&6" + koth.getName() + ": &7" + koth.getRemaining() + (koth.isActive() ? " &a[ACTIVE]" : ""))));
     }
 }

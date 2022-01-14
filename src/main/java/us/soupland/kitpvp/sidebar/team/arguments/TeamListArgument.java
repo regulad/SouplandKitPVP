@@ -48,7 +48,7 @@ public class TeamListArgument extends KitPvPArgument {
         }
 
         if (teamList.isEmpty()) {
-            sender.sendMessage(ColorText.translate("&cThere are currently no teams to list."));
+            sender.sendMessage(ColorText.translateAmpersand("&cThere are currently no teams to list."));
         } else {
             int size = Math.round(teamList.size() / 10);
             if (size < 1) {
@@ -59,8 +59,8 @@ public class TeamListArgument extends KitPvPArgument {
                 page = size;
             }
 
-            sender.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 36)));
-            sender.sendMessage(ColorText.translate("&9Team List &7(Page " + page + '/' + size + ')'));
+            sender.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 36)));
+            sender.sendMessage(ColorText.translateAmpersand("&9Team List &7(Page " + page + '/' + size + ')'));
             sender.sendMessage("");
             for (int i = page * 10 - 10; i < page * 10; i++) {
                 if (teamList.size() > i) {
@@ -68,14 +68,14 @@ public class TeamListArgument extends KitPvPArgument {
                     if (sender instanceof Player) {
                         new ChatUtil("&7" + (i + 1) + ". &e" + team.getDisplayName() + " &a(" + team.getOnlinePlayers().size() + '/' + team.getAllUuids().size() + ") &a&l[INFO]", "&7Click here for more information", "/team info " + team.getName()).send((Player) sender);
                     } else {
-                        sender.sendMessage(ColorText.translate("&7" + (i + 1) + ". &e" + team.getDisplayName() + " &a(" + team.getOnlinePlayers().size() + '/' + team.getAllUuids().size() + ')'));
+                        sender.sendMessage(ColorText.translateAmpersand("&7" + (i + 1) + ". &e" + team.getDisplayName() + " &a(" + team.getOnlinePlayers().size() + '/' + team.getAllUuids().size() + ')'));
                     }
                 }
             }
             sender.sendMessage("");
-            sender.sendMessage(ColorText.translate("&7You are currently on &fPage " + page + '/' + size + "&7."));
-            sender.sendMessage(ColorText.translate("&7To view other pages use &e/" + label + " list <page#>"));
-            sender.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 36)));
+            sender.sendMessage(ColorText.translateAmpersand("&7You are currently on &fPage " + page + '/' + size + "&7."));
+            sender.sendMessage(ColorText.translateAmpersand("&7To view other pages use &e/" + label + " list <page#>"));
+            sender.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 36)));
         }
     }
 }

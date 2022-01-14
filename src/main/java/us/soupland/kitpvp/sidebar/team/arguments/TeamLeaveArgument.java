@@ -28,7 +28,7 @@ public class TeamLeaveArgument extends KitPvPArgument {
         Team team = profile.getTeam();
 
         if (team == null) {
-            sender.sendMessage(ColorText.translate("&cYou are not in a team."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou are not in a team."));
             return;
         }
         UUID uuid = ((Player) sender).getUniqueId();
@@ -40,6 +40,6 @@ public class TeamLeaveArgument extends KitPvPArgument {
         team.getOfficers().remove(uuid);
         team.getMembers().remove(uuid);
         team.getPlayerJoined().remove(uuid);
-        team.sendMessage(ColorText.translate("&3[*] &c" + sender.getName() + " has left the team."));
+        team.sendMessage(ColorText.translateAmpersand("&3[*] &c" + sender.getName() + " has left the team."));
     }
 }

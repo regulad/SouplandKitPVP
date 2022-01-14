@@ -62,7 +62,7 @@ public class DeathListener implements Listener {
 
         int killStreak = profile.getStat(PlayerStat.STREAK);
         if (killStreak > 0) {
-            player.sendMessage(ColorText.translate("&eYour &a&lKillStreak &eof &d" + killStreak + " &ehas been reset. &c:("));
+            player.sendMessage(ColorText.translateAmpersand("&eYour &a&lKillStreak &eof &d" + killStreak + " &ehas been reset. &c:("));
         }
 
         Player killer = player.getKiller();
@@ -98,7 +98,7 @@ public class DeathListener implements Listener {
             }
 
             if (KitPvP.getInstance().getServerData().isDoubleCredits()) {
-                killer.sendMessage(ColorText.translate("&a&lDOUBLE CREDITS &eare enabled, and your credits has been multiplied by 2."));
+                killer.sendMessage(ColorText.translateAmpersand("&a&lDOUBLE CREDITS &eare enabled, and your credits has been multiplied by 2."));
                 credits *= 2;
             }
 
@@ -142,7 +142,7 @@ public class DeathListener implements Listener {
                         return;
                     }
                 }
-                player.sendMessage(ColorText.translate(deathReason + '!'));
+                player.sendMessage(ColorText.translateAmpersand(deathReason + '!'));
             }
             int finalCredits = credits;
             for (Player online : Bukkit.getOnlinePlayers()) {
@@ -212,7 +212,7 @@ public class DeathListener implements Listener {
                     continue;
                 }
                 killerProfile.setStat(PlayerStat.CREDITS, (killerProfile.getStat(PlayerStat.CREDITS) + BountyManager.getPriceMap().get(entry.getKey())));
-                Bukkit.broadcastMessage(ColorText.translate("&4&l[Bounty] " + killer.getName() + " &7received &c" + BountyManager.getPriceMap().get(entry.getKey()) + " credits &7for killing " + player.getName() + "&7."));
+                Bukkit.broadcastMessage(ColorText.translateAmpersand("&4&l[Bounty] " + killer.getName() + " &7received &c" + BountyManager.getPriceMap().get(entry.getKey()) + " credits &7for killing " + player.getName() + "&7."));
                 BountyManager.getPriceMap().remove(entry.getKey());
                 BountyManager.getHunterHunted().remove(entry.getKey());
             }
@@ -222,7 +222,7 @@ public class DeathListener implements Listener {
                     if (streak.execute(killer)) {
                         for (Player online : Bukkit.getOnlinePlayers()) {
                             Theme theme2 = ProfileManager.getProfile(online).getTheme();
-                            online.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&lStreak &7\u2503 " + killer.getName() + theme2.getSecondaryColor() + " received " + theme2.getPrimaryColor() + streak.getDisplay() + theme2.getSecondaryColor() + " for getting a " + theme2.getPrimaryColor() + streak.getKillStreak() + theme2.getSecondaryColor() + " killstreak!"));
+                            online.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "&lStreak &7\u2503 " + killer.getName() + theme2.getSecondaryColor() + " received " + theme2.getPrimaryColor() + streak.getDisplay() + theme2.getSecondaryColor() + " for getting a " + theme2.getPrimaryColor() + streak.getKillStreak() + theme2.getSecondaryColor() + " killstreak!"));
                         }
                     }
                     break;
@@ -230,11 +230,11 @@ public class DeathListener implements Listener {
             }
             if (killerProfile.getStat(PlayerStat.STREAK) > killerProfile.getStat(PlayerStat.HIGHEST_STREAK)) {
                 killerProfile.setStat(PlayerStat.HIGHEST_STREAK, killerProfile.getStat(PlayerStat.STREAK));
-                killer.sendMessage(ColorText.translate("&a&lNew record! &eYou're on killstreak of &d" + killerProfile.getStat(PlayerStat.STREAK) + "&e!"));
+                killer.sendMessage(ColorText.translateAmpersand("&a&lNew record! &eYou're on killstreak of &d" + killerProfile.getStat(PlayerStat.STREAK) + "&e!"));
             }
             killerProfile.setStat(PlayerStat.CREDITS, (killerProfile.getStat(PlayerStat.CREDITS) + credits));
 
-            killer.sendMessage(ColorText.translate(theme.getPrimaryColor() + "You have earned " + theme.getSecondaryColor() + credits + theme.getPrimaryColor() + " credits for killing " + player.getDisplayName() + theme.getPrimaryColor() + '.'));
+            killer.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "You have earned " + theme.getSecondaryColor() + credits + theme.getPrimaryColor() + " credits for killing " + player.getDisplayName() + theme.getPrimaryColor() + '.'));
             /*killer.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 30)));
             killer.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l\u26A0 &c&lEnemy Killed: &7" + player.getName()));
             killer.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l\u26A0 &7Tokens: " + theme.getPrimaryColor() + killerProfile.getCredits() + " &7(" + theme.getSecondaryColor() + credits + "&7) | Kills: " + theme.getPrimaryColor() + "&l" + killerProfile.getKills() + " &7(" + theme.getSecondaryColor() + "&l" + killerProfile.getLastKills() + "&7)"));

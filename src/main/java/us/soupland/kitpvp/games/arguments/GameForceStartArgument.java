@@ -24,10 +24,10 @@ public class GameForceStartArgument extends KitPvPArgument {
         GameHandler gameHandler = KitPvP.getInstance().getGameHandler();
         Game game = gameHandler.getUpcomingGame();
         if (game == null) {
-            sender.sendMessage(ColorText.translate("&cThere is currently no ongoing events!"));
+            sender.sendMessage(ColorText.translateAmpersand("&cThere is currently no ongoing events!"));
             return;
         }
         gameHandler.setup();
-        sender.sendMessage(ColorText.translate("&eForcing game..."));
+        sender.sendMessage(ColorText.translateAmpersand("&eForcing game..."));
     }
 }

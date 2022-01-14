@@ -230,30 +230,30 @@ public class Match {
         });
 
         for (Player player : players) {
-            String deadName = ColorText.translate("&c" + damaged.getName());
+            String deadName = ColorText.translateAmpersand("&c" + damaged.getName());
 
             if (player == null) {
                 continue;
             }
             if (damaged == player) {
-                deadName = ColorText.translate("&a" + player.getName());
+                deadName = ColorText.translateAmpersand("&a" + player.getName());
             }
 
             if (matchPlayer.isDisconnected()) {
-                player.sendMessage(ColorText.translate(deadName + " &chas disconnected."));
+                player.sendMessage(ColorText.translateAmpersand(deadName + " &chas disconnected."));
                 continue;
             }
 
             String killerName = null;
 
             if (killer != null) {
-                killerName = ColorText.translate((killer == player ? "&a" : "&c") + killer.getName());
+                killerName = ColorText.translateAmpersand((killer == player ? "&a" : "&c") + killer.getName());
             }
 
             if (killerName != null) {
-                player.sendMessage(ColorText.translate(deadName + " &7was killed by " + killerName + "&7."));
+                player.sendMessage(ColorText.translateAmpersand(deadName + " &7was killed by " + killerName + "&7."));
             } else {
-                player.sendMessage(ColorText.translate(deadName + " &7has died."));
+                player.sendMessage(ColorText.translateAmpersand(deadName + " &7has died."));
             }
         }
 
@@ -344,14 +344,14 @@ public class Match {
 
         for (Player player : new Player[]{winner, loser}) {
             if (player != null) {
-                player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 30)));
-                player.sendMessage(ColorText.translate("&6&lInventories &7(Clickable names)"));
+                player.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 30)));
+                player.sendMessage(ColorText.translateAmpersand("&6&lInventories &7(Clickable names)"));
                 new ChatUtil(" &aWinner: &f" + winner.getName(), "&7Click to view this player's inventory", "/viewinv " + winner.getUniqueId().toString()).send(player);
                 new ChatUtil(" &cLoser: &f" + loser.getName(), "&7Click to view this player's inventory", "/viewinv " + loser.getUniqueId().toString()).send(player);
                 if (isRanked()) {
-                    player.sendMessage(ColorText.translate(" &eELO Changes: &a" + winner.getName() + " +" + winnerEloChange + " (" + newWinnerElo + ") &c" + loser.getName() + " -" + loserEloChange + " (" + newLoserElo + ')'));
+                    player.sendMessage(ColorText.translateAmpersand(" &eELO Changes: &a" + winner.getName() + " +" + winnerEloChange + " (" + newWinnerElo + ") &c" + loser.getName() + " -" + loserEloChange + " (" + newLoserElo + ')'));
                 }
-                player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 30)));
+                player.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 30)));
             }
         }
     }
@@ -381,7 +381,7 @@ public class Match {
     public void broadcastMessage(String message) {
         for (Player player : new Player[]{firstPlayer, secondPlayer}) {
             if (player != null) {
-                player.sendMessage(ColorText.translate(message));
+                player.sendMessage(ColorText.translateAmpersand(message));
             }
         }
     }

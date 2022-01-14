@@ -5,7 +5,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import us.soupland.kitpvp.enums.PlayerState;
@@ -17,17 +16,11 @@ import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FiremanKit extends Kit {
 
     public FiremanKit() {
         super("Fireman", "&cFireman", "");
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-
     }
 
     @Override
@@ -59,22 +52,8 @@ public class FiremanKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 6300;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7No fire damage.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler
@@ -85,7 +64,7 @@ public class FiremanKit extends Kit {
                 return;
             }
             if (profile.isFrozenToUseAbility()) {
-                event.getEntity().sendMessage(ColorText.translate("&cYou are currently jammed, so you can not use your ability."));
+                event.getEntity().sendMessage(ColorText.translateAmpersand("&cYou are currently jammed, so you can not use your ability."));
                 return;
             }
             if (event.getCause() == EntityDamageEvent.DamageCause.LAVA || event.getCause() == EntityDamageEvent.DamageCause.FIRE || event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK) {

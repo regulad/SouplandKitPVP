@@ -32,7 +32,6 @@ import us.soupland.kitpvp.utilities.task.TaskUtil;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class WitherKit extends Kit {
 
@@ -48,17 +47,17 @@ public class WitherKit extends Kit {
 
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.getMaterial(289)) return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
         if (player.getNearbyEntities(20, 20, 20).isEmpty()) {
-            player.sendMessage(ColorText.translate("&cThere are no players in a 20 block radius to target."));
+            player.sendMessage(ColorText.translateAmpersand("&cThere are no players in a 20 block radius to target."));
             return;
         }
 
         Cooldown cooldown = KitPvP.getCooldown(getName());
         if (cooldown.getDuration(player) > 0L) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
         cooldown.setCooldown(player);
@@ -75,7 +74,7 @@ public class WitherKit extends Kit {
             wither.setCanPickupItems(false);
             wither.setMaxHealth(2000);
             wither.setHealth(2000);
-            wither.setCustomName(ColorText.translate(player.getName()));
+            wither.setCustomName(ColorText.translateAmpersand(player.getName()));
             wither.setCustomNameVisible(true);
             wither.setMetadata(player.getUniqueId().toString(), new FixedMetadataValue(KitPvP.getInstance(), "faggotWither"));
         }
@@ -129,23 +128,8 @@ public class WitherKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 3000;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Surround your enemies with");
-        list.add("&7strong Wither Skeletons.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler

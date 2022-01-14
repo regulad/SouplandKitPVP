@@ -84,7 +84,7 @@ public class ShopCommand extends KitPvPCommand {
                     public void onClick(InventoryClickEvent inventoryClickEvent) {
                         player.closeInventory();
                         if (profile.getStat(PlayerStat.CREDITS) < 5000) {
-                            player.sendMessage(ColorText.translate("&cYou need &45,000 &cto purchase this item. You only have &4" + profile.getStat(PlayerStat.CREDITS) + "&c!"));
+                            player.sendMessage(ColorText.translateAmpersand("&cYou need &45,000 &cto purchase this item. You only have &4" + profile.getStat(PlayerStat.CREDITS) + "&c!"));
                             return;
                         }
                         profile.reset();
@@ -167,18 +167,18 @@ public class ShopCommand extends KitPvPCommand {
                         @Override
                         public void onClick(InventoryClickEvent inventoryClickEvent) {
                             if (game.getPermission() == null || player.hasPermission(game.getPermission()) || profile.getGamesPurchased().contains(game)) {
-                                player.sendMessage(ColorText.translate("&aYou already own this events! Want to use it? Type &f/game host"));
+                                player.sendMessage(ColorText.translateAmpersand("&aYou already own this events! Want to use it? Type &f/game host"));
                                 return;
                             }
                             player.closeInventory();
                             if (profile.getStat(PlayerStat.CREDITS) < game.getCredits()) {
-                                player.sendMessage(ColorText.translate("&cYou don't have credits enough to acquire this &4Event&c."));
+                                player.sendMessage(ColorText.translateAmpersand("&cYou don't have credits enough to acquire this &4Event&c."));
                                 return;
                             }
                             profile.getGamesPurchased().add(game);
                             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + game.getPermission());
                             profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - game.getCredits()));
-                            player.sendMessage(ColorText.translate("&c" + game.getName() + " &ahas been successfully purchased."));
+                            player.sendMessage(ColorText.translateAmpersand("&c" + game.getName() + " &ahas been successfully purchased."));
                         }
 
                         @Override
@@ -252,17 +252,17 @@ public class ShopCommand extends KitPvPCommand {
                     maker.setItem(i, new InventoryMaker.ClickableItem() {
                         @Override
                         public void onClick(InventoryClickEvent inventoryClickEvent) {
-                            if (kit.getPermissions() == null || player.hasPermission(kit.getPermissions())) {
-                                player.sendMessage(ColorText.translate("&aYou already own this kit! Want to use it? Type &f/kit " + kit.getName()));
+                            if (kit.getPermissionNode() == null || player.hasPermission(kit.getPermissionNode())) {
+                                player.sendMessage(ColorText.translateAmpersand("&aYou already own this kit! Want to use it? Type &f/kit " + kit.getName()));
                             } else {
                                 player.closeInventory();
-                                if (profile.getStat(PlayerStat.CREDITS) < kit.getCredits()) {
-                                    player.sendMessage(ColorText.translate("&cYou don't have credits enough to acquire this &4Kit&c."));
+                                if (profile.getStat(PlayerStat.CREDITS) < kit.getCreditCost()) {
+                                    player.sendMessage(ColorText.translateAmpersand("&cYou don't have credits enough to acquire this &4Kit&c."));
                                 } else {
-                                    profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCredits()));
-                                    player.sendMessage(ColorText.translate(kit.getDisplayName() + " &ahas been successfully purchased."));
+                                    profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost()));
+                                    player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissions());
+                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
                                 }
                             }
                         }
@@ -270,12 +270,12 @@ public class ShopCommand extends KitPvPCommand {
                         @Override
                         public ItemStack getItemStack() {
                             List<String> lore = kit.getDescription();
-                            if (kit.getPermissions() == null || player.hasPermission(kit.getPermissions())) {
+                            if (kit.getPermissionNode() == null || player.hasPermission(kit.getPermissionNode())) {
                                 lore.add("&aYou already own this Kit.");
                             } else {
-                                lore.add("&6&lPrice: &a" + Utils.getFormat(kit.getCredits()));
+                                lore.add("&6&lPrice: &a" + Utils.getFormat(kit.getCreditCost()));
                             }
-                            return new ItemMaker(kit.getItem()).setDisplayname((kit.getPermissions() == null || player.hasPermission(kit.getPermissions()) ? "&7[Owned] " + kit.getDisplayName() : "&c" + kit.getName())).addLore(lore).create();
+                            return new ItemMaker(kit.getItem()).setDisplayname((kit.getPermissionNode() == null || player.hasPermission(kit.getPermissionNode()) ? "&7[Owned] " + kit.getDisplayName() : "&c" + kit.getName())).addLore(lore).create();
                         }
                     });
                 }
@@ -342,17 +342,17 @@ public class ShopCommand extends KitPvPCommand {
                                 secondPage.setItem(i, new InventoryMaker.ClickableItem() {
                                     @Override
                                     public void onClick(InventoryClickEvent inventoryClickEvent) {
-                                        if (kit.getPermissions() == null || player.hasPermission(kit.getPermissions())) {
-                                            player.sendMessage(ColorText.translate("&aYou already own this kit! Want to use it? Type &f/kit " + kit.getName()));
+                                        if (kit.getPermissionNode() == null || player.hasPermission(kit.getPermissionNode())) {
+                                            player.sendMessage(ColorText.translateAmpersand("&aYou already own this kit! Want to use it? Type &f/kit " + kit.getName()));
                                         } else {
                                             player.closeInventory();
-                                            if (profile.getStat(PlayerStat.CREDITS) < kit.getCredits()) {
-                                                player.sendMessage(ColorText.translate("&cYou don't have credits enough to acquire this &4Kit&c."));
+                                            if (profile.getStat(PlayerStat.CREDITS) < kit.getCreditCost()) {
+                                                player.sendMessage(ColorText.translateAmpersand("&cYou don't have credits enough to acquire this &4Kit&c."));
                                             } else {
-                                                profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCredits()));
-                                                player.sendMessage(ColorText.translate(kit.getDisplayName() + " &ahas been successfully purchased."));
+                                                profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost()));
+                                                player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissions());
+                                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
                                             }
                                         }
                                     }
@@ -360,12 +360,12 @@ public class ShopCommand extends KitPvPCommand {
                                     @Override
                                     public ItemStack getItemStack() {
                                         List<String> lore = kit.getDescription();
-                                        if (kit.getPermissions() == null || player.hasPermission(kit.getPermissions())) {
+                                        if (kit.getPermissionNode() == null || player.hasPermission(kit.getPermissionNode())) {
                                             lore.add("&aYou already own this Kit.");
                                         } else {
-                                            lore.add("&6&lPrice: &a" + Utils.getFormat(kit.getCredits()));
+                                            lore.add("&6&lPrice: &a" + Utils.getFormat(kit.getCreditCost()));
                                         }
-                                        return new ItemMaker(kit.getItem()).setDisplayname((kit.getPermissions() == null || player.hasPermission(kit.getPermissions()) ? "&7[Owned] " + kit.getDisplayName() : "&c" + kit.getName())).addLore(lore).create();
+                                        return new ItemMaker(kit.getItem()).setDisplayname((kit.getPermissionNode() == null || player.hasPermission(kit.getPermissionNode()) ? "&7[Owned] " + kit.getDisplayName() : "&c" + kit.getName())).addLore(lore).create();
                                     }
                                 });
                                 i++;
@@ -443,15 +443,15 @@ public class ShopCommand extends KitPvPCommand {
                         @Override
                         public void onClick(InventoryClickEvent inventoryClickEvent) {
                             if (player.hasPermission("chatcolor." + color.name().toLowerCase().replace("_", ""))) {
-                                player.sendMessage(ColorText.translate("&aYou already own this Color."));
+                                player.sendMessage(ColorText.translateAmpersand("&aYou already own this Color."));
                             } else {
                                 player.closeInventory();
                                 if (profile.getStat(PlayerStat.CREDITS) < 2000) {
-                                    player.sendMessage(ColorText.translate("&cYou don't have credits enough to acquire this &aColor&c."));
+                                    player.sendMessage(ColorText.translateAmpersand("&cYou don't have credits enough to acquire this &aColor&c."));
                                 } else {
                                     profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - 2000));
                                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + " soupland.chatcolor." + color.name().toLowerCase().replace("_", ""));
-                                    player.sendMessage(ColorText.translate(color + color.name().replace("_", " ") + " &ahas been successfully purchased."));
+                                    player.sendMessage(ColorText.translateAmpersand(color + color.name().replace("_", " ") + " &ahas been successfully purchased."));
                                 }
                             }
                         }

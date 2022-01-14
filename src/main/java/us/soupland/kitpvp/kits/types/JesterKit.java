@@ -24,7 +24,6 @@ import us.soupland.kitpvp.utilities.player.DurationFormatter;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class JesterKit extends Kit {
 
@@ -40,18 +39,18 @@ public class JesterKit extends Kit {
 
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.DIAMOND_HOE) return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         if (player.getNearbyEntities(5, 5, 5).isEmpty()) {
-            player.sendMessage(ColorText.translate("&cThere are no players in a 5 block radius to target."));
+            player.sendMessage(ColorText.translateAmpersand("&cThere are no players in a 5 block radius to target."));
             return;
         }
 
         Cooldown cooldown = KitPvP.getCooldown(getName());
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
         cooldown.setCooldown(player);
@@ -82,10 +81,10 @@ public class JesterKit extends Kit {
                         break;
                     }
                 }
-                player.sendMessage(ColorText.translate("&eYou have moved your enemies' sword."));
+                player.sendMessage(ColorText.translateAmpersand("&eYou have moved your enemies' sword."));
             } else {
                 ((Player) entity).openInventory(new InventoryMaker("&cYou have been trolled!", 1).getCurrentPage());
-                player.sendMessage(ColorText.translate("&6&k&l||| &cINVENTORY TROLL &6&k&l||| &ehas been opened to &d" + entity.getName() + "&e."));
+                player.sendMessage(ColorText.translateAmpersand("&6&k&l||| &cINVENTORY TROLL &6&k&l||| &ehas been opened to &d" + entity.getName() + "&e."));
             }
         }
     }
@@ -120,22 +119,7 @@ public class JesterKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 5200;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Troll your enemies with a lot of Trolls.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

@@ -23,11 +23,11 @@ public class ArenaSetSpawnArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 3) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             Arena arena = ArenaHandler.getByName(args[1]);
             if (arena == null) {
-                sender.sendMessage(ColorText.translate("&cAn arena with that name doesn't exists."));
+                sender.sendMessage(ColorText.translateAmpersand("&cAn arena with that name doesn't exists."));
                 return;
             }
             Location location = ((Player) sender).getLocation();
@@ -36,10 +36,10 @@ public class ArenaSetSpawnArgument extends KitPvPArgument {
             } else if (args[2].equalsIgnoreCase("second")) {
                 arena.setSecondPosition(location);
             } else {
-                sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+                sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
                 return;
             }
-            sender.sendMessage(ColorText.translate("&ePlease perform /" + label + " save " + arena.getName()));
+            sender.sendMessage(ColorText.translateAmpersand("&ePlease perform /" + label + " save " + arena.getName()));
         }
     }
 }

@@ -133,7 +133,7 @@ public class MenuCommand extends KitPvPCommand {
                     public void onClick(InventoryClickEvent inventoryClickEvent) {
                         player.closeInventory();
                         if (profile.getStat(PlayerStat.CREDITS) < 5000) {
-                            player.sendMessage(ColorText.translate("&cYou need &45,000 &cto purchase this item. You only have &4" + profile.getStat(PlayerStat.CREDITS) + "&c!"));
+                            player.sendMessage(ColorText.translateAmpersand("&cYou need &45,000 &cto purchase this item. You only have &4" + profile.getStat(PlayerStat.CREDITS) + "&c!"));
                             return;
                         }
                         profile.reset();

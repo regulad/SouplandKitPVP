@@ -2,7 +2,6 @@ package us.soupland.kitpvp.kits.types;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import us.soupland.kitpvp.enums.PlayerState;
@@ -13,17 +12,11 @@ import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProKit extends Kit {
 
     public ProKit() {
         super("Pro", "&aPro", "");
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-
     }
 
     @Override
@@ -55,24 +48,7 @@ public class ProKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return null;
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 0;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Made only for the best");
-        list.add("&7players out there, this");
-        list.add("&7kit features no enchantments.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

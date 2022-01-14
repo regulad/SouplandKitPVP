@@ -1,0 +1,183 @@
+Kits:
+  Archer:
+    description:
+      - ""
+      - "&7Special bow that deals scaling"
+      - "&7damage base on distance."
+      - ""
+  Assassin:
+    description:
+      - ""
+      - "&7Get a sword that deals a massive amount"
+      - "&7of damage, but only have 1 use."
+      - ""
+  Backstab:
+    description:
+      - ""
+      - "&7Use your &6GOLDEN SWORD &7to"
+      - "&7backstab people (does 8+ hearts)."
+      - ""
+  Bat:
+    description:
+      - ""
+      - "&7Surround your enemies with"
+      - "&7strong Bats."
+      - ""
+  Berserker:
+    description:
+      - ""
+      - "&7Every kill you get, you receive a positive effect."
+      - ""
+  Cactus:
+    description:
+      - ""
+      - "&7Deal damage to enemies"
+      - "&7when you are being hit."
+      - ""
+  Chemist:
+    description:
+      - ""
+      - "&7Slow down your enemies with poison or"
+      - "&7take them down with damage pots that"
+      - "&7refill upon kills."
+      - ""
+  Dragon:
+    description:
+      - ""
+      - "&7Shoot fire and fury"
+      - "&7onto your enemies."
+      - ""
+  Falcon:
+    description:
+      - ""
+      - "&7Gain a feather that allows you to fly,"
+      - "&7If you are hit, you will fall."
+      - ""
+  Fighter:
+    description:
+      - ""
+      - "&7Use your Health Package"
+      - "&7and fight free vs. your opponents."
+      - ""
+  Fireman:
+    description:
+      - ""
+      - "&7No fire damage."
+      - ""
+  Fisherman:
+    description:
+      - ""
+      - "&7Get a fishing rod that you can use to"
+      - "&7teleport enemies to you."
+      - "&7Just catch them with your rod."
+      - ""
+  Ironman:
+    description:
+      - ""
+      - "&7Reduce damage by 5-20%."
+      - ""
+  Jester:
+    description:
+      - ""
+      - "&7Troll your enemies with a lot of Trolls."
+      - ""
+  Kangaroo:
+    description:
+      - ""
+      - "&7Get a rocket that will launch"
+      - "&7you in the way you are looking."
+      - ""
+  Mario:
+    description:
+      - ""
+      - "&7Shoot your enemies with fireballs"
+      - "&7that refill with every kill you get."
+      - ""
+  Phantom:
+    description:
+      - ""
+      - "&7Get the ability to fly for a limited time."
+      - ""
+  Pro:
+    description:
+      - ""
+      - "&7Made only for the best"
+      - "&7players out there, this"
+      - "&7kit features no enchantments."
+      - ""
+  PvP:
+    description:
+      - ""
+      - "&7Basic PvP class."
+      - ""
+  Quickdrop:
+    description:
+      - ""
+      - "&7Automatically drops your bowls."
+      - ""
+  Snail:
+    description:
+      - ""
+      - "&7Have a 20% chance to slow down"
+      - "&7a person for 5 seconds."
+      - ""
+  Speed Monster:
+    description:
+      - ""
+      - "&7Start with speed 1 and gain 1"
+      - "&7extra speed level from each kill."
+      - ""
+  Spiderman:
+    description:
+      - ""
+      - "&7Catch your enemies in a sticky web."
+      - ""
+  Stomper:
+    description:
+      - ""
+      - "&7Right-click an anvil to launch yourself into"
+      - "&7the air and then sneak to thrust yourself"
+      - "&7down, dealing massive damage to"
+      - "&7whoever is on the ground below you."
+      - ""
+  Strafe:
+    description:
+      - ""
+      - "&7Has no special abilities,"
+      - "&7but is equipped with Speed III."
+      - ""
+  Suicidal:
+    description:
+      - ""
+      - "&7Causes an explosion that will kill you, but do"
+      - "&7massive amounts of damage to players around you."
+      - ""
+  Summoner:
+    description:
+      - ""
+      - "&7Summon an iron golem that you ride,"
+      - "&7and it will attack the nearest enemy."
+      - ""
+  Switcher:
+    description:
+      - ""
+      - "&7Switch positions."
+      - ""
+  Thor:
+    description:
+      - ""
+      - "&7Use your axe to create a Lightning Strike."
+      - ""
+  Wither:
+    description:
+      - ""
+      - "&7Surround your enemies with"
+      - "&7strong Wither Skeletons."
+      - ""
+  Zen:
+    description:
+      - ""
+      - "&7Click to teleport to closest player."
+      - ""
+# The permission of a kit is soupland.kit.<kitname>
+# You can insert the field "name" or "cooldown" to override the default.

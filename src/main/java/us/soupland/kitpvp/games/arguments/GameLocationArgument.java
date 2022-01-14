@@ -29,7 +29,7 @@ public class GameLocationArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 3) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             Location location = ((Player) sender).getLocation();
 
@@ -39,18 +39,18 @@ public class GameLocationArgument extends KitPvPArgument {
             if (args[1].equalsIgnoreCase("add")) {
                 if (gameMap == null) {
                     gameMapHandler.createGameMap(args[2].toLowerCase());
-                    sender.sendMessage(ColorText.translate("&cMap could not be found. &a&lCreating..."));
+                    sender.sendMessage(ColorText.translateAmpersand("&cMap could not be found. &a&lCreating..."));
                     return;
                 }
                 gameMap.getLocations().add(location);
-                sender.sendMessage(ColorText.translate("&aYour location has been successfully &lADDED&a."));
+                sender.sendMessage(ColorText.translateAmpersand("&aYour location has been successfully &lADDED&a."));
                 gameMapHandler.saveGameMaps();
-                sender.sendMessage(ColorText.translate("&c> GameMapHander:saveGameMaps successfully saved..."));
+                sender.sendMessage(ColorText.translateAmpersand("&c> GameMapHander:saveGameMaps successfully saved..."));
             } else if (args[1].equalsIgnoreCase("list")) {
                 if (gameMapHandler.getGameMap(args[2].toLowerCase()) == null || gameMap.getLocations().isEmpty()) {
-                    sender.sendMessage(ColorText.translate("&cNo locations provided for this events."));
+                    sender.sendMessage(ColorText.translateAmpersand("&cNo locations provided for this events."));
                 } else {
-                    sender.sendMessage(ColorText.translate("&aLocations for &f" + gameMap.getGame() + " &a- SIZE: " + gameMap.getLocations().size()));
+                    sender.sendMessage(ColorText.translateAmpersand("&aLocations for &f" + gameMap.getGame() + " &a- SIZE: " + gameMap.getLocations().size()));
                     int i = 1;
                     for (Location faggot : gameMap.getLocations()) {
                         new ChatUtil("&4&l#" + i + " &f- &c'" + faggot.getWorld().getName() + "' &d" + faggot.getBlockX() + "&c, &d" + faggot.getBlockY() + "&c, &d" + faggot.getBlockZ() + "&c. &a&lCLICK HERE TO BE TELEPORTED", "&7CLICK HERE", "/tpcoords " + faggot.getBlockX() + ' ' + faggot.getBlockY() + ' ' + faggot.getBlockZ()).send((Player) sender);
@@ -58,23 +58,23 @@ public class GameLocationArgument extends KitPvPArgument {
                     }
                 }
             } else if (args[1].equalsIgnoreCase("save")) {
-                sender.sendMessage(ColorText.translate("&aGameMapHandler:saveGameMaps we are saving."));
+                sender.sendMessage(ColorText.translateAmpersand("&aGameMapHandler:saveGameMaps we are saving."));
                 gameMapHandler.saveGameMaps();
-                sender.sendMessage(ColorText.translate("&a&lSAVED " + gameMapHandler.getGameMap().size() + " MAPS."));
+                sender.sendMessage(ColorText.translateAmpersand("&a&lSAVED " + gameMapHandler.getGameMap().size() + " MAPS."));
             } else if (args[1].equalsIgnoreCase("clear")) {
                 if (args.length < 4) {
-                    sender.sendMessage(ColorText.translate("&cUsage: /" + label + " <clear> <eventName> <id>"));
+                    sender.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <clear> <eventName> <id>"));
                     return;
                 }
                 int id;
                 try {
                     id = Ints.tryParse(args[3]);
                 } catch (NumberFormatException ignored) {
-                    sender.sendMessage(ColorText.translate("&cInvalid ID."));
+                    sender.sendMessage(ColorText.translateAmpersand("&cInvalid ID."));
                     return;
                 }
                 if (gameMapHandler.getGameMap(args[2].toLowerCase()) == null || gameMap.getLocations().isEmpty()) {
-                    sender.sendMessage(ColorText.translate("&cNo locations provided for this events."));
+                    sender.sendMessage(ColorText.translateAmpersand("&cNo locations provided for this events."));
                 } else {
                     HashMap<Integer, Location> formattedList = new HashMap<>();
                     int count = 1;
@@ -83,14 +83,14 @@ public class GameLocationArgument extends KitPvPArgument {
                         count++;
                     }
                     if (!formattedList.containsKey(id)) {
-                        sender.sendMessage(ColorText.translate("&cID not found."));
+                        sender.sendMessage(ColorText.translateAmpersand("&cID not found."));
                         return;
                     }
                     gameMap.getLocations().remove(formattedList.get(id));
                     ((Player) sender).performCommand("game location save FAGGOT");
                 }
             } else {
-                sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+                sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
             }
         }
     }

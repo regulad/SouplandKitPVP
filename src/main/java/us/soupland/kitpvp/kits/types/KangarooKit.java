@@ -22,7 +22,6 @@ import us.soupland.kitpvp.utilities.player.DurationFormatter;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class KangarooKit extends Kit {
 
@@ -39,13 +38,13 @@ public class KangarooKit extends Kit {
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.FIREWORK || !event.getAction().name().startsWith("RIGHT"))
             return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         Cooldown cooldown = KitPvP.getCooldown(getName());
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
         cooldown.setCooldown(player);
@@ -87,23 +86,7 @@ public class KangarooKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 4100;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Get a rocket that will launch");
-        list.add("&7you in the way you are looking.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

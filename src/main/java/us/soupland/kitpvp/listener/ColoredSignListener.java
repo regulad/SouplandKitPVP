@@ -14,7 +14,7 @@ public class ColoredSignListener implements Listener {
         if (player.isOp()) {
             String[] lines = event.getLines();
             for (int i = 0; i < lines.length; i++) {
-                event.setLine(i, ColorText.translate(lines[i]));
+                event.setLine(i, ColorText.translateAmpersand(lines[i]));
             }
         }
     }

@@ -20,17 +20,17 @@ public class CreditsCommand extends KitPvPCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 3) {
-            sender.sendMessage(ColorText.translate("&cUsage: /" + label + " <add/take> <playerName> <amount>"));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <add/take> <playerName> <amount>"));
         } else {
             OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
             if ((!target.hasPlayedBefore()) && (!target.isOnline())) {
-                sender.sendMessage(ColorText.translate("&c" + args[1] + " has never played before."));
+                sender.sendMessage(ColorText.translateAmpersand("&c" + args[1] + " has never played before."));
                 return false;
             }
             Profile profile = ProfileManager.getProfile(target);
             Integer integer = Ints.tryParse(args[2]);
             if (integer == null || integer <= 0) {
-                sender.sendMessage(ColorText.translate("&cInvalid amount!"));
+                sender.sendMessage(ColorText.translateAmpersand("&cInvalid amount!"));
                 return false;
             }
             if (args[0].equalsIgnoreCase("add")) {
@@ -38,22 +38,22 @@ public class CreditsCommand extends KitPvPCommand {
                 if (!target.isOnline()) {
                     ProfileManager.saveProfile(profile, false);
                 }
-                sender.sendMessage(ColorText.translate("&7You have added &a" + integer + " &7credits to " + target.getName() + "&7!"));
+                sender.sendMessage(ColorText.translateAmpersand("&7You have added &a" + integer + " &7credits to " + target.getName() + "&7!"));
             } else if (args[0].equalsIgnoreCase("take")) {
                 if (integer > profile.getStat(PlayerStat.CREDITS)) {
                     integer = profile.getStat(PlayerStat.CREDITS);
                 }
                 if (integer <= 0) {
-                    sender.sendMessage(ColorText.translate("&c" + target.getName() + " don't have credits enough."));
+                    sender.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " don't have credits enough."));
                     return false;
                 }
                 profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - integer));
                 if (!target.isOnline()) {
                     ProfileManager.saveProfile(profile, false);
                 }
-                sender.sendMessage(ColorText.translate("&7You have remove &a" + integer + " &7credits from " + target.getName() + "&7!"));
+                sender.sendMessage(ColorText.translateAmpersand("&7You have remove &a" + integer + " &7credits from " + target.getName() + "&7!"));
             } else {
-                sender.sendMessage(ColorText.translate("&cUsage: /" + label + " <add/remove> <playerName> <amount>"));
+                sender.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <add/remove> <playerName> <amount>"));
             }
         }
         return true;

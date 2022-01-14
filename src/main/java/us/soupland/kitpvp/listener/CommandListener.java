@@ -26,12 +26,12 @@ public class CommandListener implements Listener {
             event.setCancelled(true);
             profile.setServerTime(ServerTime.DAY);
             player.setPlayerTime(15000L, true);
-            player.sendMessage(ColorText.translate("&7You have changed your server time to &fDay&7."));
+            player.sendMessage(ColorText.translateAmpersand("&7You have changed your server time to &fDay&7."));
         } else if (command.equalsIgnoreCase("/night")) {
             event.setCancelled(true);
             profile.setServerTime(ServerTime.NIGHT);
             player.setPlayerTime(6000L, true);
-            player.sendMessage(ColorText.translate("&7You have changed your server time to &fNight&7."));
+            player.sendMessage(ColorText.translateAmpersand("&7You have changed your server time to &fNight&7."));
         } else if (command.equalsIgnoreCase("/mylocation")) {
             if (player.isOp()) {
                 event.setCancelled(true);

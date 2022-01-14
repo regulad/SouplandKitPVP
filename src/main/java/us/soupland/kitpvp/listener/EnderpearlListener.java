@@ -36,7 +36,7 @@ public class EnderpearlListener implements Listener {
                     if (cooldown.getDuration(player) > 0L) {
                         event.setUseItemInHand(Event.Result.DENY);
                         player.updateInventory();
-                        player.sendMessage(ColorText.translate("&eEnderpearl Cooldown: &c" + DurationFormatter.getRemaining(cooldown.getDuration(player), true)));
+                        player.sendMessage(ColorText.translateAmpersand("&eEnderpearl Cooldown: &c" + DurationFormatter.getRemaining(cooldown.getDuration(player), true)));
                         return;
                     }
                     cooldown.setCooldown(player, true);

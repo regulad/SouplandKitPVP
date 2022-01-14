@@ -41,7 +41,7 @@ public class KitPvPUtils {
     }
 
     public static String getPlayerNotFoundMessage(String name) {
-        return ColorText.translate("&6Player with name '&f" + name + "&6' not found.");
+        return ColorText.translateAmpersand("&6Player with name '&f" + name + "&6' not found.");
     }
 
     public static boolean isOnline(OfflinePlayer target) {

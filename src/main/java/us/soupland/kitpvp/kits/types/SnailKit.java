@@ -3,7 +3,6 @@ package us.soupland.kitpvp.kits.types;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import us.soupland.kitpvp.enums.PlayerState;
@@ -16,7 +15,6 @@ import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SnailKit extends Kit {
 
@@ -24,10 +22,6 @@ public class SnailKit extends Kit {
         super("Snail", "&dSnail", "");
         new Cooldown(getName(), TimeUtils.parse("10s"), "&cSnail Delay", null);
 
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
     }
 
     @Override
@@ -59,23 +53,7 @@ public class SnailKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 5400;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Have a 20% chance to slow down");
-        list.add("&7a person for 5 seconds.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

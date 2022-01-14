@@ -33,7 +33,7 @@ public class InventoryMaker {
     }
 
     private InventoryMaker(String title, int rows, int rowOffset) {
-        this.title = ColorText.translate(title);
+        this.title = ColorText.translateAmpersand(title);
         this.rows = rows;
         this.rowOffset = rowOffset;
     }

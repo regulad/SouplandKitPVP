@@ -23,6 +23,6 @@ public class KitReloadArgument extends KitPvPArgument {
         LevelRank.getLevelRanks().clear();
         LevelRank.loadRanks();
 
-        sender.sendMessage(ColorText.translate("&aKitpvp reloaded"));
+        sender.sendMessage(ColorText.translateAmpersand("&aKitpvp reloaded"));
     }
 }

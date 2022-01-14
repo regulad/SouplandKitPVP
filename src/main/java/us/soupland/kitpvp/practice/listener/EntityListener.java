@@ -79,7 +79,7 @@ public class EntityListener implements Listener {
                 }
                 double health = Math.ceil(damaged.getHealth() - event.getFinalDamage()) / 2.0D;
                 Theme theme = ProfileManager.getProfile(attacker).getTheme();
-                attacker.sendMessage(ColorText.translate(theme.getPrimaryColor() + damaged.getName() + theme.getSecondaryColor() + " is now at " + theme.getPrimaryColor() + health + theme.getSecondaryColor() + '!'));
+                attacker.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + damaged.getName() + theme.getSecondaryColor() + " is now at " + theme.getPrimaryColor() + health + theme.getSecondaryColor() + '!'));
             }
 
             Match match = ProfileManager.getProfile(damaged).getMatch();

@@ -21,13 +21,13 @@ public class ArenaListArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (ArenaHandler.getArenaMap().isEmpty()) {
-            sender.sendMessage(ColorText.translate("&cThere are no arenas created."));
+            sender.sendMessage(ColorText.translateAmpersand("&cThere are no arenas created."));
             return;
         }
-        sender.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 40)));
+        sender.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 40)));
         for (Arena arena : ArenaHandler.getArenaMap()) {
-            sender.sendMessage(ColorText.translate(" &7- &e&l" + arena.getName()));
+            sender.sendMessage(ColorText.translateAmpersand(" &7- &e&l" + arena.getName()));
         }
-        sender.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 40)));
+        sender.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 40)));
     }
 }

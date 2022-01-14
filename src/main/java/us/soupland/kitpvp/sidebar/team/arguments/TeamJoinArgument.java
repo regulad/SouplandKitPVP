@@ -32,11 +32,11 @@ public class TeamJoinArgument extends KitPvPArgument {
         Profile profile = ProfileManager.getProfile((Player) sender);
         Team playerTeam = profile.getTeam();
         if (playerTeam != null) {
-            sender.sendMessage(ColorText.translate("&cYou are already in a team."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou are already in a team."));
             return;
         }
         if (args.length < 2) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             Team found = Team.getByName(args[1]);
             if (found == null) {
@@ -55,16 +55,16 @@ public class TeamJoinArgument extends KitPvPArgument {
                 }
             }
             if (found == null) {
-                sender.sendMessage(ColorText.translate("&cNo player teams found with player or name '" + args[1] + "'."));
+                sender.sendMessage(ColorText.translateAmpersand("&cNo player teams found with player or name '" + args[1] + "'."));
                 return;
             }
             if (!sender.isOp()) {
                 if (!found.getInvitedPlayers().containsKey(((Player) sender).getUniqueId())) {
-                    sender.sendMessage(ColorText.translate("&cThat team hasn't invited you."));
+                    sender.sendMessage(ColorText.translateAmpersand("&cThat team hasn't invited you."));
                     return;
                 }
                 if (found.getAllUuids().size() >= 10) {
-                    sender.sendMessage(ColorText.translate("&cThat team is full."));
+                    sender.sendMessage(ColorText.translateAmpersand("&cThat team is full."));
                     return;
                 }
             }
@@ -72,7 +72,7 @@ public class TeamJoinArgument extends KitPvPArgument {
             found.getMembers().add(((Player) sender).getUniqueId());
             found.getPlayerJoined().put(((Player) sender).getUniqueId(), System.currentTimeMillis());
             profile.setTeam(found);
-            found.sendMessage(ColorText.translate("&3[*] &a" + sender.getName() + " &ehas joined to your team."));
+            found.sendMessage(ColorText.translateAmpersand("&3[*] &a" + sender.getName() + " &ehas joined to your team."));
         }
     }
 

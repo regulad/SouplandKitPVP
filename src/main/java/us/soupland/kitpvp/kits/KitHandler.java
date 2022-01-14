@@ -33,7 +33,7 @@ public class KitHandler {
     public static Kit getRandomKit(Player player) {
         List<Kit> kits = new ArrayList<>();
         Kit kit = getKitList().get(KitPvPUtils.getRandomNumber(getKitList().size()));
-        if (kit.getPermissions() != null && !player.hasPermission(kit.getPermissions())) {
+        if (kit.getPermissionNode() != null && !player.hasPermission(kit.getPermissionNode())) {
             kits.add(kit);
         }
         if (kits.isEmpty()) {

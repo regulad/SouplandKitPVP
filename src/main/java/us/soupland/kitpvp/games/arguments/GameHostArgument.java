@@ -92,16 +92,16 @@ public class GameHostArgument extends KitPvPArgument {
                 public void onClick(InventoryClickEvent inventoryClickEvent) {
                     player.closeInventory();
                     if (profile.getPlayerCombat() > 0L) {
-                        player.sendMessage(ColorText.translate("&cYou must not be Spawn-Tagged."));
+                        player.sendMessage(ColorText.translateAmpersand("&cYou must not be Spawn-Tagged."));
                         return;
                     }
                     if (game.getPermission() == null || player.hasPermission(game.getPermission()) || KitPvP.getInstance().getServerData().isFreeEventsMode() || profile.getGamesPurchased().contains(game)) {
                         if (gameHandler.getCooldown().containsKey(game) && (gameHandler.getCooldown().get(game) - System.currentTimeMillis()) > 0L && !player.isOp()) {
-                            player.sendMessage(ColorText.translate("&cThis events is on cooldown for another &e" + DurationFormatUtils.formatDurationWords(gameHandler.getCooldown().get(game) - System.currentTimeMillis(), true, true) + "&c."));
+                            player.sendMessage(ColorText.translateAmpersand("&cThis events is on cooldown for another &e" + DurationFormatUtils.formatDurationWords(gameHandler.getCooldown().get(game) - System.currentTimeMillis(), true, true) + "&c."));
                             return;
                         }
                         if (gameHandler.getActiveGame() != null || gameHandler.getUpcomingGame() != null) {
-                            player.sendMessage(ColorText.translate("&cThere is already an active events ongoing!"));
+                            player.sendMessage(ColorText.translateAmpersand("&cThere is already an active events ongoing!"));
                         } else {
                             List<GameMap> gameMaps = new ArrayList<>();
                             for (GameMap gameMap : KitPvP.getInstance().getGameMapHandler().getGameMap().values()) {
@@ -110,7 +110,7 @@ public class GameHostArgument extends KitPvPArgument {
                                 }
                             }
                             if (gameMaps.isEmpty()) {
-                                player.sendMessage(ColorText.translate("&cThere are no maps available for this events."));
+                                player.sendMessage(ColorText.translateAmpersand("&cThere are no maps available for this events."));
                             } else {
                                 if (player.hasPermission(KitPvPUtils.DONATOR_TOP_PERMISSION)) {
                                     InventoryMaker maker = new InventoryMaker("&4Select Map", 2);
@@ -152,7 +152,7 @@ public class GameHostArgument extends KitPvPArgument {
                             }
                         }
                     } else {
-                        player.sendMessage(ColorText.translate("&cYou don't have permissions to host this events."));
+                        player.sendMessage(ColorText.translateAmpersand("&cYou don't have permissions to host this events."));
                     }
                 }
 
@@ -197,15 +197,15 @@ public class GameHostArgument extends KitPvPArgument {
         for (Player online : Bukkit.getOnlinePlayers()) {
             Theme theme = ProfileManager.getProfile(online).getTheme();
             online.sendMessage(" ");
-            online.sendMessage(ColorText.translate(theme.getSecondaryColor() + StringUtils.repeat("\u2588", 9)));
-            online.sendMessage(ColorText.translate(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + StringUtils.repeat("\u2588", 7) + theme.getSecondaryColor() + "\u2588 &7[" + game.getName() + " Event]"));
-            online.sendMessage(ColorText.translate(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + "\u2588" + theme.getSecondaryColor() + StringUtils.repeat("\u2588", 7) + ' ' + player.getName() + " &7is hosting a minigame!"));
-            online.sendMessage(ColorText.translate(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + "\u2588" + theme.getSecondaryColor() + StringUtils.repeat("\u2588", 7) + " &7Starts in " + theme.getPrimaryColor() + "1 minute"));
-            online.sendMessage(ColorText.translate(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + StringUtils.repeat("\u2588", 7) + theme.getSecondaryColor() + "\u2588"));
+            online.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + StringUtils.repeat("\u2588", 9)));
+            online.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + StringUtils.repeat("\u2588", 7) + theme.getSecondaryColor() + "\u2588 &7[" + game.getName() + " Event]"));
+            online.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + "\u2588" + theme.getSecondaryColor() + StringUtils.repeat("\u2588", 7) + ' ' + player.getName() + " &7is hosting a minigame!"));
+            online.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + "\u2588" + theme.getSecondaryColor() + StringUtils.repeat("\u2588", 7) + " &7Starts in " + theme.getPrimaryColor() + "1 minute"));
+            online.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + StringUtils.repeat("\u2588", 7) + theme.getSecondaryColor() + "\u2588"));
             new ChatUtil(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + "\u2588" + theme.getSecondaryColor() + StringUtils.repeat("\u2588", 7) + " &a&l[Click to join]", "&7Click here to join!", "/game join").send(online);
-            online.sendMessage(ColorText.translate(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + "\u2588" + theme.getSecondaryColor() + StringUtils.repeat("\u2588", 7)));
-            online.sendMessage(ColorText.translate(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + StringUtils.repeat("\u2588", 7) + theme.getSecondaryColor() + "\u2588"));
-            online.sendMessage(ColorText.translate(theme.getSecondaryColor() + StringUtils.repeat("\u2588", 9)));
+            online.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + "\u2588" + theme.getSecondaryColor() + StringUtils.repeat("\u2588", 7)));
+            online.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + "\u2588" + theme.getPrimaryColor() + StringUtils.repeat("\u2588", 7) + theme.getSecondaryColor() + "\u2588"));
+            online.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + StringUtils.repeat("\u2588", 9)));
             online.sendMessage(" ");
         }
 

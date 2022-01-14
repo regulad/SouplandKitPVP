@@ -40,19 +40,19 @@ public class ZenKit extends Kit {
 
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.INK_SACK) return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         if (player.getNearbyEntities(10, 10, 10).isEmpty()) {
-            player.sendMessage(ColorText.translate("&cThere are no players in a 10 block radius to target."));
+            player.sendMessage(ColorText.translateAmpersand("&cThere are no players in a 10 block radius to target."));
             return;
         }
 
         Cooldown cooldown = KitPvP.getCooldown(getName());
 
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
 
@@ -69,13 +69,13 @@ public class ZenKit extends Kit {
         }
 
         if (players.isEmpty()) {
-            player.sendMessage(ColorText.translate("&cThere are currently no close available players."));
+            player.sendMessage(ColorText.translateAmpersand("&cThere are currently no close available players."));
             return;
         }
 
         Player found = players.get(KitPvPUtils.getRandomNumber(players.size()));
         player.teleport(found);
-        player.sendMessage(ColorText.translate("&eTeleported to " + found.getName() + "&e."));
+        player.sendMessage(ColorText.translateAmpersand("&eTeleported to " + found.getName() + "&e."));
 
         cooldown.setCooldown(player);
     }
@@ -112,22 +112,7 @@ public class ZenKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 6000;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Click to teleport to closest player.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

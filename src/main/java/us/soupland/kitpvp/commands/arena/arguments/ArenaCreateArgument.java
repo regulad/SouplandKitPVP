@@ -20,15 +20,15 @@ public class ArenaCreateArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             Arena arena = ArenaHandler.getByName(args[1]);
             if (arena != null) {
-                sender.sendMessage(ColorText.translate("&cAn arena with that name already exists."));
+                sender.sendMessage(ColorText.translateAmpersand("&cAn arena with that name already exists."));
                 return;
             }
             arena = new Arena(args[1]);
-            sender.sendMessage(ColorText.translate("&eAn arena named &c" + arena.getName() + " &ehas been created."));
+            sender.sendMessage(ColorText.translateAmpersand("&eAn arena named &c" + arena.getName() + " &ehas been created."));
         }
     }
 

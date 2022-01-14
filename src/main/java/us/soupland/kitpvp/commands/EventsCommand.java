@@ -38,7 +38,7 @@ public class EventsCommand extends KitPvPCommand {
             public void onClick(InventoryClickEvent inventoryClickEvent) {
                 player.closeInventory();
                 data.setDoubleCredits(!data.isDoubleCredits());
-                Bukkit.broadcastMessage(ColorText.translate("&a&lDOUBLE CREDITS &ehas been " + (data.isDoubleCredits() ? "&a&lENABLED" : "&c&lDISABLED") + " &eby " + player.getName() + "&e" + (data.isDoubleCredits() ? " for unlimited time" : "") + '.'));
+                Bukkit.broadcastMessage(ColorText.translateAmpersand("&a&lDOUBLE CREDITS &ehas been " + (data.isDoubleCredits() ? "&a&lENABLED" : "&c&lDISABLED") + " &eby " + player.getName() + "&e" + (data.isDoubleCredits() ? " for unlimited time" : "") + '.'));
                 Bukkit.getOnlinePlayers().forEach(o -> o.playSound(o.getLocation(), Sound.NOTE_PLING, 1, 1));
             }
 
@@ -53,7 +53,7 @@ public class EventsCommand extends KitPvPCommand {
             public void onClick(InventoryClickEvent inventoryClickEvent) {
                 player.closeInventory();
                 data.setFreeKitsMode(!data.isFreeKitsMode());
-                Bukkit.broadcastMessage(ColorText.translate("&b&lFREE KITS MODE &ehas been " + (data.isFreeKitsMode() ? "&a&lENABLED" : "&c&lDISABLED") + " &eby " + player.getName() + "&e" + (data.isFreeKitsMode() ? " for unlimited time" : "") + '.'));
+                Bukkit.broadcastMessage(ColorText.translateAmpersand("&b&lFREE KITS MODE &ehas been " + (data.isFreeKitsMode() ? "&a&lENABLED" : "&c&lDISABLED") + " &eby " + player.getName() + "&e" + (data.isFreeKitsMode() ? " for unlimited time" : "") + '.'));
                 Bukkit.getOnlinePlayers().forEach(o -> o.playSound(o.getLocation(), Sound.NOTE_PLING, 1, 1));
             }
 
@@ -68,7 +68,7 @@ public class EventsCommand extends KitPvPCommand {
             public void onClick(InventoryClickEvent inventoryClickEvent) {
                 player.closeInventory();
                 data.setFreeEventsMode(!data.isFreeEventsMode());
-                Bukkit.broadcastMessage(ColorText.translate("&d&lFREE EVENTS MODE &ehas been " + (data.isFreeEventsMode() ? "&a&lENABLED" : "&c&lDISABLED") + " &eby " + player.getName() + "&e" + (data.isFreeEventsMode() ? " for unlimited time" : "") + '.'));
+                Bukkit.broadcastMessage(ColorText.translateAmpersand("&d&lFREE EVENTS MODE &ehas been " + (data.isFreeEventsMode() ? "&a&lENABLED" : "&c&lDISABLED") + " &eby " + player.getName() + "&e" + (data.isFreeEventsMode() ? " for unlimited time" : "") + '.'));
                 Bukkit.getOnlinePlayers().forEach(o -> o.playSound(o.getLocation(), Sound.NOTE_PLING, 1, 1));
             }
 

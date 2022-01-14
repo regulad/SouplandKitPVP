@@ -29,7 +29,7 @@ public class DuelProcedure {
         profile.setDuelProcedure(null);
         profile.getSentDuelRequests().put(target.getUniqueId(), request);
 
-        sender.sendMessage(ColorText.translate("&aYou sent a duel request to &e" + target.getName() + " &aon arena &e" + arena.getName() + "&a."));
+        sender.sendMessage(ColorText.translateAmpersand("&aYou sent a duel request to &e" + target.getName() + " &aon arena &e" + arena.getName() + "&a."));
 
         new ChatUtil("&e" + sender.getName() + " &asent you " + (ladder.getName().startsWith("u") ? "an" : "") + " &e" + ladder.getName() + " &aduel request on arena &e" + arena.getName() + "&a.", "&6Click here or type &b/accept " + sender.getName() + " &6to accept the invite.", "/accept " + sender.getName()).send(target);
     }

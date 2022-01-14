@@ -23,19 +23,19 @@ public class LevelRankUpArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
             return;
         }
 
         OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
         if ((!target.hasPlayedBefore()) && (!target.isOnline())) {
-            sender.sendMessage(ColorText.translate("&c" + args[1] + " has never played before."));
+            sender.sendMessage(ColorText.translateAmpersand("&c" + args[1] + " has never played before."));
             return;
         }
 
         Profile profile = ProfileManager.getProfile(target);
 
-        sender.sendMessage(ColorText.translate("&aYou've ranked up " + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " level from " + profile.getLevelRank().getName() + " to " + profile.getRankUp().getName() + '.'));
+        sender.sendMessage(ColorText.translateAmpersand("&aYou've ranked up " + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " level from " + profile.getLevelRank().getName() + " to " + profile.getRankUp().getName() + '.'));
 
         profile.setExperience(profile.getRankUp().getRequiredExp());
         profile.rankUp();

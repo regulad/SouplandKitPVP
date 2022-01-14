@@ -36,11 +36,11 @@ public class DuelCommand extends KitPvPCommand {
         Player player = (Player) sender;
         Profile profile = ProfileManager.getProfile(player);
         if (profile.getPlayerState() != PlayerState.SPAWNPRACTICE) {
-            player.sendMessage(ColorText.translate("&cYou cannot duel right now."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou cannot duel right now."));
             return false;
         }
         if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&cUsage: /" + label + " <playerName>"));
+            player.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <playerName>"));
         } else {
             Player target = Bukkit.getPlayer(args[0]);
             if (!KitPvPUtils.isOnline(target)) {
@@ -48,16 +48,16 @@ public class DuelCommand extends KitPvPCommand {
                 return false;
             }
             if (target == player) {
-                player.sendMessage(ColorText.translate("&cYou cannot duel yourself."));
+                player.sendMessage(ColorText.translateAmpersand("&cYou cannot duel yourself."));
                 return false;
             }
             Profile targetProfile = ProfileManager.getProfile(target);
             if (targetProfile.getPlayerState() != PlayerState.SPAWNPRACTICE) {
-                player.sendMessage(ColorText.translate("&c" + target.getName() + " is currently busy."));
+                player.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " is currently busy."));
                 return false;
             }
             if (!profile.canSendDuelRequest(target)) {
-                player.sendMessage(ColorText.translate("&cYou have already sent that player a duel request."));
+                player.sendMessage(ColorText.translateAmpersand("&cYou have already sent that player a duel request."));
                 return false;
             }
 
@@ -77,7 +77,7 @@ public class DuelCommand extends KitPvPCommand {
 
                         Arena found = ArenaHandler.getRandom(ladder);
                         if (found == null) {
-                            player.sendMessage(ColorText.translate("&cThere are no arenas!"));
+                            player.sendMessage(ColorText.translateAmpersand("&cThere are no arenas!"));
                             return;
                         }
                         if (player.hasPermission(KitPvPUtils.DONATOR_PERMISSION)) {

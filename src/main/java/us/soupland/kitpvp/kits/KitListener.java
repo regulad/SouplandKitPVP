@@ -17,7 +17,7 @@ public class KitListener implements Listener {
         Kit kit = profile.getCurrentKit();
         if (kit != null) {
             if (profile.isFrozenToUseAbility()) {
-                player.sendMessage(ColorText.translate("&cYou are currently jammed, so you can not use your ability."));
+                player.sendMessage(ColorText.translateAmpersand("&cYou are currently jammed, so you can not use your ability."));
                 return;
             }
             kit.execute(event);

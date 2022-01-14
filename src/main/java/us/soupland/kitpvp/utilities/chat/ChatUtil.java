@@ -14,7 +14,7 @@ public class ChatUtil {
     private List<TextComponent> components = new ArrayList<>();
 
     public ChatUtil(String message) {
-        TextComponent component = new TextComponent(ColorText.translate(message));
+        TextComponent component = new TextComponent(ColorText.translateAmpersand(message));
 
         components.add(component);
     }
@@ -24,10 +24,10 @@ public class ChatUtil {
     }
 
     public ChatUtil copy(String message, String hover, String copy) {
-        TextComponent component = new TextComponent(ColorText.translate(message));
+        TextComponent component = new TextComponent(ColorText.translateAmpersand(message));
 
         if (hover != null) {
-            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ColorText.translate(hover)).create()));
+            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ColorText.translateAmpersand(hover)).create()));
         }
 
         if (copy != null) {
@@ -39,10 +39,10 @@ public class ChatUtil {
     }
 
     private void add(String message, String hover, String click) {
-        TextComponent component = new TextComponent(ColorText.translate(message));
+        TextComponent component = new TextComponent(ColorText.translateAmpersand(message));
 
         if (hover != null) {
-            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ColorText.translate(hover)).create()));
+            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ColorText.translateAmpersand(hover)).create()));
         }
 
         if (click != null) {

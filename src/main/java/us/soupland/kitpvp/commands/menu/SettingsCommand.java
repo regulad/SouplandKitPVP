@@ -77,11 +77,11 @@ public class SettingsCommand extends KitPvPCommand {
                 player.closeInventory();
                 if (profile.getServerTime() == ServerTime.DAY) {
                     profile.setServerTime(ServerTime.NIGHT);
-                    player.sendMessage(ColorText.translate("&7You have changed your server time to &fNight&7."));
+                    player.sendMessage(ColorText.translateAmpersand("&7You have changed your server time to &fNight&7."));
                     player.setPlayerTime(15000L, true);
                 } else {
                     profile.setServerTime(ServerTime.DAY);
-                    player.sendMessage(ColorText.translate("&7You have changed your server time to &fDay&7."));
+                    player.sendMessage(ColorText.translateAmpersand("&7You have changed your server time to &fDay&7."));
                     player.setPlayerTime(6000L, true);
                 }
             }
@@ -111,7 +111,7 @@ public class SettingsCommand extends KitPvPCommand {
             public void onClick(InventoryClickEvent inventoryClickEvent) {
                 player.closeInventory();
                 profile.setScoreboardEnabled(!profile.isScoreboardEnabled());
-                player.sendMessage(ColorText.translate("&7You have toggled your scoreboard " + (profile.isScoreboardEnabled() ? "&aON" : "&cOFF") + "&7."));
+                player.sendMessage(ColorText.translateAmpersand("&7You have toggled your scoreboard " + (profile.isScoreboardEnabled() ? "&aON" : "&cOFF") + "&7."));
             }
 
             @Override
@@ -126,10 +126,10 @@ public class SettingsCommand extends KitPvPCommand {
                 player.closeInventory();
                 if (profile.getKitMenuType() == KitMenuType.GUI) {
                     profile.setKitMenuType(KitMenuType.TEXT);
-                    player.sendMessage(ColorText.translate("&7You have toggled your kit list style to &cTEXT&7."));
+                    player.sendMessage(ColorText.translateAmpersand("&7You have toggled your kit list style to &cTEXT&7."));
                 } else {
                     profile.setKitMenuType(KitMenuType.GUI);
-                    player.sendMessage(ColorText.translate("&7You have toggled your kit list style to &9GUI&7."));
+                    player.sendMessage(ColorText.translateAmpersand("&7You have toggled your kit list style to &9GUI&7."));
                 }
             }
 
@@ -157,7 +157,7 @@ public class SettingsCommand extends KitPvPCommand {
             public void onClick(InventoryClickEvent inventoryClickEvent) {
                 if (player.hasPermission(KitPvPUtils.DONATOR_PERMISSION)) {
                     profile.setJoinAndQuitMessageEnabled(!profile.isJoinAndQuitMessageEnabled());
-                    player.sendMessage(ColorText.translate("&7You have " + (profile.isJoinAndQuitMessageEnabled() ? "&aenabled" : "&cdisabled") + "&7."));
+                    player.sendMessage(ColorText.translateAmpersand("&7You have " + (profile.isJoinAndQuitMessageEnabled() ? "&aenabled" : "&cdisabled") + "&7."));
                 }
             }
 

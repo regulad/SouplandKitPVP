@@ -41,7 +41,7 @@ public class Cooldown {
         CooldownStartingEvent event = new CooldownStartingEvent(player, this);
         if (!event.call()) {
             if (event.getReason() != null) {
-                player.sendMessage(ColorText.translate(event.getReason()));
+                player.sendMessage(ColorText.translateAmpersand(event.getReason()));
             }
             return;
         }
@@ -51,7 +51,7 @@ public class Cooldown {
                 TaskUtil.runTaskLater(() -> {
                     if (player.isOnline() && isOnCooldown(player)) {
                         for (String s : expiredMessage.split("\n")) {
-                            player.sendMessage(ColorText.translate(s));
+                            player.sendMessage(ColorText.translateAmpersand(s));
                         }
                         new CooldownExpiredEvent(player, this).call();
                     }

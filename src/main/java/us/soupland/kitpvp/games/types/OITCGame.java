@@ -119,7 +119,7 @@ public class OITCGame extends Game {
                                 continue;
                             }
                             Theme theme = ProfileManager.getProfile(player).getTheme();
-                            player.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l[Event] " + theme.getSecondaryColor() + "Game starting in " + i + " second" + (i == 1 ? "" : "s") + '.'));
+                            player.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "&l[Event] " + theme.getSecondaryColor() + "Game starting in " + i + " second" + (i == 1 ? "" : "s") + '.'));
                             player.playSound(player.getLocation(), Sound.NOTE_PIANO, 1L, 1L);
                         }
                         break;
@@ -316,16 +316,16 @@ public class OITCGame extends Game {
                     } else if (getImmunityMap().get(player) > System.currentTimeMillis()) {
                         event.setCancelled(true);
                         if (event.getDamager() instanceof Player) {
-                            event.getDamager().sendMessage(ColorText.translate("&c" + player.getName() + " still has invincibility."));
+                            event.getDamager().sendMessage(ColorText.translateAmpersand("&c" + player.getName() + " still has invincibility."));
                         }
                     } else if (event.getDamager() instanceof Player && getImmunityMap().containsKey(event.getDamager()) && getImmunityMap().get(event.getDamager()) > System.currentTimeMillis()) {
                         event.setCancelled(true);
-                        event.getDamager().sendMessage(ColorText.translate("&cYou still have your Invincibility Timer."));
+                        event.getDamager().sendMessage(ColorText.translateAmpersand("&cYou still have your Invincibility Timer."));
                     } else if (i > 0) {
                         event.setCancelled(true);
                     } else if (event.getDamager() instanceof Arrow && ((Arrow) event.getDamager()).getShooter() instanceof Player) {
                         if (event.getEntity() instanceof Player && getImmunityMap().get(player) > System.currentTimeMillis()) {
-                            event.getDamager().sendMessage(ColorText.translate("&c" + player.getName() + " still has invincibility."));
+                            event.getDamager().sendMessage(ColorText.translateAmpersand("&c" + player.getName() + " still has invincibility."));
                             event.setCancelled(true);
                         } else {
                             event.setDamage(100.0D);
@@ -346,7 +346,7 @@ public class OITCGame extends Game {
                     this.addKill(event.getEntity().getKiller());
                     event.getEntity().getKiller().getInventory().addItem(new ItemStack(Material.ARROW));
                     event.getEntity().getKiller().updateInventory();
-                    broadcast(ColorText.translate("&4&l[Event] &a" + event.getEntity().getName() + "&4[" + getKills(event.getEntity()) + "] &7killed by &c" + event.getEntity().getKiller().getName() + "&4[" + getKills(event.getEntity().getKiller()) + ']'));
+                    broadcast(ColorText.translateAmpersand("&4&l[Event] &a" + event.getEntity().getName() + "&4[" + getKills(event.getEntity()) + "] &7killed by &c" + event.getEntity().getKiller().getName() + "&4[" + getKills(event.getEntity().getKiller()) + ']'));
                 }
                 this.respawn(event.getEntity());
             }
@@ -373,7 +373,7 @@ public class OITCGame extends Game {
                             return;
                         this.removeKill(player);
                         Theme theme = ProfileManager.getProfile(player).getTheme();
-                        player.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l[Event] " + theme.getSecondaryColor() + "You fell in water, and you lost a kill."));
+                        player.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "&l[Event] " + theme.getSecondaryColor() + "You fell in water, and you lost a kill."));
                         this.respawn(player);
                     }
                 }
@@ -446,7 +446,7 @@ public class OITCGame extends Game {
                 continue;
             }
             Theme theme = ProfileManager.getProfile(faggot).getTheme();
-            faggot.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l[Event] " + player.getName() + theme.getSecondaryColor() + " has been eliminated."));
+            faggot.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "&l[Event] " + player.getName() + theme.getSecondaryColor() + " has been eliminated."));
         }
 
         if (this.isWinner()) {

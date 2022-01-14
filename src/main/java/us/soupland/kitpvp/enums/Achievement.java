@@ -23,8 +23,8 @@ public enum Achievement {
     private String displayName, description;
 
     public void broadcast(Player player) {
-        Bukkit.broadcastMessage(ColorText.translate(player.getDisplayName() + " &bjust completed an achievement! &7(" + getDisplayName() + ')'));
-        player.sendMessage(ColorText.translate("&aCongratulations! You just unlocked a new achievement. (" + getDescription() + ')'));
+        Bukkit.broadcastMessage(ColorText.translateAmpersand(player.getDisplayName() + " &bjust completed an achievement! &7(" + getDisplayName() + ')'));
+        player.sendMessage(ColorText.translateAmpersand("&aCongratulations! You just unlocked a new achievement. (" + getDescription() + ')'));
 
         Bukkit.getOnlinePlayers().forEach(o -> o.playSound(o.getLocation(), Sound.NOTE_PLING, 1, 1));
     }

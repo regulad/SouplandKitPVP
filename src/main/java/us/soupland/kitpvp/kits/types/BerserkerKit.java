@@ -5,7 +5,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
@@ -25,10 +24,6 @@ public class BerserkerKit extends Kit {
 
     public BerserkerKit() {
         super("Berserker", "&bBerserker", "");
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
     }
 
     @Override
@@ -59,22 +54,8 @@ public class BerserkerKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 5300;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Every kill you get, you receive a positive effect.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler

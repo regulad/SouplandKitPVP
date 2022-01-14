@@ -187,7 +187,7 @@ public class PotPvPGame extends Game {
                             if (entry.getValue() == GamePlayerState.REMOVED) continue;
                             entry.getKey().playSound(entry.getKey().getLocation(), Sound.NOTE_PIANO, 1L, 1L);
                         }
-                        broadcast(ColorText.translate("&7[&4Round #" + round + "&7] &fStarting in &c" + i + " second(s)"));
+                        broadcast(ColorText.translateAmpersand("&7[&4Round #" + round + "&7] &fStarting in &c" + i + " second(s)"));
                         break;
                     default:
                         break;
@@ -224,7 +224,7 @@ public class PotPvPGame extends Game {
                 continue;
             }
             Theme theme = ProfileManager.getProfile(player).getTheme();
-            player.sendMessage(ColorText.translate("&2\u2713 " + theme.getPrimaryColor() + "Next Round: " + firstPlayer.getName() + theme.getPrimaryColor() + " vs " + secondPlayer.getName()));
+            player.sendMessage(ColorText.translateAmpersand("&2\u2713 " + theme.getPrimaryColor() + "Next Round: " + firstPlayer.getName() + theme.getPrimaryColor() + " vs " + secondPlayer.getName()));
         }
     }
 
@@ -268,9 +268,9 @@ public class PotPvPGame extends Game {
                         continue;
                     }
                     Theme theme = ProfileManager.getProfile(faggot).getTheme();
-                    faggot.sendMessage(ColorText.translate("&2\u2713 " + winner.getName() + theme.getPrimaryColor() + " won round " + round + theme.getPrimaryColor() + '!'));
+                    faggot.sendMessage(ColorText.translateAmpersand("&2\u2713 " + winner.getName() + theme.getPrimaryColor() + " won round " + round + theme.getPrimaryColor() + '!'));
                 }
-                winner.sendMessage(ColorText.translate("&eYou're next up, good luck! They don't stand a chance."));
+                winner.sendMessage(ColorText.translateAmpersand("&eYou're next up, good luck! They don't stand a chance."));
                 player.teleport(getLocation());
 
                 startNewRound();

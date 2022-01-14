@@ -34,9 +34,9 @@ public class ResetKitCommand extends KitPvPCommand {
         Profile profile = ProfileManager.getProfile(player);
         if (profile.getPlayerState() == PlayerState.SPAWN) {
             PlayerUtils.resetPlayer(player, false, false);
-            player.sendMessage(ColorText.translate("&eYour kit has been reset."));
+            player.sendMessage(ColorText.translateAmpersand("&eYour kit has been reset."));
         } else {
-            player.sendMessage(ColorText.translate("&cYou can only execute this command in spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can only execute this command in spawn."));
         }
 
         return true;

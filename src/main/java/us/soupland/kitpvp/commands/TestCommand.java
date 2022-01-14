@@ -42,7 +42,7 @@ public class TestCommand extends KitPvPCommand {
             sectionKit.set("name", kit.getDisplayName());
             sectionKit.set("display-item", kit.getItem().getType().name());
             sectionKit.set("description", kit.getDescription());
-            sectionKit.set("credits", kit.getCredits());
+            sectionKit.set("credits", kit.getCreditCost());
             sectionKit.set("cooldown", kit.getCooldown());
             List<String> effects = kit.getEffects().stream().map(potionEffect -> potionEffect.getType().getName()).collect(Collectors.toList());
             sectionKit.set("effects", effects);

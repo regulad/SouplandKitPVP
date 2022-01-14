@@ -27,27 +27,27 @@ public class TeamUninviteArgument extends KitPvPArgument {
         Profile profile = ProfileManager.getProfile((Player) sender);
         Team team = profile.getTeam();
         if (team == null) {
-            sender.sendMessage(ColorText.translate("&cYou are not in a team."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou are not in a team."));
             return;
         }
         if (team.getLeader() == ((Player) sender).getUniqueId() || team.getOfficers().contains(((Player) sender).getUniqueId())) {
             if (args.length < 2) {
-                sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+                sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
             } else {
                 OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
                 if ((!target.hasPlayedBefore()) && (!target.isOnline())) {
-                    sender.sendMessage(ColorText.translate("&c" + args[1] + " has never played before."));
+                    sender.sendMessage(ColorText.translateAmpersand("&c" + args[1] + " has never played before."));
                     return;
                 }
                 if (!team.getInvitedPlayers().containsKey(target.getUniqueId())) {
-                    sender.sendMessage(ColorText.translate("&cNo pending invite for " + target.getName() + '.'));
+                    sender.sendMessage(ColorText.translateAmpersand("&cNo pending invite for " + target.getName() + '.'));
                     return;
                 }
                 team.getInvitedPlayers().remove(target.getUniqueId());
-                team.sendMessage(ColorText.translate("&ePlayer " + sender.getName() + " &ehas cancelled " + target.getName() + "&e's invitation to the team."));
+                team.sendMessage(ColorText.translateAmpersand("&ePlayer " + sender.getName() + " &ehas cancelled " + target.getName() + "&e's invitation to the team."));
             }
         } else {
-            sender.sendMessage(ColorText.translate("&cYou must be an officer to uninvite players."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou must be an officer to uninvite players."));
         }
     }
 }

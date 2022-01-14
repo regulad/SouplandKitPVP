@@ -33,11 +33,11 @@ public class KothManager {
                             }
 
                             if (koth.getRemaining() % 15 == 0 && koth.getRemaining() != koth.getSeconds() || koth.getRemaining() <= 5) {
-                                Bukkit.broadcastMessage(ColorText.translate("&4&l[KOTH] &eSomeone is trying to control the &cKoth&e. &7(" + DurationFormatUtils.formatDurationWords(koth.getRemaining() * 1000, true, true) + ')'));
+                                Bukkit.broadcastMessage(ColorText.translateAmpersand("&4&l[KOTH] &eSomeone is trying to control the &cKoth&e. &7(" + DurationFormatUtils.formatDurationWords(koth.getRemaining() * 1000, true, true) + ')'));
                             }
                         } else {
                             if (koth.getCapper() == player) {
-                                Bukkit.broadcastMessage(ColorText.translate("&4&l[KOTH] " + player.getName() + " &ehas been knocked. &7(" + DurationFormatUtils.formatDurationWords(koth.getRemaining() * 1000, true, true) + ')'));
+                                Bukkit.broadcastMessage(ColorText.translateAmpersand("&4&l[KOTH] " + player.getName() + " &ehas been knocked. &7(" + DurationFormatUtils.formatDurationWords(koth.getRemaining() * 1000, true, true) + ')'));
 
                                 koth.setCapper(null);
                                 koth.setRemaining(koth.getSeconds());
@@ -51,7 +51,7 @@ public class KothManager {
 
                     if (koth.getRemaining() <= 0L) {
                         if (koth.getCapper() != null) {
-                            Bukkit.broadcastMessage(ColorText.translate("&4&l[KOTH] &eEvent has been captured by &c" + koth.getCapper().getName()));
+                            Bukkit.broadcastMessage(ColorText.translateAmpersand("&4&l[KOTH] &eEvent has been captured by &c" + koth.getCapper().getName()));
 
                         }
 

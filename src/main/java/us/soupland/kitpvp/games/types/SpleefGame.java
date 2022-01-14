@@ -91,7 +91,7 @@ public class SpleefGame extends Game {
                                 continue;
                             }
                             Theme theme = ProfileManager.getProfile(player).getTheme();
-                            player.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l[Event] " + theme.getSecondaryColor() + "Game starting in " + i + " second" + (i == 1 ? "" : "s") + '.'));
+                            player.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "&l[Event] " + theme.getSecondaryColor() + "Game starting in " + i + " second" + (i == 1 ? "" : "s") + '.'));
                             player.playSound(player.getLocation(), Sound.NOTE_PIANO, 1L, 1L);
                         }
                         break;
@@ -119,7 +119,7 @@ public class SpleefGame extends Game {
                 continue;
             }
             Theme theme = ProfileManager.getProfile(faggot).getTheme();
-            faggot.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l[Event] " + player.getName() + theme.getSecondaryColor() + " has been eliminated."));
+            faggot.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "&l[Event] " + player.getName() + theme.getSecondaryColor() + " has been eliminated."));
         }
 
         if (this.isWinner()) {

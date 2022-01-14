@@ -268,14 +268,14 @@ public class TeamsCommand extends KitPvPCommand {
                 Cooldown cooldown = KitPvP.getCooldown("LFF");
                 if (cooldown != null) {
                     if (cooldown.isOnCooldown(player)) {
-                        player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+                        player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
                         return;
                     }
                     cooldown.setCooldown(player, true);
                 }
-                Bukkit.broadcastMessage(ColorText.translate("&7&m-------------------------------------"));
-                Bukkit.broadcastMessage(ColorText.translate("&6" + player.getName() + " &eis looking for a team!"));
-                Bukkit.broadcastMessage(ColorText.translate("&7&m-------------------------------------"));
+                Bukkit.broadcastMessage(ColorText.translateAmpersand("&7&m-------------------------------------"));
+                Bukkit.broadcastMessage(ColorText.translateAmpersand("&6" + player.getName() + " &eis looking for a team!"));
+                Bukkit.broadcastMessage(ColorText.translateAmpersand("&7&m-------------------------------------"));
             }
 
             @Override
@@ -291,13 +291,13 @@ public class TeamsCommand extends KitPvPCommand {
                     player.closeInventory();
 
                     if (profile.getStat(PlayerStat.CREDITS) < 5000) {
-                        player.sendMessage(ColorText.translate("&cYou don't have credits enough to create a Team."));
+                        player.sendMessage(ColorText.translateAmpersand("&cYou don't have credits enough to create a Team."));
                         return;
                     }
 
                     profile.setCreatingTeam(true);
-                    player.sendMessage(ColorText.translate("&4&l[Team] &cYou are creating a team. Please type the name in chat."));
-                    player.sendMessage(ColorText.translate("&cType '&fcancel&c' to cancel it."));
+                    player.sendMessage(ColorText.translateAmpersand("&4&l[Team] &cYou are creating a team. Please type the name in chat."));
+                    player.sendMessage(ColorText.translateAmpersand("&cType '&fcancel&c' to cancel it."));
                 }
 
                 @Override

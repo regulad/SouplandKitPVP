@@ -24,11 +24,11 @@ public class ExperienceIncrementArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 3) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
             if ((!target.hasPlayedBefore()) && (!target.isOnline())) {
-                sender.sendMessage(ColorText.translate("&c" + args[1] + " has never played before."));
+                sender.sendMessage(ColorText.translateAmpersand("&c" + args[1] + " has never played before."));
                 return;
             }
 
@@ -39,7 +39,7 @@ public class ExperienceIncrementArgument extends KitPvPArgument {
                 type = PlayerGainExpEvent.Type.valueOf(args[2].toUpperCase());
             } catch (Exception ignored) {
                 ignored.printStackTrace();
-                sender.sendMessage(ColorText.translate("&cInvalid type."));
+                sender.sendMessage(ColorText.translateAmpersand("&cInvalid type."));
                 return;
             }
 
@@ -49,7 +49,7 @@ public class ExperienceIncrementArgument extends KitPvPArgument {
                 TaskUtil.runTask(() -> ProfileManager.saveProfile(profile, true));
             }
 
-            sender.sendMessage(ColorText.translate("&a" + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " experience incremented."));
+            sender.sendMessage(ColorText.translateAmpersand("&a" + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " experience incremented."));
         }
     }
 }

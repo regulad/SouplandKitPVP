@@ -34,7 +34,7 @@ public class ArenaGenHelpArgument extends KitPvPArgument {
             sign.setLine(1, String.valueOf(((int) player.getLocation().getYaw())));
             sign.update();
 
-            player.sendMessage(ColorText.translate("&aGenerator helper successfully placed!"));
+            player.sendMessage(ColorText.translateAmpersand("&aGenerator helper successfully placed!"));
         }
     }
 }

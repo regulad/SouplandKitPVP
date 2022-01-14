@@ -32,11 +32,11 @@ public class KitProfileArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
             if ((!target.hasPlayedBefore()) && (!target.isOnline())) {
-                sender.sendMessage(ColorText.translate("&c" + args[1] + " has never played before."));
+                sender.sendMessage(ColorText.translateAmpersand("&c" + args[1] + " has never played before."));
                 return;
             }
             Profile profile = ProfileManager.getProfile(target);
@@ -67,7 +67,7 @@ public class KitProfileArgument extends KitPvPArgument {
                     ItemStack skull = new ItemMaker(Material.SKULL_ITEM).setDurability(3).create();
                     SkullMeta meta = (SkullMeta) skull.getItemMeta();
                     meta.setOwner(target.getName());
-                    meta.setDisplayName(ColorText.translate(target.getName() + "'s Profile"));
+                    meta.setDisplayName(ColorText.translateAmpersand(target.getName() + "'s Profile"));
                     skull.setItemMeta(meta);
                     return skull;
                 }
@@ -90,16 +90,16 @@ public class KitProfileArgument extends KitPvPArgument {
                 @Override
                 public void onClick(InventoryClickEvent event) {
                     if (!sender.isOp()) {
-                        sender.sendMessage(ColorText.translate("&cYou must be an operator."));
+                        sender.sendMessage(ColorText.translateAmpersand("&cYou must be an operator."));
                         return;
                     }
                     if (event.isRightClick()) {
                         profile.incrementStat(PlayerStat.DEATHS);
-                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translate("&7" + sender.getName() + ": &cAdded a death")));
+                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translateAmpersand("&7" + sender.getName() + ": &cAdded a death")));
                     } else {
                         int deaths = profile.getStat(PlayerStat.DEATHS) - 1;
                         profile.setStat(PlayerStat.DEATHS, (deaths < 0 ? 0 : deaths));
-                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translate("&7" + sender.getName() + ": &aRemoved one death")));
+                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translateAmpersand("&7" + sender.getName() + ": &aRemoved one death")));
                     }
                     if (!target.isOnline()) {
                         ProfileManager.saveProfile(profile, false);
@@ -116,16 +116,16 @@ public class KitProfileArgument extends KitPvPArgument {
                 @Override
                 public void onClick(InventoryClickEvent event) {
                     if (!sender.isOp()) {
-                        sender.sendMessage(ColorText.translate("&cYou must be an operator."));
+                        sender.sendMessage(ColorText.translateAmpersand("&cYou must be an operator."));
                         return;
                     }
                     if (event.isRightClick()) {
                         profile.incrementStat(PlayerStat.KILLS);
-                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translate("&7" + sender.getName() + ": &cAdded a kill")));
+                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translateAmpersand("&7" + sender.getName() + ": &cAdded a kill")));
                     } else {
                         int kills = profile.getStat(PlayerStat.KILLS) - 1;
                         profile.setStat(PlayerStat.KILLS, (kills < 0 ? 0 : kills));
-                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translate("&7" + sender.getName() + ": &aRemoved one kill")));
+                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translateAmpersand("&7" + sender.getName() + ": &aRemoved one kill")));
                     }
                     if (!target.isOnline()) {
                         ProfileManager.saveProfile(profile, false);
@@ -153,16 +153,16 @@ public class KitProfileArgument extends KitPvPArgument {
                 @Override
                 public void onClick(InventoryClickEvent event) {
                     if (!sender.isOp()) {
-                        sender.sendMessage(ColorText.translate("&cYou must be an operator."));
+                        sender.sendMessage(ColorText.translateAmpersand("&cYou must be an operator."));
                         return;
                     }
                     if (event.isRightClick()) {
                         profile.incrementStat(PlayerStat.CREDITS);
-                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translate("&7" + sender.getName() + ": &cAdded a credit")));
+                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translateAmpersand("&7" + sender.getName() + ": &cAdded a credit")));
                     } else {
                         int credits = profile.getStat(PlayerStat.CREDITS) - 1;
                         profile.setStat(PlayerStat.CREDITS, (credits < 0 ? 0 : credits));
-                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translate("&7" + sender.getName() + ": &aRemoved one credit")));
+                        KitPvPUtils.getOnlineStaff().forEach(player -> player.sendMessage(ColorText.translateAmpersand("&7" + sender.getName() + ": &aRemoved one credit")));
                     }
                     if (!target.isOnline()) {
                         ProfileManager.saveProfile(profile, false);

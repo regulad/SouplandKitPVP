@@ -38,12 +38,12 @@ public class GameStopArgument extends KitPvPArgument {
         } else if (gameHandler.getActiveGame() != null) {
             gameHandler.getActiveGame().finish(null);
         } else {
-            sender.sendMessage(ColorText.translate("&cThere are no viewable events!"));
+            sender.sendMessage(ColorText.translateAmpersand("&cThere are no viewable events!"));
             return;
         }
         for (Player player : Bukkit.getOnlinePlayers()) {
             Theme theme = ProfileManager.getProfile(player).getTheme();
-            player.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l[Event] &cThe events has forcefully ended!"));
+            player.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "&l[Event] &cThe events has forcefully ended!"));
         }
     }
 }

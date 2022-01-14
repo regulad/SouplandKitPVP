@@ -30,23 +30,23 @@ public class KothCreateArgument extends KitPvPArgument {
         }
         String kothName = args[1];
         if (Koth.getByName(kothName) != null) {
-            player.sendMessage(ColorText.translate("&cA koth with that name already exists."));
+            player.sendMessage(ColorText.translateAmpersand("&cA koth with that name already exists."));
             return;
         }
 
         KothSelection kothSelection = KothListener.getByPlayer(player);
 
         if (kothSelection == null) {
-            player.sendMessage(ColorText.translate("&cFirst you need to define the cap zone"));
+            player.sendMessage(ColorText.translateAmpersand("&cFirst you need to define the cap zone"));
             return;
         }
 
         if (kothSelection.getFirst() == null) {
-            player.sendMessage(ColorText.translate("&cFirst point no selected"));
+            player.sendMessage(ColorText.translateAmpersand("&cFirst point no selected"));
             return;
         }
         if (kothSelection.getSecond() == null) {
-            player.sendMessage(ColorText.translate("&cSecond point no selected"));
+            player.sendMessage(ColorText.translateAmpersand("&cSecond point no selected"));
             return;
         }
 
@@ -54,6 +54,6 @@ public class KothCreateArgument extends KitPvPArgument {
 
         koth.setCuboid(new Cuboid(kothSelection.getFirst(), kothSelection.getSecond()));
 
-        player.sendMessage(ColorText.translate("&aKoth created successfully"));
+        player.sendMessage(ColorText.translateAmpersand("&aKoth created successfully"));
     }
 }

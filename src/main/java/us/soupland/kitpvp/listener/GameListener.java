@@ -150,7 +150,7 @@ public class GameListener implements Listener {
                     if (profile.getCurrentKit() == null) {
                         Kit kit = (profile.getLastKit() != null ? profile.getLastKit() : KitHandler.getByName("PvP"));
                         assert kit != null;
-                        if (kit.getPermissions() != null && !player.hasPermission(kit.getPermissions())) {
+                        if (kit.getPermissionNode() != null && !player.hasPermission(kit.getPermissionNode())) {
                             kit = KitHandler.getByName("PvP");
                         }
                         if (kit != null) {
@@ -166,7 +166,7 @@ public class GameListener implements Listener {
                             profile.setCurrentKit(kit);
                         }
                     }
-                    player.sendMessage(ColorText.translate("&7You are no longer protected."));
+                    player.sendMessage(ColorText.translateAmpersand("&7You are no longer protected."));
                 }
             } else if (profile.getPlayerState() == PlayerState.PLAYING) {
                 if (serverData.getSpawnCuboID().contains(event.getTo())) {
@@ -179,7 +179,7 @@ public class GameListener implements Listener {
                         return;
                     }
                     profile.setPlayerState(PlayerState.SPAWN);
-                    player.sendMessage(ColorText.translate("&aYou are now protected."));
+                    player.sendMessage(ColorText.translateAmpersand("&aYou are now protected."));
                     profile.setFell(false);
                     player.setHealth(player.getMaxHealth());
                 }
@@ -227,11 +227,11 @@ public class GameListener implements Listener {
             }
 
             if (damagedProfile.getPlayerCombat() <= 0L) {
-                event.getEntity().sendMessage(ColorText.translate("&aYou are now in combat."));
+                event.getEntity().sendMessage(ColorText.translateAmpersand("&aYou are now in combat."));
             }
 
             if (attackerProfile.getPlayerCombat() <= 0L) {
-                event.getDamager().sendMessage(ColorText.translate("&aYou are now in combat."));
+                event.getDamager().sendMessage(ColorText.translateAmpersand("&aYou are now in combat."));
             }
 
             damagedProfile.setPlayerCombat(TimeUtils.parse("20s") + System.currentTimeMillis());
@@ -288,13 +288,13 @@ public class GameListener implements Listener {
         if (profile.getPlayerState() == PlayerState.SPAWN && event.getAction().name().startsWith("RIGHT") && event.hasItem()) {
             if (player.getItemInHand().getType() == Material.ENDER_PEARL) {
                 event.setCancelled(true);
-                player.sendMessage(ColorText.translate("&cYou cannot throw enderpearls while protected."));
+                player.sendMessage(ColorText.translateAmpersand("&cYou cannot throw enderpearls while protected."));
             } else if (player.getItemInHand().getType() == Material.POTION) {
                 Potion potion = Potion.fromItemStack(player.getItemInHand());
                 if (potion != null && potion.isSplash()) {
                     event.setCancelled(true);
                     if (profile.getCurrentKit() != null) {
-                        player.sendMessage(ColorText.translate("&cYou cannot interact with potions while protected."));
+                        player.sendMessage(ColorText.translateAmpersand("&cYou cannot interact with potions while protected."));
                     }
                 }
             } else {
@@ -315,7 +315,7 @@ public class GameListener implements Listener {
             if (block.getState() instanceof Sign) {
                 Sign sign = (Sign) block.getState();
                 if (sign.getLine(1).contains("Free") && sign.getLine(2).contains("Refill")) {
-                    Inventory inventory = Bukkit.createInventory(null, 4 * 9, ColorText.translate((profile.getRefill() == Refill.SOUP ? "&4Soup" : "&dPotion") + " Refill"));
+                    Inventory inventory = Bukkit.createInventory(null, 4 * 9, ColorText.translateAmpersand((profile.getRefill() == Refill.SOUP ? "&4Soup" : "&dPotion") + " Refill"));
                     for (int i = 0; i < 36; i++) {
                         inventory.addItem(new ItemMaker((profile.getRefill() == Refill.SOUP ? Material.MUSHROOM_SOUP : Material.POTION)).setDurability((profile.getRefill() == Refill.SOUP ? 0 : 16421)).setDisplayname((profile.getRefill() == Refill.SOUP ? "&6Soup" : "&dPotion")).create());
                     }
@@ -389,7 +389,7 @@ public class GameListener implements Listener {
 
         String type = StringUtils.capitalize(event.getType().name().toLowerCase());
 
-        player.sendMessage(ColorText.translate("&6+ " + event.getAmount() + " XP (" + type + ")"));
+        player.sendMessage(ColorText.translateAmpersand("&6+ " + event.getAmount() + " XP (" + type + ")"));
     }
 
 }

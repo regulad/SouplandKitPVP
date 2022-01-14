@@ -3,7 +3,6 @@ package us.soupland.kitpvp.kits.types;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import us.soupland.kitpvp.enums.PlayerState;
@@ -14,37 +13,12 @@ import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PvPKit extends Kit {
 
     public PvPKit() {
         super("PvP", "&aPvP", "");
     }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-        /*for (int i = 0; i < 3; i++) {
-            for (Location faggot : getCircle(location.add(0.0, 1.0, 0.0), 3, 16)) {
-                locations.add(faggot);
-                Block block = faggot.getBlock();
-                if (faggot.getBlock() == null || faggot.getBlock().getType() == Material.AIR) {
-                    block.setType(Material.ICE);
-                    block.getState().update();
-                }
-            }
-        }*/
-    }
-
-    /*private List<Location> getCircle(Location center, double radius, int amount) {
-        double increment = (2 * Math.PI) / amount;
-        ArrayList<Location> locations = new ArrayList<>();
-        for (int i = 0; i < amount; i++) {
-            double angle = i * increment;
-            locations.add(new Location(center.getWorld(), center.getX() + (radius * Math.cos(angle)), center.getY(), center.getZ() + (radius * Math.sin(angle))));
-        }
-        return locations;
-    }*/
 
     @Override
     public void onLoad(Player player) {
@@ -75,22 +49,7 @@ public class PvPKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return null;
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 0;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Basic PvP class.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

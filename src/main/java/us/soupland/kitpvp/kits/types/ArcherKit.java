@@ -10,7 +10,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
@@ -26,7 +25,6 @@ import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 public class ArcherKit extends Kit {
@@ -35,11 +33,6 @@ public class ArcherKit extends Kit {
 
     public ArcherKit() {
         super("Archer", "&dArcher", "");
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-
     }
 
     @Override
@@ -82,11 +75,11 @@ public class ArcherKit extends Kit {
             Profile profile = ProfileManager.getProfile(player);
 
             if (profile.getPlayerState() == PlayerState.SPAWN) {
-                player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+                player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
                 return;
             }
 
-            if (isEquped(player)) {
+            if (isEquipped(player)) {
                 this.locations.put(player.getUniqueId(), player.getLocation());
             }
         }
@@ -106,7 +99,7 @@ public class ArcherKit extends Kit {
                 Player damaged = (Player) event.getEntity();
                 Player shooter = (Player) source;
 
-                if (!isEquped(shooter)) {
+                if (!isEquipped(shooter)) {
                     return;
                 }
 
@@ -132,22 +125,7 @@ public class ArcherKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 4200;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Special bow that deals scaling");
-        list.add("&7damage base on distance.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 }

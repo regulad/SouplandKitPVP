@@ -32,23 +32,23 @@ public class TeamInviteArgument extends KitPvPArgument {
         Profile profile = ProfileManager.getProfile((Player) sender);
         Team team = profile.getTeam();
         if (team == null) {
-            sender.sendMessage(ColorText.translate("&cYou are not in a team."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou are not in a team."));
             return;
         }
         UUID uuid = ((Player) sender).getUniqueId();
         if (!team.getOfficers().contains(uuid)) {
-            sender.sendMessage(ColorText.translate("&cYou must be an officer to invite players."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou must be an officer to invite players."));
         } else {
             if (team.getMembers().size() >= 10) {
-                sender.sendMessage(ColorText.translate("&cYour team is full. (10/10)"));
+                sender.sendMessage(ColorText.translateAmpersand("&cYour team is full. (10/10)"));
                 return;
             }
             if (args.length < 2) {
-                sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+                sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
             } else {
                 OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
                 if ((!target.hasPlayedBefore()) && (!target.isOnline())) {
-                    sender.sendMessage(ColorText.translate("&c" + args[1] + " has never played before."));
+                    sender.sendMessage(ColorText.translateAmpersand("&c" + args[1] + " has never played before."));
                     return;
                 }
                 if (target.isOnline()) {
@@ -60,31 +60,31 @@ public class TeamInviteArgument extends KitPvPArgument {
                 Profile targetProfile = ProfileManager.getProfile(target);
                 if (targetProfile.getTeam() != null) {
                     if (targetProfile.getTeam().equals(team)) {
-                        sender.sendMessage(ColorText.translate("&c" + target.getName() + " is already in your team."));
+                        sender.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " is already in your team."));
                     } else {
-                        sender.sendMessage(ColorText.translate("&c" + target.getName() + " is already in a team."));
+                        sender.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " is already in a team."));
                     }
                 } else {
                     if (team.getInvitedPlayers().containsKey(target.getUniqueId())) {
-                        sender.sendMessage(ColorText.translate("&c" + target.getName() + " is already invited to your. &7(/team uninvite " + target.getName() + ')'));
+                        sender.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " is already invited to your. &7(/team uninvite " + target.getName() + ')'));
                     } else {
                         team.getInvitedPlayers().put(target.getUniqueId(), ((Player) sender).getUniqueId());
-                        team.sendMessage(ColorText.translate("&3[*] &c" + target.getName() + " &ehas been invited to your team by &a" + sender.getName() + "&e."));
+                        team.sendMessage(ColorText.translateAmpersand("&3[*] &c" + target.getName() + " &ehas been invited to your team by &a" + sender.getName() + "&e."));
 
                         if (target.isOnline()) {
                             String senderName = sender.getName();
                             new ChatUtil("&3[*] &a" + sender.getName() + " &ehas invited you to join " + team.getDisplayName() + "&e. &7[Click to accept]", "&7Click here to accept", "/team join " + team.getName()).send(target.getPlayer());
-                            target.getPlayer().sendMessage(ColorText.translate("&3[*] &eIt will expire in &a1 minute&e."));
+                            target.getPlayer().sendMessage(ColorText.translateAmpersand("&3[*] &eIt will expire in &a1 minute&e."));
 
                             TaskUtil.runTaskLater(() -> {
                                 if (profile.getTeam() != null && targetProfile.getTeam() == null) {
                                     profile.getTeam().getInvitedPlayers().remove(target.getUniqueId());
                                     if (target.isOnline()) {
                                         target.getPlayer().sendMessage("");
-                                        target.getPlayer().sendMessage(ColorText.translate("&3[*] &a" + senderName + "&e's invitation has expired."));
+                                        target.getPlayer().sendMessage(ColorText.translateAmpersand("&3[*] &a" + senderName + "&e's invitation has expired."));
                                         target.getPlayer().sendMessage("");
                                     }
-                                    profile.getTeam().sendMessage(ColorText.translate("&3[*] &eThe invitation of &c" + target.getName() + " &ehas expired!"));
+                                    profile.getTeam().sendMessage(ColorText.translateAmpersand("&3[*] &eThe invitation of &c" + target.getName() + " &ehas expired!"));
                                 }
                             }, 60 * 20L);
                         }

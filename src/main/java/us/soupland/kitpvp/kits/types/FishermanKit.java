@@ -6,7 +6,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerFishEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.util.Vector;
@@ -23,18 +22,12 @@ import us.soupland.kitpvp.utilities.player.DurationFormatter;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FishermanKit extends Kit {
 
     public FishermanKit() {
         super("Fisherman", "&dFisherman", "25s");
         new Cooldown(getName(), TimeUtils.parse(getCooldown()), getDisplayName(), null);
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-
     }
 
     @Override
@@ -67,24 +60,8 @@ public class FishermanKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 4300;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Get a fishing rod that you can use to");
-        list.add("&7teleport enemies to you.");
-        list.add("&7Just catch them with your rod.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler
@@ -100,13 +77,13 @@ public class FishermanKit extends Kit {
                 return;
             }
             if (profile.isFrozenToUseAbility()) {
-                player.sendMessage(ColorText.translate("&cYou are currently jammed, so you can not use your ability."));
+                player.sendMessage(ColorText.translateAmpersand("&cYou are currently jammed, so you can not use your ability."));
                 return;
             }
 
             Cooldown cooldown = KitPvP.getCooldown(getName());
             if (cooldown.isOnCooldown(player)) {
-                player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+                player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
                 return;
             }
             cooldown.setCooldown(player);
@@ -119,7 +96,7 @@ public class FishermanKit extends Kit {
             location.setPitch(80 - (float) Math.toDegrees(Math.acos(y)));
             caught.teleport(location);
             caught.setVelocity(caught.getLocation().getDirection().multiply(0.5).setY(1));
-            caught.sendMessage(ColorText.translate("&aYou have been caught by &e" + player.getName() + " &aand he/she is reeling you in!"));
+            caught.sendMessage(ColorText.translateAmpersand("&aYou have been caught by &e" + player.getName() + " &aand he/she is reeling you in!"));
         }
     }
 

@@ -29,7 +29,7 @@ public class AridiManager {
                 Scoreboard scoreboard = aridi.getScoreboard();
                 Objective objective = aridi.getObjective();
 
-                String title = ColorText.translate(adapter.getTitle(player));
+                String title = ColorText.translateAmpersand(adapter.getTitle(player));
 
                 if (!objective.getDisplayName().equals(title)) {
                     objective.setDisplayName(title);
@@ -60,7 +60,7 @@ public class AridiManager {
                     for (int i = 0; i < lines.size(); i++) {
                         AridiEntry entry = aridi.getEntryAtPosition(i);
 
-                        String line = ColorText.translate(lines.get(i));
+                        String line = ColorText.translateAmpersand(lines.get(i));
 
                         if (entry == null) {
                             entry = new AridiEntry(aridi, line);

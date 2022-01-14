@@ -24,22 +24,22 @@ public class TeamDescriptionArgument extends KitPvPArgument {
         Profile profile = ProfileManager.getProfile((Player) sender);
         Team team = profile.getTeam();
         if (team == null) {
-            sender.sendMessage(ColorText.translate("&cYou are not in a team."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou are not in a team."));
             return;
         }
         if (team.getLeader() == ((Player) sender).getUniqueId() || team.getOfficers().contains(((Player) sender).getUniqueId()) || sender.isOp()) {
             if (args.length < 2) {
-                sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+                sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
             } else {
                 StringBuilder description = new StringBuilder();
                 for (int i = 1; i < args.length; i++) {
                     description.append(args[i]).append(' ');
                 }
                 team.setDescription(description.toString());
-                team.sendMessage(ColorText.translate(sender.getName() + " &echanged the team announcement."));
+                team.sendMessage(ColorText.translateAmpersand(sender.getName() + " &echanged the team announcement."));
             }
         } else {
-            sender.sendMessage(ColorText.translate("&cYou must be an officer to set an announcement."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou must be an officer to set an announcement."));
         }
     }
 }

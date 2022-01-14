@@ -28,6 +28,6 @@ public class FormatBuilder {
             message = message.replace(s, s2);
         }
 
-        return ColorText.translate(message);
+        return ColorText.translateAmpersand(message);
     }
 }

@@ -52,7 +52,7 @@ public class GameHandler {
         this.cooldown = new HashMap<>();
         this.invites = new HashSet<>();
         this.teams = new ArrayList<>();
-        prefix = ColorText.translate("&4&l[Event] &f");
+        prefix = ColorText.translateAmpersand("&4&l[Event] &f");
         this.activeGame = null;
         ITEM = PlayerItem.SPAWN_EVENT_ITEM.getItem();
 
@@ -66,7 +66,7 @@ public class GameHandler {
     private void acceptInvitation(GamePlayerInvite acceptedInvite) {
         for (GamePlayerInvite invite : invites) {
             if (invite.getSender().equals(acceptedInvite.getSender()) && invite.getTarget().equals(acceptedInvite.getTarget())) {
-                Bukkit.getPlayer(acceptedInvite.getSender()).sendMessage(ColorText.translate(getPrefix() + "&7You have already requested to partner to this player."));
+                Bukkit.getPlayer(acceptedInvite.getSender()).sendMessage(ColorText.translateAmpersand(getPrefix() + "&7You have already requested to partner to this player."));
                 return;
             }
         }
@@ -74,7 +74,7 @@ public class GameHandler {
         Team team = getByPlayer(senderPlayer);
 
         if (team != null) {
-            senderPlayer.sendMessage(ColorText.translate(getPrefix() + "&7You are already in a team."));
+            senderPlayer.sendMessage(ColorText.translateAmpersand(getPrefix() + "&7You are already in a team."));
             return;
         }
 
@@ -82,12 +82,12 @@ public class GameHandler {
 
 
         if (team2 != null) {
-            senderPlayer.sendMessage(ColorText.translate("&cThat player is already in a team."));
+            senderPlayer.sendMessage(ColorText.translateAmpersand("&cThat player is already in a team."));
             return;
         }
 
-        senderPlayer.sendMessage(ColorText.translate(getPrefix() + targetPlayer.getName() + " &7has accepted your partner request."));
-        targetPlayer.sendMessage(ColorText.translate(getPrefix() + "&7You have accepted " + senderPlayer.getName() + '\'' + (senderPlayer.getName().endsWith("s") ? "" : 's') + " &7partner request."));
+        senderPlayer.sendMessage(ColorText.translateAmpersand(getPrefix() + targetPlayer.getName() + " &7has accepted your partner request."));
+        targetPlayer.sendMessage(ColorText.translateAmpersand(getPrefix() + "&7You have accepted " + senderPlayer.getName() + '\'' + (senderPlayer.getName().endsWith("s") ? "" : 's') + " &7partner request."));
 
         this.teams.add(Team.registerTeam(Arrays.asList(senderPlayer, targetPlayer), "$team"));
     }
@@ -121,7 +121,7 @@ public class GameHandler {
 
         Player senderPlayer = Bukkit.getPlayer(newInvite.getSender()), targetPlayer = Bukkit.getPlayer(newInvite.getTarget());
 
-        senderPlayer.sendMessage(ColorText.translate(getPrefix() + "&7You have sent a partner request to " + targetPlayer.getName() + "&7."));
+        senderPlayer.sendMessage(ColorText.translateAmpersand(getPrefix() + "&7You have sent a partner request to " + targetPlayer.getName() + "&7."));
         new ChatUtil(getPrefix() + senderPlayer.getName() + " &7has sent you a partner request. &a(Click to accept)", "&aClick to accept request", "/game partner " + senderPlayer.getName()).send(targetPlayer);
 
         invites.add(newInvite);
@@ -228,7 +228,7 @@ public class GameHandler {
         inventory.clear();
         inventory.setArmorContents(null);
         player.setGameMode(GameMode.SURVIVAL);
-        inventory.setItem(7, new ItemMaker(Material.PAPER).setDisplayname(profile.getTheme().getPrimaryColor() + "&lEvent Information").addLore("", "&7Event: &f" + upcomingGame.getName(), "&7Reward: &f" + upcomingGame.getReward() + " Credits", "&7Hoster: " + (host == null ? "&c[Disconnected]" : host.getName()), "", "&d" + upcomingGame.getDescription(), "").setInteractRight(player1 -> player.sendMessage(ColorText.translate("&7You are on a " + upcomingGame.getName() + " Event!"))).create());
+        inventory.setItem(7, new ItemMaker(Material.PAPER).setDisplayname(profile.getTheme().getPrimaryColor() + "&lEvent Information").addLore("", "&7Event: &f" + upcomingGame.getName(), "&7Reward: &f" + upcomingGame.getReward() + " Credits", "&7Hoster: " + (host == null ? "&c[Disconnected]" : host.getName()), "", "&d" + upcomingGame.getDescription(), "").setInteractRight(player1 -> player.sendMessage(ColorText.translateAmpersand("&7You are on a " + upcomingGame.getName() + " Event!"))).create());
         inventory.setItem(8, PlayerItem.EVENT_LEAVE_ITEM.getItem());
         player.updateInventory();
         for (PotionEffect effect : player.getActivePotionEffects()) {
@@ -245,7 +245,7 @@ public class GameHandler {
 
         Team team = this.getByPlayer(player);
         if (team != null) {
-            team.sendMessage(ColorText.translate(getPrefix() + "&cYour team was disbanded as " + player.getName() + " &cleft."));
+            team.sendMessage(ColorText.translateAmpersand(getPrefix() + "&cYour team was disbanded as " + player.getName() + " &cleft."));
             this.teams.remove(team);
         }
         if (activeGame != null) {
@@ -295,12 +295,12 @@ public class GameHandler {
         if (getPlayers().size() <= /*(activeGame instanceof TvTSumoGame ? 2 : 1)*/1) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 Theme theme = ProfileManager.getProfile(player).getTheme();
-                player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 12) + "&r " + theme.getPrimaryColor() + "&lEvent &7&m" + StringUtils.repeat("-", 12)));
+                player.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 12) + "&r " + theme.getPrimaryColor() + "&lEvent &7&m" + StringUtils.repeat("-", 12)));
                 player.sendMessage(" ");
-                player.sendMessage(ColorText.translate(theme.getSecondaryColor() + "The events did not reach its minimum"));
-                player.sendMessage(ColorText.translate(theme.getSecondaryColor() + "amount and was forcefully ended!"));
+                player.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + "The events did not reach its minimum"));
+                player.sendMessage(ColorText.translateAmpersand(theme.getSecondaryColor() + "amount and was forcefully ended!"));
                 player.sendMessage(" ");
-                player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 30)));
+                player.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 30)));
                 if (getPlayers().contains(player)) {
                     leave(player);
                 }

@@ -40,7 +40,7 @@ public class StatsCommand extends KitPvPCommand {
         } else {
             target = Bukkit.getOfflinePlayer(args[0]);
             if ((!target.hasPlayedBefore()) && (!target.isOnline())) {
-                sender.sendMessage(ColorText.translate("&c" + args[0] + " has never played before."));
+                sender.sendMessage(ColorText.translateAmpersand("&c" + args[0] + " has never played before."));
                 return false;
             }
         }
@@ -72,7 +72,7 @@ public class StatsCommand extends KitPvPCommand {
                 ItemStack stack = new ItemMaker(Material.SKULL_ITEM).setDurability(3).create();
                 SkullMeta meta = (SkullMeta) stack.getItemMeta();
                 meta.setOwner(target.getName());
-                meta.setDisplayName(ColorText.translate(profile.getTheme().getPrimaryColor() + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " Stats"));
+                meta.setDisplayName(ColorText.translateAmpersand(profile.getTheme().getPrimaryColor() + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " Stats"));
                 stack.setItemMeta(meta);
                 return stack;
             }
@@ -160,7 +160,7 @@ public class StatsCommand extends KitPvPCommand {
         });
 
         ((Player) sender).openInventory(inventoryMaker.getCurrentPage());
-        sender.sendMessage(ColorText.translate("&7You're viewing &a" + target.getName() + "&7'" + (target.getName().endsWith("s") ? "" : "s") + " stats."));
+        sender.sendMessage(ColorText.translateAmpersand("&7You're viewing &a" + target.getName() + "&7'" + (target.getName().endsWith("s") ? "" : "s") + " stats."));
         return true;
     }
 }

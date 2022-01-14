@@ -37,18 +37,18 @@ public class GamesListener implements Listener {
         Game game = event.getGame();
 
         if (gameHandler.getActiveGame() != null) {
-            player.sendMessage(ColorText.translate("&cThe event has already began!"));
+            player.sendMessage(ColorText.translateAmpersand("&cThe event has already began!"));
         } else if (gameHandler.getUpcomingGame() == null) {
-            player.sendMessage(ColorText.translate("&cThere is currently no ongoing events!"));
+            player.sendMessage(ColorText.translateAmpersand("&cThere is currently no ongoing events!"));
         } else if (gameHandler.getPlayers().contains(player)) {
-            player.sendMessage(ColorText.translate("&cYou're already in the events!"));
-            player.sendMessage(ColorText.translate("&cType /leave to leave the events."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou're already in the events!"));
+            player.sendMessage(ColorText.translateAmpersand("&cType /leave to leave the events."));
         } else if (gameHandler.getPlayers().size() >= game.getMaxPlayers()) {
-            player.sendMessage(ColorText.translate("&cThe event is full."));
+            player.sendMessage(ColorText.translateAmpersand("&cThe event is full."));
         } else if (ProfileManager.getProfile(player).getPlayerCombat() > 0L) {
-            player.sendMessage(ColorText.translate("&cYou mustn't be spawn-tagged to participate."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou mustn't be spawn-tagged to participate."));
         } else {
-            game.broadcast(ColorText.translate(GameHandler.getPrefix() + player.getName() + " &7has joined the game. &c(" + (gameHandler.getPlayers().size() + 1) + '/' + game.getMaxPlayers() + ')'));
+            game.broadcast(ColorText.translateAmpersand(GameHandler.getPrefix() + player.getName() + " &7has joined the game. &c(" + (gameHandler.getPlayers().size() + 1) + '/' + game.getMaxPlayers() + ')'));
             return;
         }
         event.setCancelled(true);
@@ -99,10 +99,10 @@ public class GamesListener implements Listener {
         for (Player online : Bukkit.getOnlinePlayers()) {
             Theme theme = ProfileManager.getProfile(online).getTheme();
             if (online == player) {
-                player.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l[Event] &aCongratulations! You received &7" + event.getGame().getReward() + " Credits&a."));
+                player.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "&l[Event] &aCongratulations! You received &7" + event.getGame().getReward() + " Credits&a."));
                 continue;
             }
-            online.sendMessage(ColorText.translate(theme.getPrimaryColor() + "&l[Event] " + player.getName() + theme.getSecondaryColor() + " has won the &d" + event.getGame().getName() + ' ' + theme.getSecondaryColor() + "event. &7(+" + event.getGame().getReward() + " credits)"));
+            online.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "&l[Event] " + player.getName() + theme.getSecondaryColor() + " has won the &d" + event.getGame().getName() + ' ' + theme.getSecondaryColor() + "event. &7(+" + event.getGame().getReward() + " credits)"));
         }
     }
 

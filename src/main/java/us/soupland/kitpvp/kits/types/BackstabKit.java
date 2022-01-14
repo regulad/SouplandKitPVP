@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
@@ -27,11 +26,6 @@ public class BackstabKit extends Kit {
 
     public BackstabKit() {
         super("Backstab", "&bBackstab", "");
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-
     }
 
     @Override
@@ -66,23 +60,8 @@ public class BackstabKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 2500;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Use your &6GOLDEN SWORD &7to");
-        list.add("&7backstab people (does 8+ hearts).");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler
@@ -109,7 +88,7 @@ public class BackstabKit extends Kit {
 
             if (dot >= 0.86D) {
                 if (profile.isFrozenToUseAbility()) {
-                    player.sendMessage(ColorText.translate("&cYou are currently jammed, so you can not use your ability."));
+                    player.sendMessage(ColorText.translateAmpersand("&cYou are currently jammed, so you can not use your ability."));
                     return;
                 }
                 attacker.setItemInHand(new ItemStack(Material.AIR, 1));
@@ -123,7 +102,7 @@ public class BackstabKit extends Kit {
                 player.setHealth(player.getHealth() - 8);
                 profilDeath.setLastDamager(attacker);
             } else {
-                attacker.sendMessage(ColorText.translate("&cBackstab failed!"));
+                attacker.sendMessage(ColorText.translateAmpersand("&cBackstab failed!"));
             }
         }
     }
@@ -142,7 +121,7 @@ public class BackstabKit extends Kit {
         if (killer == null) {
             return;
         }
-        if (!isEquped(killer)) {
+        if (!isEquipped(killer)) {
             return;
         }
 
@@ -152,5 +131,4 @@ public class BackstabKit extends Kit {
             killer.getInventory().addItem(new ItemMaker(Material.GOLD_SWORD).create());
         }
     }
-
 }

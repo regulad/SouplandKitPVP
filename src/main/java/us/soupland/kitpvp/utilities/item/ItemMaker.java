@@ -52,7 +52,7 @@ public class ItemMaker {
     }
 
     public ItemMaker setDisplayname(String name) {
-        itemMeta.setDisplayName(ColorText.translate(name));
+        itemMeta.setDisplayName(ColorText.translateAmpersand(name));
         return this;
     }
 
@@ -65,20 +65,20 @@ public class ItemMaker {
         Object object = itemMeta.getLore();
         if (object == null) object = new ArrayList<>();
 
-        ((List) object).add(ColorText.translate(lore));
+        ((List) object).add(ColorText.translateAmpersand(lore));
         itemMeta.setLore((List<String>) object);
         return this;
     }
 
     public ItemMaker addLore(List<String> lore) {
-        itemMeta.setLore(ColorText.translate(lore));
+        itemMeta.setLore(ColorText.translateAmpersand(lore));
         return this;
     }
 
     public ItemMaker addLore(String... lore) {
         List<String> strings = new ArrayList<>();
         for (String string : lore) {
-            strings.add(ColorText.translate(string));
+            strings.add(ColorText.translateAmpersand(string));
         }
         itemMeta.setLore(strings);
         return this;

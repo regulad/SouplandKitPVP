@@ -42,7 +42,7 @@ public class TeamCommand extends KitPvPCommand {
                 if (argument.permission == null || sender.hasPermission(argument.permission)) {
                     argument.onExecute(sender, label, args);
                 } else {
-                    sender.hasPermission(ColorText.translate("&cTeam sub-command '" + argument.name + "' not found."));
+                    sender.hasPermission(ColorText.translateAmpersand("&cTeam sub-command '" + argument.name + "' not found."));
                 }
             }
         }

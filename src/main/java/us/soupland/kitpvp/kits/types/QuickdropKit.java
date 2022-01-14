@@ -2,7 +2,6 @@ package us.soupland.kitpvp.kits.types;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
@@ -15,17 +14,11 @@ import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class QuickdropKit extends Kit {
 
     public QuickdropKit() {
         super("Quickdrop", "&bQuickdrop", "");
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-
     }
 
     @Override
@@ -59,22 +52,7 @@ public class QuickdropKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 3200;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Automatically drops your bowls.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

@@ -27,7 +27,6 @@ import us.soupland.kitpvp.utilities.task.TaskUtil;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StomperKit extends Kit {
 
@@ -43,7 +42,7 @@ public class StomperKit extends Kit {
 
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.ANVIL) return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
         if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR) {
@@ -51,7 +50,7 @@ public class StomperKit extends Kit {
         }
         Cooldown cooldown = KitPvP.getCooldown(getName());
         if (cooldown.getDuration(player) > 0L) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
         cooldown.setCooldown(player);
@@ -92,25 +91,8 @@ public class StomperKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 3000;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Right-click an anvil to launch yourself into");
-        list.add("&7the air and then sneak to thrust yourself");
-        list.add("&7down, dealing massive damage to");
-        list.add("&7whoever is on the ground below you.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler
@@ -129,7 +111,7 @@ public class StomperKit extends Kit {
                 }
 
                 if (profile.isFrozenToUseAbility()) {
-                    player.sendMessage(ColorText.translate("&cYou are currently jammed, so you can not use your ability."));
+                    player.sendMessage(ColorText.translateAmpersand("&cYou are currently jammed, so you can not use your ability."));
                     return;
                 }
 

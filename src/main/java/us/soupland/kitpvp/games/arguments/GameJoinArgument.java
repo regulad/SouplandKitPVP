@@ -26,7 +26,7 @@ public class GameJoinArgument extends KitPvPArgument {
     public void onExecute(CommandSender sender, String label, String[] args) {
         Profile profile = ProfileManager.getProfile((Player) sender);
         if (profile.getPlayerState().name().contains("PRACTICE")) {
-            sender.sendMessage(ColorText.translate("&cYou're currently in 1v1, you must be in spawn to join events."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou're currently in 1v1, you must be in spawn to join events."));
             return;
         }
         if (profile.getPlayerState() == PlayerState.SPAWN || profile.getPlayerState() == PlayerState.PLAYING) {
@@ -54,9 +54,9 @@ public class GameJoinArgument extends KitPvPArgument {
             }*/
             gameHandler.join((Player) sender);
             profile.setCurrentKit(null);
-            sender.sendMessage(ColorText.translate("&aYou have now joined the event."));
+            sender.sendMessage(ColorText.translateAmpersand("&aYou have now joined the event."));
         } else {
-            sender.sendMessage(ColorText.translate("&cYou're unable to join events!"));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou're unable to join events!"));
         }
     }
 }

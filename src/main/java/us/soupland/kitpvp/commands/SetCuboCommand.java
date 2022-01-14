@@ -24,23 +24,23 @@ public class SetCuboCommand extends KitPvPCommand {
         }
         Player player = (Player) sender;
         if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&cUsage: /" + label + " <first|second|firstKoth|secondKoth>"));
+            player.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <first|second|firstKoth|secondKoth>"));
         } else {
             ServerData serverData = KitPvP.getInstance().getServerData();
             if (args[0].equalsIgnoreCase("first")) {
                 serverData.setFirstCI(LocationUtils.getString(player.getLocation()));
-                player.sendMessage(ColorText.translate("&6&l>&e&l> &aFirst position has been updated. &e&l<&6&l<"));
+                player.sendMessage(ColorText.translateAmpersand("&6&l>&e&l> &aFirst position has been updated. &e&l<&6&l<"));
             } else if (args[0].equalsIgnoreCase("second")) {
                 serverData.setSecondCI(LocationUtils.getString(player.getLocation()));
-                player.sendMessage(ColorText.translate("&6&l>&e&l> &aSecond position has been updated. &e&l<&6&l<"));
+                player.sendMessage(ColorText.translateAmpersand("&6&l>&e&l> &aSecond position has been updated. &e&l<&6&l<"));
             } else if (args[0].equalsIgnoreCase("firstKoth")) {
                 serverData.setFirstKoth(LocationUtils.getString(player.getLocation()));
-                player.sendMessage(ColorText.translate("&6&l>&e&l> &aFirst position has been updated. &e&l<&6&l<"));
+                player.sendMessage(ColorText.translateAmpersand("&6&l>&e&l> &aFirst position has been updated. &e&l<&6&l<"));
             } else if (args[0].equalsIgnoreCase("secondKoth")) {
                 serverData.setSecondKoth(LocationUtils.getString(player.getLocation()));
-                player.sendMessage(ColorText.translate("&6&l>&e&l> &aSecond position has been updated. &e&l<&6&l<"));
+                player.sendMessage(ColorText.translateAmpersand("&6&l>&e&l> &aSecond position has been updated. &e&l<&6&l<"));
             } else {
-                player.sendMessage(ColorText.translate("&cUsage: /" + label + " <first|second|firstKoth|secondKoth>"));
+                player.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <first|second|firstKoth|secondKoth>"));
                 return false;
             }
             serverData.saveServer();

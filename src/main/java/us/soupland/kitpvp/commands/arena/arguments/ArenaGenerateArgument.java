@@ -28,7 +28,7 @@ public class ArenaGenerateArgument extends KitPvPArgument {
     public void onExecute(CommandSender sender, String label, String[] args) {
         File file = new File(KitPvP.getInstance().getDataFolder().getPath() + File.separator + "schematics");
         if (!file.exists()) {
-            sender.sendMessage(ColorText.translate("&cThe schematics folder doesn't exists."));
+            sender.sendMessage(ColorText.translateAmpersand("&cThe schematics folder doesn't exists."));
             return;
         }
 
@@ -48,9 +48,9 @@ public class ArenaGenerateArgument extends KitPvPArgument {
             });
         }
 
-        sender.sendMessage(ColorText.translate("&aGenerating arenas."));
+        sender.sendMessage(ColorText.translateAmpersand("&aGenerating arenas."));
         if (sender instanceof Player) {
-            sender.sendMessage(ColorText.translate("&aSee console for details please!"));
+            sender.sendMessage(ColorText.translateAmpersand("&aSee console for details please!"));
         }
     }
 }

@@ -76,7 +76,7 @@ public class DRCommand extends KitPvPCommand {
                 Profile profile = ProfileManager.getProfile(player);
                 player.closeInventory();
                 profile.setDeathReason(null);
-                player.sendMessage(ColorText.translate("&cYou disabled your custom death message. It will now be the default reason when you kill a player."));
+                player.sendMessage(ColorText.translateAmpersand("&cYou disabled your custom death message. It will now be the default reason when you kill a player."));
             }
 
             @Override
@@ -92,16 +92,16 @@ public class DRCommand extends KitPvPCommand {
                 public void onClick(InventoryClickEvent inventoryClickEvent) {
                     player.closeInventory();
                     if (!player.hasPermission("soupland.deathreason." + reason.name().replace("_", "").toLowerCase())) {
-                        player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 30)));
-                        player.sendMessage(ColorText.translate("&eYou do not have access to &b&l" + WordUtils.capitalize(reason.name().replace("_", " ")) + "&e!"));
-                        player.sendMessage(ColorText.translate("&ePurchase kits at our store, complete achievements & rankup, or buy kits at the /kitshop!"));
-                        player.sendMessage(ColorText.translate("&6Donate at &ahttps://donate.soupland.us"));
-                        player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 30)));
+                        player.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 30)));
+                        player.sendMessage(ColorText.translateAmpersand("&eYou do not have access to &b&l" + WordUtils.capitalize(reason.name().replace("_", " ")) + "&e!"));
+                        player.sendMessage(ColorText.translateAmpersand("&ePurchase kits at our store, complete achievements & rankup, or buy kits at the /kitshop!"));
+                        player.sendMessage(ColorText.translateAmpersand("&6Donate at &ahttps://donate.soupland.us"));
+                        player.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 30)));
                         return;
                     }
                     Profile profile = ProfileManager.getProfile(player);
                     profile.setDeathReason(reason);
-                    player.sendMessage(ColorText.translate("&eYour death's reason message has been updated to &b&l" + reason.name().replace("_", " ").toLowerCase() + "&e!"));
+                    player.sendMessage(ColorText.translateAmpersand("&eYour death's reason message has been updated to &b&l" + reason.name().replace("_", " ").toLowerCase() + "&e!"));
                 }
 
                 @Override

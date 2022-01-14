@@ -24,7 +24,6 @@ import us.soupland.kitpvp.utilities.player.DurationFormatter;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SwitcherKit extends Kit {
 
@@ -43,9 +42,9 @@ public class SwitcherKit extends Kit {
         Cooldown cooldown = KitPvP.getCooldown(getName());
 
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
         } else if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
         } else {
             return;
         }
@@ -85,22 +84,8 @@ public class SwitcherKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 1600;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Switch positions.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler
@@ -121,7 +106,7 @@ public class SwitcherKit extends Kit {
                 }
                 Cooldown cooldown = KitPvP.getCooldown(getName());
                 if (cooldown.isOnCooldown(damager)) {
-                    damager.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(damager), true) + "&c."));
+                    damager.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(damager), true) + "&c."));
                     return;
                 }
                 cooldown.setCooldown(damager);

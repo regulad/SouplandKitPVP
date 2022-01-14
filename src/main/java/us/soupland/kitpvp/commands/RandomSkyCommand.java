@@ -31,7 +31,7 @@ public class RandomSkyCommand extends KitPvPCommand {
         }
         config = new Config(KitPvP.getInstance(), "config");
         if (args.length < 1) {
-            sender.sendMessage(ColorText.translate("&cUsage: /" + label + " <playerName>"));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <playerName>"));
         } else {
             Player target = Bukkit.getPlayer(args[0]);
             if (!KitPvPUtils.isOnline(target)) {
@@ -39,16 +39,16 @@ public class RandomSkyCommand extends KitPvPCommand {
                 return false;
             }
             if (ProfileManager.getProfile(target).getPlayerState() != PlayerState.PLAYING) {
-                sender.sendMessage(ColorText.translate("&c" + target.getName() + " could not be teleported while is busy."));
+                sender.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " could not be teleported while is busy."));
                 return false;
             }
             if (!config.contains("SKY-LOCATIONS") || config.getStringList("SKY-LOCATIONS").isEmpty()) {
-                sender.sendMessage(ColorText.translate("&cThere are no locations set."));
+                sender.sendMessage(ColorText.translateAmpersand("&cThere are no locations set."));
                 return false;
             }
             Location location = LocationUtils.getLocation(config.getStringList("SKY_LOCATIONS").get(KitPvPUtils.getRandomNumber(config.getStringList("SKY_LOCATIONS").size())));
             if (location == null) {
-                sender.sendMessage(ColorText.translate("&cLocation is null."));
+                sender.sendMessage(ColorText.translateAmpersand("&cLocation is null."));
                 return false;
             }
             target.teleport(location);

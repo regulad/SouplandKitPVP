@@ -135,13 +135,13 @@ public class Profile {
         getGamesPurchased().forEach(game -> getGamesPurchased().remove(game));
 
         if (player.isOnline()) {
-            player.getPlayer().sendMessage(ColorText.translate("&cYour Stats were reset."));
+            player.getPlayer().sendMessage(ColorText.translateAmpersand("&cYour Stats were reset."));
         }
         for (Kit kit : KitHandler.getKitList()) {
-            if (kit.getPermissions() == null) {
+            if (kit.getPermissionNode() == null) {
                 continue;
             }
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms remove " + player.getName() + ' ' + kit.getPermissions());
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms remove " + player.getName() + ' ' + kit.getPermissionNode());
         }
     }
 

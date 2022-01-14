@@ -27,16 +27,16 @@ public class SetStateCommand extends KitPvPCommand {
         }
         Player player = (Player) sender;
         if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&cUsage: /" + label + " <state>"));
+            player.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <state>"));
         } else {
             Profile profile = ProfileManager.getProfile(player);
             try {
                 PlayerState state = profile.getPlayerState();
                 profile.setPlayerState(PlayerState.valueOf(args[0].toUpperCase()));
-                player.sendMessage(ColorText.translate("&c" + state.name() + " &7-> &a" + args[0].toUpperCase()));
+                player.sendMessage(ColorText.translateAmpersand("&c" + state.name() + " &7-> &a" + args[0].toUpperCase()));
             } catch (Exception ignored) {
-                player.sendMessage(ColorText.translate("&cAn error occurred!"));
-                player.sendMessage(ColorText.translate("&cUsage: /" + label + " <state>"));
+                player.sendMessage(ColorText.translateAmpersand("&cAn error occurred!"));
+                player.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <state>"));
             }
         }
         return true;

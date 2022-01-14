@@ -89,15 +89,15 @@ public class PlayerUtils {
                 Kit kit = profile.getLastKit();
                 if (kit == null) {
                     inventory.setItem(1, new ItemStack(Material.AIR));
-                    player.sendMessage(ColorText.translate("&cKit not found."));
+                    player.sendMessage(ColorText.translateAmpersand("&cKit not found."));
                 } else {
 
-                    if (kit.getPermissions() != null && !player.hasPermission(kit.getPermissions())) {
-                        player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 30)));
-                        player.sendMessage(ColorText.translate("&eYou do not have access to " + kit.getDisplayName() + "&e!"));
-                        player.sendMessage(ColorText.translate("&ePurchase kits at our store, complete achievements & rankup, or buy kits at the /shop!"));
-                        player.sendMessage(ColorText.translate("&6Donate at &ahttps://store.soupland.us"));
-                        player.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 30)));
+                    if (kit.getPermissionNode() != null && !player.hasPermission(kit.getPermissionNode())) {
+                        player.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 30)));
+                        player.sendMessage(ColorText.translateAmpersand("&eYou do not have access to " + kit.getDisplayName() + "&e!"));
+                        player.sendMessage(ColorText.translateAmpersand("&ePurchase kits at our store, complete achievements & rankup, or buy kits at the /shop!"));
+                        player.sendMessage(ColorText.translateAmpersand("&6Donate at &ahttps://store.soupland.us"));
+                        player.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 30)));
                         return;
                     }
 

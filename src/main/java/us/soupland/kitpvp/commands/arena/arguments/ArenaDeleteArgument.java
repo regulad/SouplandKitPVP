@@ -20,15 +20,15 @@ public class ArenaDeleteArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             Arena arena = ArenaHandler.getByName(args[1]);
             if (arena == null) {
-                sender.sendMessage(ColorText.translate("&cAn arena with that name doesn't exists."));
+                sender.sendMessage(ColorText.translateAmpersand("&cAn arena with that name doesn't exists."));
                 return;
             }
             ArenaHandler.delete(arena);
-            sender.sendMessage(ColorText.translate("&cAn arena named &c" + arena.getName() + " &chas been deleted."));
+            sender.sendMessage(ColorText.translateAmpersand("&cAn arena named &c" + arena.getName() + " &chas been deleted."));
         }
     }
 }

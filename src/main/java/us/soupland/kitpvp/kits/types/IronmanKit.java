@@ -5,7 +5,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -19,7 +18,10 @@ import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class IronmanKit extends Kit {
 
@@ -27,11 +29,6 @@ public class IronmanKit extends Kit {
 
     public IronmanKit() {
         super("Ironman", "&cIronman", "");
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-
     }
 
     @Override
@@ -63,22 +60,8 @@ public class IronmanKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 4900;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Reduce damage by 5-20%.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler
@@ -92,7 +75,7 @@ public class IronmanKit extends Kit {
                         return;
                     }
                     longMap.put(player.getUniqueId(), TimeUtils.parse("5s") + System.currentTimeMillis());
-                    player.sendMessage(ColorText.translate("&cYou are currently jammed, so you can not use your ability."));
+                    player.sendMessage(ColorText.translateAmpersand("&cYou are currently jammed, so you can not use your ability."));
                     return;
                 }
                 event.setDamage(KitPvPUtils.getRandomNumber(20) / 0.25);

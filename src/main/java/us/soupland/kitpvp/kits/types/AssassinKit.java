@@ -22,7 +22,6 @@ import us.soupland.kitpvp.utilities.task.TaskUtil;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AssassinKit extends Kit {
 
@@ -39,13 +38,13 @@ public class AssassinKit extends Kit {
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.DIAMOND_SWORD || !event.getAction().name().startsWith("RIGHT"))
             return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         Cooldown cooldown = KitPvP.getCooldown(getName());
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
         cooldown.setCooldown(player, true);
@@ -56,7 +55,7 @@ public class AssassinKit extends Kit {
         TaskUtil.runTaskLater(() -> {
             if (player.isOnline() && profile.getCurrentKit() instanceof AssassinKit) {
                 if (player.getItemInHand() != null && player.getItemInHand().getType() == Material.DIAMOND_SWORD) {
-                    player.sendMessage(ColorText.translate("&aYour sword has lost its power."));
+                    player.sendMessage(ColorText.translateAmpersand("&aYour sword has lost its power."));
                     player.getItemInHand().removeEnchantment(Enchantment.DAMAGE_ALL);
                     player.getItemInHand().addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1);
                     player.updateInventory();
@@ -66,7 +65,7 @@ public class AssassinKit extends Kit {
                             continue;
                         }
                         if (itemStack.getType().name().endsWith("SWORD")) {
-                            player.sendMessage(ColorText.translate("&aYour sword has lost its power."));
+                            player.sendMessage(ColorText.translateAmpersand("&aYour sword has lost its power."));
                             itemStack.removeEnchantment(Enchantment.DAMAGE_ALL);
                             itemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1);
                             player.updateInventory();
@@ -110,23 +109,7 @@ public class AssassinKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 8100;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Get a sword that deals a massive amount");
-        list.add("&7of damage, but only have 1 use.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

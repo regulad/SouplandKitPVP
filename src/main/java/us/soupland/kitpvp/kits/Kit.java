@@ -9,16 +9,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
+import org.jetbrains.annotations.NotNull;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.profile.Profile;
 import us.soupland.kitpvp.profile.ProfileManager;
 
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 public abstract class Kit implements Listener {
 
-    private String name, displayName, cooldown;
+    private final @NotNull String name;
+    private final @NotNull String displayName;
+    private final @NotNull String cooldown; // Formatted like "10s" or "1m"
     @Setter
     private ItemStack[] playerInventory;
     @Setter
@@ -26,7 +30,7 @@ public abstract class Kit implements Listener {
     @Setter
     private List<PotionEffect> effects;
 
-    public Kit(String name, String displayName, String cooldown) {
+    public Kit(@NotNull String name, @NotNull String displayName, @NotNull String cooldown) {
         this.name = name;
         this.displayName = displayName;
         this.cooldown = cooldown;
@@ -36,40 +40,37 @@ public abstract class Kit implements Listener {
     }
 
     public String getDisplayName() {
-        return KitPvP.getInstance().getKitConfig().getString("Kits." + this.name + ".name");
+        return Optional.ofNullable(KitPvP.getInstance().getKitConfig().getString("Kits." + this.name + ".name")).orElse(this.displayName);
     }
 
     public String getCooldown() {
-        return KitPvP.getInstance().getKitConfig().getString("Kits." + this.name + ".cooldown");
+        return Optional.ofNullable(KitPvP.getInstance().getKitConfig().getString("Kits." + this.name + ".cooldown")).orElse(this.cooldown);
     }
 
     public YamlConfiguration getConfig() {
         return KitPvP.getInstance().getKitConfig();
     }
 
-    public abstract void execute(PlayerInteractEvent event);
+    public void execute(PlayerInteractEvent event) {
+    }
 
     public abstract void onLoad(Player player);
 
     public abstract ItemStack getItem();
 
-    public abstract String getPermissions();
+    public @NotNull String getPermissionNode() {
+        return "soupland.kit." + getName().toLowerCase();
+    }
 
-    public abstract int getCredits();
+    public abstract int getCreditCost();
 
-    public abstract List<String> getDescription();
+    public List<String> getDescription() {
+        return getConfig().getStringList("Kits." + this.getName() + ".description");
+    }
 
-    public boolean isEquped(Player player) {
+    public boolean isEquipped(Player player) {
         Profile profile = ProfileManager.getProfile(player);
-        if (profile != null) {
-            Kit kit = profile.getCurrentKit();
-            if (kit != null) {
-                String name = kit.getName();
-                if (name != null) {
-                    return name.equals(this.getName());
-                }
-            }
-        }
-        return false;
+        Kit kit = profile.getCurrentKit();
+        return getClass().isInstance(kit);
     }
 }

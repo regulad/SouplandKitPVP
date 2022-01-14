@@ -16,7 +16,6 @@ import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SuicidalKit extends Kit {
 
@@ -32,12 +31,12 @@ public class SuicidalKit extends Kit {
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.TNT)
             return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         if (player.getNearbyEntities(8, 8, 8).isEmpty()) {
-            player.sendMessage(ColorText.translate("&cThere are no players in a 8 block radius to target."));
+            player.sendMessage(ColorText.translateAmpersand("&cThere are no players in a 8 block radius to target."));
             return;
         }
 
@@ -52,7 +51,7 @@ public class SuicidalKit extends Kit {
                 } else {
                     ((Player) entity).setHealth(3);
                 }
-                entity.sendMessage(ColorText.translate("&e" + player.getName() + " &ahas just bombed their self, and you got hurt."));
+                entity.sendMessage(ColorText.translateAmpersand("&e" + player.getName() + " &ahas just bombed their self, and you got hurt."));
             }
         }
 
@@ -89,23 +88,7 @@ public class SuicidalKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 3200;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Causes an explosion that will kill you, but do");
-        list.add("&7massive amounts of damage to players around you.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

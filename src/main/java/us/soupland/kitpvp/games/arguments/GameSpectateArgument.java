@@ -34,11 +34,11 @@ public class GameSpectateArgument extends KitPvPArgument {
         GameHandler gameHandler = KitPvP.getInstance().getGameHandler();
         if (profile.getPlayerState() == PlayerState.SPAWN || profile.getPlayerState() == PlayerState.PLAYING) {
             if (profile.getPlayerCombat() > 0L && profile.getPlayerState() == PlayerState.PLAYING) {
-                sender.sendMessage(ColorText.translate("&cYou must not be Spawn-Tagged."));
+                sender.sendMessage(ColorText.translateAmpersand("&cYou must not be Spawn-Tagged."));
                 return;
             }
             if (gameHandler.getSpectators().contains(player)) {
-                sender.sendMessage(ColorText.translate("&cYou are already spectating an event."));
+                sender.sendMessage(ColorText.translateAmpersand("&cYou are already spectating an event."));
                 return;
             }
             if (gameHandler.getActiveGame() != null) {
@@ -54,10 +54,10 @@ public class GameSpectateArgument extends KitPvPArgument {
                 inventory.setItem(4, new ItemMaker(Material.INK_SACK).setDurability(1).setDisplayname("&c&lStop Spectating").addLore("&4Bound").setPlayerInteract(player1 -> gameHandler.removeSpectator(player)).create());
                 player.updateInventory();
             } else {
-                sender.sendMessage(ColorText.translate("&cThere is no events that is active."));
+                sender.sendMessage(ColorText.translateAmpersand("&cThere is no events that is active."));
             }
         } else {
-            sender.sendMessage(ColorText.translate("&cYou're unable to spectate events."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou're unable to spectate events."));
         }
     }
 }

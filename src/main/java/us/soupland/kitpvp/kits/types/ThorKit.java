@@ -20,7 +20,6 @@ import us.soupland.kitpvp.utilities.player.DurationFormatter;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ThorKit extends Kit {
 
@@ -37,18 +36,18 @@ public class ThorKit extends Kit {
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.GOLD_AXE || !event.getAction().name().startsWith("RIGHT"))
             return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         Cooldown cooldown = KitPvP.getCooldown(getName());
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
 
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) {
-            player.sendMessage(ColorText.translate("&eRight click the ground to use the &4&lLightning Strike &eattack."));
+            player.sendMessage(ColorText.translateAmpersand("&eRight click the ground to use the &4&lLightning Strike &eattack."));
             return;
         }
 
@@ -61,7 +60,7 @@ public class ThorKit extends Kit {
         cooldown.setCooldown(player);
 
         event.getClickedBlock().getWorld().strikeLightning(event.getClickedBlock().getLocation());
-        player.sendMessage(ColorText.translate("&eYou've used the &4&lLightning Strike &eattack."));
+        player.sendMessage(ColorText.translateAmpersand("&eYou've used the &4&lLightning Strike &eattack."));
     }
 
     @Override
@@ -94,22 +93,7 @@ public class ThorKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 3800;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Use your axe to create a Lightning Strike.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

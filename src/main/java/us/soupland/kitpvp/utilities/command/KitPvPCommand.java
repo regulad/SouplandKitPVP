@@ -40,21 +40,21 @@ public class KitPvPCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 1) {
-            sender.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 50)));
-            sender.sendMessage(ColorText.translate("&cAvailable sub-command(s) for '&7" + command.getName() + "&c'."));
+            sender.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 50)));
+            sender.sendMessage(ColorText.translateAmpersand("&cAvailable sub-command(s) for '&7" + command.getName() + "&c'."));
             sender.sendMessage("");
 
             for (KitPvPArgument kitPvPArgument : kitPvPArguments) {
                 if (kitPvPArgument.permission != null && !sender.hasPermission(kitPvPArgument.permission)) {
                     continue;
                 }
-                sender.sendMessage(ColorText.translate(" &e" + kitPvPArgument.getUsage(label) + (kitPvPArgument.description != null ? " &7- &f" + kitPvPArgument.description : "")));
+                sender.sendMessage(ColorText.translateAmpersand(" &e" + kitPvPArgument.getUsage(label) + (kitPvPArgument.description != null ? " &7- &f" + kitPvPArgument.description : "")));
             }
-            sender.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 50)));
+            sender.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 50)));
         } else {
             KitPvPArgument kitPvPArgument = getArgument(args[0]);
             if (kitPvPArgument == null || (kitPvPArgument.permission != null && !sender.hasPermission(kitPvPArgument.permission))) {
-                sender.sendMessage(ColorText.translate("&cNo argument found."));
+                sender.sendMessage(ColorText.translateAmpersand("&cNo argument found."));
             } else {
                 if (kitPvPArgument.onlyplayers && sender instanceof ConsoleCommandSender) {
                     Bukkit.getConsoleSender().sendMessage(KitPvPUtils.ONLY_PLAYERS);

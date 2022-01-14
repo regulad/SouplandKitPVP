@@ -32,14 +32,14 @@ public class TeamDisbandArgument extends KitPvPArgument {
         Profile profile = ProfileManager.getProfile((Player) sender);
         Team team = profile.getTeam();
         if (team == null) {
-            sender.sendMessage(ColorText.translate("&cYou are not in a team."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou are not in a team."));
             return;
         }
         if (team.getLeader() != null && !team.getLeader().equals(((Player) sender).getUniqueId()) && !sender.isOp()) {
-            sender.sendMessage(ColorText.translate("&cYou must be leader to disband your team."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou must be leader to disband your team."));
             return;
         }
-        Bukkit.broadcastMessage(ColorText.translate("&eTeam &9" + team.getName() + " &ehas been &cdisbanded &eby " + sender.getName() + "&e."));
+        Bukkit.broadcastMessage(ColorText.translateAmpersand("&eTeam &9" + team.getName() + " &ehas been &cdisbanded &eby " + sender.getName() + "&e."));
         for (UUID uuid : team.getAllUuids()) {
             OfflinePlayer target = Bukkit.getOfflinePlayer(uuid);
             Profile targetProfile = ProfileManager.getProfile(target);

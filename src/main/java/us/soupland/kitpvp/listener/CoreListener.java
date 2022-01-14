@@ -65,7 +65,7 @@ public class CoreListener implements Listener {
         profile.setCanModifyState(true);
 
         if (player.hasPermission(KitPvPUtils.DONATOR_PERMISSION) && profile.isJoinAndQuitMessageEnabled()) {
-            Bukkit.broadcastMessage(ColorText.translate(player.getName() + " &7has connected."));
+            Bukkit.broadcastMessage(ColorText.translateAmpersand(player.getName() + " &7has connected."));
         }
 
         TaskUtil.runTask(() -> Bukkit.getOnlinePlayers().forEach(online -> ProfileManager.getProfile(online).updateTab()));
@@ -114,7 +114,7 @@ public class CoreListener implements Listener {
         Profile profile = ProfileManager.getProfile(player);
 
         if (player.hasPermission(KitPvPUtils.DONATOR_PERMISSION) && profile.isJoinAndQuitMessageEnabled()) {
-            Bukkit.broadcastMessage(ColorText.translate(player.getName() + " &7has disconnected."));
+            Bukkit.broadcastMessage(ColorText.translateAmpersand(player.getName() + " &7has disconnected."));
         }
 
         BountyManager.getHunterHunted().remove(player.getUniqueId());
@@ -288,7 +288,7 @@ public class CoreListener implements Listener {
                 if (skull.getOwner() == null || skull.getOwner().equalsIgnoreCase("null")) return;
 
                 Theme theme = ProfileManager.getProfile(player).getTheme();
-                player.sendMessage(ColorText.translate(theme.getPrimaryColor() + "This skull once belonged to " + theme.getSecondaryColor() + skull.getOwner() + theme.getPrimaryColor() + '.'));
+                player.sendMessage(ColorText.translateAmpersand(theme.getPrimaryColor() + "This skull once belonged to " + theme.getSecondaryColor() + skull.getOwner() + theme.getPrimaryColor() + '.'));
                 return;
             }
         }

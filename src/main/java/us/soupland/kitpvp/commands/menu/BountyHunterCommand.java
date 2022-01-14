@@ -94,8 +94,8 @@ public class BountyHunterCommand extends KitPvPCommand {
                             }
                             ProfileManager.getProfile(player).setCreatingBounty(true);
                             BountyManager.getHunterHunted().put(player.getUniqueId(), online.getUniqueId());
-                            player.sendMessage(ColorText.translate("&4&l[Bounty] &cYou are creating a Bounty. Please type the amount in chat."));
-                            player.sendMessage(ColorText.translate("&cType '&fcancel&c' to cancel it."));
+                            player.sendMessage(ColorText.translateAmpersand("&4&l[Bounty] &cYou are creating a Bounty. Please type the amount in chat."));
+                            player.sendMessage(ColorText.translateAmpersand("&cType '&fcancel&c' to cancel it."));
                         }
 
                         @Override

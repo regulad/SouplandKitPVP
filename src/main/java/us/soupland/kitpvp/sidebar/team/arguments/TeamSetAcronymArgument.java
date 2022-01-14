@@ -26,29 +26,29 @@ public class TeamSetAcronymArgument extends KitPvPArgument {
         Profile profile = ProfileManager.getProfile((Player) sender);
         Team team = profile.getTeam();
         if (team == null) {
-            sender.sendMessage(ColorText.translate("&cYou are not in a team."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou are not in a team."));
             return;
         }
         if (!team.getOfficers().contains(((Player) sender).getUniqueId())) {
-            sender.sendMessage(ColorText.translate("&cYou must be an officer to change acronym."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou must be an officer to change acronym."));
             return;
         }
         if (args.length < 2) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             String acronym = args[1];
-            if (ChatColor.stripColor(ColorText.translate(args[1])).length() < 2) {
-                sender.sendMessage(ColorText.translate("&cMinimum acronym name size is 3 characters!"));
+            if (ChatColor.stripColor(ColorText.translateAmpersand(args[1])).length() < 2) {
+                sender.sendMessage(ColorText.translateAmpersand("&cMinimum acronym name size is 3 characters!"));
                 return;
             }
 
-            if (ChatColor.stripColor(ColorText.translate(args[1])).length() > 4) {
-                sender.sendMessage(ColorText.translate("&cMaximum acronym name size is 3 characters!"));
+            if (ChatColor.stripColor(ColorText.translateAmpersand(args[1])).length() > 4) {
+                sender.sendMessage(ColorText.translateAmpersand("&cMaximum acronym name size is 3 characters!"));
                 return;
             }
 
-            if (!StringUtils.isAlphanumeric(ChatColor.stripColor(ColorText.translate(args[1])))) {
-                sender.sendMessage(ColorText.translate("&cTeam acronym must be alphanumeric!"));
+            if (!StringUtils.isAlphanumeric(ChatColor.stripColor(ColorText.translateAmpersand(args[1])))) {
+                sender.sendMessage(ColorText.translateAmpersand("&cTeam acronym must be alphanumeric!"));
                 return;
             }
 
@@ -62,7 +62,7 @@ public class TeamSetAcronymArgument extends KitPvPArgument {
             acronym = acronym.replace("&m", "");
 
             team.setDisplayName(acronym);
-            sender.sendMessage(ColorText.translate("&aTeam acronym has been successfully changed!"));
+            sender.sendMessage(ColorText.translateAmpersand("&aTeam acronym has been successfully changed!"));
         }
     }
 }

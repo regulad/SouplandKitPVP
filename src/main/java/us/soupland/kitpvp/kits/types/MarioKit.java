@@ -45,13 +45,13 @@ public class MarioKit extends Kit {
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.FIREBALL || !event.getAction().name().startsWith("RIGHT"))
             return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         Cooldown cooldown = KitPvP.getCooldown(getName());
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
         cooldown.setCooldown(player);
@@ -94,23 +94,8 @@ public class MarioKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 5100;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Shoot your enemies with fireballs");
-        list.add("&7that refill with every kill you get.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler
@@ -169,7 +154,7 @@ public class MarioKit extends Kit {
             return;
         }
 
-        if (!isEquped(killer)) {
+        if (!isEquipped(killer)) {
             return;
         }
 
@@ -186,7 +171,7 @@ public class MarioKit extends Kit {
         }
 
         killer.updateInventory();
-        killer.sendMessage(ColorText.translate("&eHey &c&l" + killer.getName() + "&e, your inventory has been refilled with " + (profile.getRefill() == Refill.POTION && !profile.getPlayerState().name().contains("PRACTICE") && profile.getPlayerState() != PlayerState.INGAME ? "&dPotions" : "&6Soups") + "&e!"));
+        killer.sendMessage(ColorText.translateAmpersand("&eHey &c&l" + killer.getName() + "&e, your inventory has been refilled with " + (profile.getRefill() == Refill.POTION && !profile.getPlayerState().name().contains("PRACTICE") && profile.getPlayerState() != PlayerState.INGAME ? "&dPotions" : "&6Soups") + "&e!"));
         killer.playSound(killer.getLocation(), Sound.ANVIL_USE, 1, 1);
     }
 

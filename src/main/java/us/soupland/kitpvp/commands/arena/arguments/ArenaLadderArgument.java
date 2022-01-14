@@ -29,11 +29,11 @@ public class ArenaLadderArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             Arena arena = ArenaHandler.getByName(args[1]);
             if (arena == null) {
-                sender.sendMessage(ColorText.translate("&cAn arena with that name doesn't exists."));
+                sender.sendMessage(ColorText.translateAmpersand("&cAn arena with that name doesn't exists."));
                 return;
             }
             InventoryMaker inventoryMaker = new InventoryMaker(arena.getName(), 4);
@@ -47,7 +47,7 @@ public class ArenaLadderArgument extends KitPvPArgument {
                         } else {
                             arena.getLadders().add(ladder.getName());
                         }
-                        sender.sendMessage(ColorText.translate((arena.getLadders().contains(ladder.getName()) ? "&a" : "&c") + arena.getName() + " &7-> " + ladder.getName()));
+                        sender.sendMessage(ColorText.translateAmpersand((arena.getLadders().contains(ladder.getName()) ? "&a" : "&c") + arena.getName() + " &7-> " + ladder.getName()));
                     }
 
                     @Override

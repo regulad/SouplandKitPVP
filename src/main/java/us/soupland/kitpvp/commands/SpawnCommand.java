@@ -32,20 +32,20 @@ public class SpawnCommand extends KitPvPCommand {
             return false;
         }
         if (profile.getPlayerCombat() > 0L) {
-            player.sendMessage(ColorText.translate("&cYou cannot teleport while you are combat tagged."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou cannot teleport while you are combat tagged."));
             return false;
         }
         if (profile.getPlayerState() != PlayerState.PLAYING) {
-            player.sendMessage(ColorText.translate("&cYou cannot be teleported."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou cannot be teleported."));
             return false;
         }
         Cooldown cooldown = KitPvP.getCooldown("SpawnTimer");
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cPlease be patient!"));
+            player.sendMessage(ColorText.translateAmpersand("&cPlease be patient!"));
             return false;
         }
-        player.sendMessage(ColorText.translate("&eYou will be &ateleported &ein &98 seconds&e."));
-        player.sendMessage(ColorText.translate("&eDon't move or your teleport will be cancelled."));
+        player.sendMessage(ColorText.translateAmpersand("&eYou will be &ateleported &ein &98 seconds&e."));
+        player.sendMessage(ColorText.translateAmpersand("&eDon't move or your teleport will be cancelled."));
         cooldown.setCooldown(player, true);
         return true;
     }

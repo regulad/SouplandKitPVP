@@ -30,11 +30,11 @@ public class AcceptCommand extends KitPvPCommand {
         Player player = (Player) sender;
         Profile profile = ProfileManager.getProfile(player);
         if (profile.getPlayerState() != PlayerState.SPAWNPRACTICE) {
-            player.sendMessage(ColorText.translate("&cYou cannot duel right now."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou cannot duel right now."));
             return false;
         }
         if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&cUsage: /" + label + " <playerName>"));
+            player.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <playerName>"));
         } else {
             Player target = Bukkit.getPlayer(args[0]);
             if (!KitPvPUtils.isOnline(target) || !player.canSee(target)) {
@@ -43,11 +43,11 @@ public class AcceptCommand extends KitPvPCommand {
             }
             Profile targetProfile = ProfileManager.getProfile(target);
             if (targetProfile.getPlayerState() != PlayerState.SPAWNPRACTICE) {
-                player.sendMessage(ColorText.translate("&c" + target.getName() + " is currently busy."));
+                player.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " is currently busy."));
                 return false;
             }
             if (!targetProfile.isPendingDuelRequest(player)) {
-                player.sendMessage(ColorText.translate("&cYou do not have a pending duel request from " + target.getName() + '.'));
+                player.sendMessage(ColorText.translateAmpersand("&cYou do not have a pending duel request from " + target.getName() + '.'));
                 return false;
             }
 
@@ -59,7 +59,7 @@ public class AcceptCommand extends KitPvPCommand {
             }
 
             if (arena == null) {
-                player.sendMessage(ColorText.translate("&cTried to start a match but there are no available arenas."));
+                player.sendMessage(ColorText.translateAmpersand("&cTried to start a match but there are no available arenas."));
             } else {
                 arena.setActive(true);
                 Match match = new Match(null, request.getLadder(), arena, false, target, player);

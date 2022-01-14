@@ -45,9 +45,9 @@ public class TeamInvitesArgument extends KitPvPArgument {
             for (Map.Entry<UUID, UUID> entry : team.getInvitedPlayers().entrySet()) {
                 strings.add(Bukkit.getOfflinePlayer(entry.getKey()).getName());
             }
-            sender.sendMessage(ColorText.translate("&bSent by &e" + team.getDisplayName() + " &7(" + strings.size() + ")&3: &7" + (strings.isEmpty() ? "Your team has not invited anyone" : StringUtils.join(strings, "&7, ")) + "&7."));
+            sender.sendMessage(ColorText.translateAmpersand("&bSent by &e" + team.getDisplayName() + " &7(" + strings.size() + ")&3: &7" + (strings.isEmpty() ? "Your team has not invited anyone" : StringUtils.join(strings, "&7, ")) + "&7."));
         }
 
-        sender.sendMessage(ColorText.translate("&3Requested (" + receivedInvites.size() + ")&3: &7" + (receivedInvites.isEmpty() ? "No teams have invited you" : StringUtils.join(receivedInvites, "&7, ")) + "&7."));
+        sender.sendMessage(ColorText.translateAmpersand("&3Requested (" + receivedInvites.size() + ")&3: &7" + (receivedInvites.isEmpty() ? "No teams have invited you" : StringUtils.join(receivedInvites, "&7, ")) + "&7."));
     }
 }

@@ -25,7 +25,7 @@ public class SetSpawnCommand extends KitPvPCommand {
         Player player = (Player) sender;
         ServerData serverData = KitPvP.getInstance().getServerData();
         if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&cUsage: /" + label + " <main|practice|events>"));
+            player.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <main|practice|events>"));
         } else {
             String stringLocation = LocationUtils.getString(player.getLocation());
             if (args[0].equalsIgnoreCase("main")) {
@@ -35,10 +35,10 @@ public class SetSpawnCommand extends KitPvPCommand {
             } else if (args[0].equalsIgnoreCase("events")) {
                 serverData.setSpawnEvents(stringLocation);
             } else {
-                player.sendMessage(ColorText.translate("&cUsage: /" + label + " <main|practice|events>"));
+                player.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <main|practice|events>"));
                 return false;
             }
-            player.sendMessage(ColorText.translate("&a&l>&b&l>&c&l>&d&l>&e&l>&f&l> &aLocation modified."));
+            player.sendMessage(ColorText.translateAmpersand("&a&l>&b&l>&c&l>&d&l>&e&l>&f&l> &aLocation modified."));
         }
         return true;
     }

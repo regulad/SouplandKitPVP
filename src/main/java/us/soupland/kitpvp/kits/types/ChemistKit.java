@@ -4,7 +4,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
@@ -24,11 +23,6 @@ public class ChemistKit extends Kit {
 
     public ChemistKit() {
         super("Chemist", "&aChemist", "");
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-
     }
 
     @Override
@@ -75,7 +69,7 @@ public class ChemistKit extends Kit {
             return;
         }
 
-        if (!isEquped(killer)) {
+        if (!isEquipped(killer)) {
             return;
         }
 
@@ -99,23 +93,7 @@ public class ChemistKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 4300;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Slow down your enemies with poison or");
-        list.add("&7take them down with damage pots that");
-        list.add("&7refill upon kills.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 }

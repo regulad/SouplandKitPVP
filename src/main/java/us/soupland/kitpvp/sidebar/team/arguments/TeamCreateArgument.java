@@ -29,47 +29,47 @@ public class TeamCreateArgument extends KitPvPArgument {
     public void onExecute(CommandSender sender, String label, String[] args) {
         Profile profile = ProfileManager.getProfile((Player) sender);
         if (profile.getTeam() != null) {
-            sender.sendMessage(ColorText.translate("&cYou are already in a team"));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou are already in a team"));
             return;
         }
         if (profile.getStat(PlayerStat.CREDITS) < 5000) {
-            sender.sendMessage(ColorText.translate("&cYou don't have credits enough to create a Team. You need 5000 credits."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou don't have credits enough to create a Team. You need 5000 credits."));
             return;
         }
         if (args.length < 3) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             if (args[1].length() < 3) {
-                sender.sendMessage(ColorText.translate("&cMinimum team name size is 3 characters!"));
+                sender.sendMessage(ColorText.translateAmpersand("&cMinimum team name size is 3 characters!"));
                 return;
             }
             if (args[1].length() > 10) {
-                sender.sendMessage(ColorText.translate("&cMaximum team name size is 10 characters!"));
+                sender.sendMessage(ColorText.translateAmpersand("&cMaximum team name size is 10 characters!"));
                 return;
             }
 
-            if (ChatColor.stripColor(ColorText.translate(args[2])).length() < 2) {
-                sender.sendMessage(ColorText.translate("&cMinimum acronym name size is 2 characters!"));
+            if (ChatColor.stripColor(ColorText.translateAmpersand(args[2])).length() < 2) {
+                sender.sendMessage(ColorText.translateAmpersand("&cMinimum acronym name size is 2 characters!"));
                 return;
             }
 
-            if (ChatColor.stripColor(ColorText.translate(args[2])).length() > 4) {
-                sender.sendMessage(ColorText.translate("&cMaximum acronym name size is 4 characters!"));
+            if (ChatColor.stripColor(ColorText.translateAmpersand(args[2])).length() > 4) {
+                sender.sendMessage(ColorText.translateAmpersand("&cMaximum acronym name size is 4 characters!"));
                 return;
             }
 
             Team team = Team.getByName(args[1]);
             if (team != null) {
-                sender.sendMessage(ColorText.translate("&cThat team already exists!"));
+                sender.sendMessage(ColorText.translateAmpersand("&cThat team already exists!"));
                 return;
             }
             if (!StringUtils.isAlphanumeric(args[1])) {
-                sender.sendMessage(ColorText.translate("&cTeam tag must be alphanumeric!"));
+                sender.sendMessage(ColorText.translateAmpersand("&cTeam tag must be alphanumeric!"));
                 return;
             }
 
-            if (!StringUtils.isAlphanumeric(ChatColor.stripColor(ColorText.translate(args[2])))) {
-                sender.sendMessage(ColorText.translate("&cTeam acronym must be alphanumeric!"));
+            if (!StringUtils.isAlphanumeric(ChatColor.stripColor(ColorText.translateAmpersand(args[2])))) {
+                sender.sendMessage(ColorText.translateAmpersand("&cTeam acronym must be alphanumeric!"));
                 return;
             }
 
@@ -93,7 +93,7 @@ public class TeamCreateArgument extends KitPvPArgument {
             profile.setTeam(team);
             profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - 5000));
 
-            Bukkit.broadcastMessage(ColorText.translate("&eTeam &9" + team.getName() + " &ehas been &acreated &eby " + sender.getName() + "&e."));
+            Bukkit.broadcastMessage(ColorText.translateAmpersand("&eTeam &9" + team.getName() + " &ehas been &acreated &eby " + sender.getName() + "&e."));
             for (Player online : Bukkit.getOnlinePlayers()) {
                 if (online.equals(sender)) {
                     continue;

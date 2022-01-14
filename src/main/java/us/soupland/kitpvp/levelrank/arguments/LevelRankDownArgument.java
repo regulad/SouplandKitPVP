@@ -23,19 +23,19 @@ public class LevelRankDownArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
             return;
         }
 
         OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
         if ((!target.hasPlayedBefore()) && (!target.isOnline())) {
-            sender.sendMessage(ColorText.translate("&c" + args[1] + " has never played before."));
+            sender.sendMessage(ColorText.translateAmpersand("&c" + args[1] + " has never played before."));
             return;
         }
 
         Profile profile = ProfileManager.getProfile(target);
 
-        sender.sendMessage(ColorText.translate("&cYou've ranked down " + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " level from " + profile.getLevelRank().getName() + " to " + profile.getRankDown().getName() + '.'));
+        sender.sendMessage(ColorText.translateAmpersand("&cYou've ranked down " + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " level from " + profile.getLevelRank().getName() + " to " + profile.getRankDown().getName() + '.'));
 
         profile.setExperience(profile.getRankDown().getRequiredExp());
         profile.rankDown();

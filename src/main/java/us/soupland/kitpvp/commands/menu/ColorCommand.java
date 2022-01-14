@@ -50,7 +50,7 @@ public class ColorCommand extends KitPvPCommand {
                     player.closeInventory();
 
                     profile.setChatColor(color);
-                    player.sendMessage(ColorText.translate("&eChat color updated."));
+                    player.sendMessage(ColorText.translateAmpersand("&eChat color updated."));
                 }
 
                 @Override

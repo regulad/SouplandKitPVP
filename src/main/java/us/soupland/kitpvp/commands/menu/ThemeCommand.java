@@ -78,15 +78,15 @@ public class ThemeCommand extends KitPvPCommand {
                 public void onClick(InventoryClickEvent inventoryClickEvent) {
                     player.closeInventory();
                     if (profile.getTheme() == theme) {
-                        player.sendMessage(ColorText.translate("&cYou're already using this theme!"));
+                        player.sendMessage(ColorText.translateAmpersand("&cYou're already using this theme!"));
                     } else if (theme.getPermission() != null && !player.hasPermission(theme.getPermission())) {
                         player.sendMessage("");
-                        player.sendMessage(ColorText.translate("&eWe currently offer &c&l" + Theme.values().length + " &ethemes! All of these themes are available with the &7&lPRO &erank and above!"));
-                        player.sendMessage(ColorText.translate("&7&oStore Link: &ahttps://store.soupland.us"));
+                        player.sendMessage(ColorText.translateAmpersand("&eWe currently offer &c&l" + Theme.values().length + " &ethemes! All of these themes are available with the &7&lPRO &erank and above!"));
+                        player.sendMessage(ColorText.translateAmpersand("&7&oStore Link: &ahttps://store.soupland.us"));
                         player.sendMessage("");
                     } else {
                         profile.setTheme(theme);
-                        player.sendMessage(ColorText.translate("&eTheme changed to " + theme.getPrimaryColor() + "&l" + theme.name()));
+                        player.sendMessage(ColorText.translateAmpersand("&eTheme changed to " + theme.getPrimaryColor() + "&l" + theme.name()));
                     }
                 }
 

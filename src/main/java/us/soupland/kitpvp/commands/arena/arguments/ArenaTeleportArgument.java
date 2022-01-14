@@ -23,11 +23,11 @@ public class ArenaTeleportArgument extends KitPvPArgument {
     @Override
     public void onExecute(CommandSender sender, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+            sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
         } else {
             Arena arena = ArenaHandler.getByName(args[1]);
             if (arena == null) {
-                sender.sendMessage(ColorText.translate("&cAn arena with that name doesn't exists."));
+                sender.sendMessage(ColorText.translateAmpersand("&cAn arena with that name doesn't exists."));
                 return;
             }
             Location location = arena.getFirstPosition();
@@ -36,14 +36,14 @@ public class ArenaTeleportArgument extends KitPvPArgument {
             }
 
             if (location == null) {
-                sender.sendMessage(ColorText.translate("&cTeleport failed!"));
+                sender.sendMessage(ColorText.translateAmpersand("&cTeleport failed!"));
                 return;
             }
 
             if (((Player) sender).teleport(location)) {
-                sender.sendMessage(ColorText.translate("&eTeleported..."));
+                sender.sendMessage(ColorText.translateAmpersand("&eTeleported..."));
             } else {
-                sender.sendMessage(ColorText.translate("&cTeleport failed!"));
+                sender.sendMessage(ColorText.translateAmpersand("&cTeleport failed!"));
             }
         }
     }

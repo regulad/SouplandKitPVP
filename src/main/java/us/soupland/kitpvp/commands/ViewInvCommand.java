@@ -38,7 +38,7 @@ public class ViewInvCommand extends KitPvPCommand {
             return false;
         }
         if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&cUsage: /" + label + " <playerUUID>"));
+            player.sendMessage(ColorText.translateAmpersand("&cUsage: /" + label + " <playerUUID>"));
         } else {
             MatchSnapshot snapshot;
 
@@ -49,7 +49,7 @@ public class ViewInvCommand extends KitPvPCommand {
             }
 
             if (snapshot == null || snapshot.getMatchPlayer().getPlayer() == null) {
-                player.sendMessage(ColorText.translate("&cCouldn't find an inventory for that ID."));
+                player.sendMessage(ColorText.translateAmpersand("&cCouldn't find an inventory for that ID."));
                 return false;
             }
 
@@ -195,7 +195,7 @@ public class ViewInvCommand extends KitPvPCommand {
                 });
             }
 
-            player.sendMessage(ColorText.translate("&7You're viewing &a" + snapshot.getMatchPlayer().getPlayer().getName() + "&7's inventory."));
+            player.sendMessage(ColorText.translateAmpersand("&7You're viewing &a" + snapshot.getMatchPlayer().getPlayer().getName() + "&7's inventory."));
 
             player.openInventory(inventoryMaker.getCurrentPage());
         }

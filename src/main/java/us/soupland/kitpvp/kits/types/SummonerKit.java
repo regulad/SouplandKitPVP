@@ -30,7 +30,6 @@ import us.soupland.kitpvp.utilities.task.TaskUtil;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SummonerKit extends Kit {
 
@@ -46,18 +45,18 @@ public class SummonerKit extends Kit {
 
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.SKULL_ITEM) return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         if (player.getNearbyEntities(20, 20, 20).isEmpty()) {
-            player.sendMessage(ColorText.translate("&cThere are no players in a 20 block radius to target."));
+            player.sendMessage(ColorText.translateAmpersand("&cThere are no players in a 20 block radius to target."));
             return;
         }
 
         Cooldown cooldown = KitPvP.getCooldown(getName());
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
         cooldown.setCooldown(player);
@@ -70,7 +69,7 @@ public class SummonerKit extends Kit {
             golem.setCanPickupItems(false);
             golem.setMaxHealth(2000);
             golem.setHealth(2000);
-            golem.setCustomName(ColorText.translate(player.getName()));
+            golem.setCustomName(ColorText.translateAmpersand(player.getName()));
             golem.setCustomNameVisible(true);
             golem.setMetadata(player.getUniqueId().toString(), new FixedMetadataValue(KitPvP.getInstance(), "faggotSummoner"));
         }
@@ -94,7 +93,7 @@ public class SummonerKit extends Kit {
         ItemStack stack = new ItemMaker(Material.SKULL_ITEM).setDurability(3).create();
         SkullMeta meta = (SkullMeta) stack.getItemMeta();
         meta.setOwner("MHF_Golem");
-        meta.setDisplayName(ColorText.translate(profile.getTheme().getPrimaryColor() + getName()));
+        meta.setDisplayName(ColorText.translateAmpersand(profile.getTheme().getPrimaryColor() + getName()));
         stack.setItemMeta(meta);
 
         inventory.setHelmet(stack);
@@ -126,23 +125,8 @@ public class SummonerKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 7200;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Summon an iron golem that you ride,");
-        list.add("&7and it will attack the nearest enemy.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler

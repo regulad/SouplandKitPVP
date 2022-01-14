@@ -6,7 +6,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -23,7 +22,6 @@ import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CactusKit extends Kit {
@@ -32,11 +30,6 @@ public class CactusKit extends Kit {
 
     public CactusKit() {
         super("Cactus", "&2Cactus", "");
-    }
-
-    @Override
-    public void execute(PlayerInteractEvent event) {
-
     }
 
     @Override
@@ -71,23 +64,8 @@ public class CactusKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 4600;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Deal damage to enemies");
-        list.add("&7when you are being hit.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler
@@ -99,7 +77,7 @@ public class CactusKit extends Kit {
                     if (isOnCooldown((Player) event.getEntity())) {
                         return;
                     }
-                    event.getEntity().sendMessage(ColorText.translate("&cYou are currently jammed, so you can not use your ability."));
+                    event.getEntity().sendMessage(ColorText.translateAmpersand("&cYou are currently jammed, so you can not use your ability."));
                     playerLongMap.put((Player) event.getEntity(), TimeUtils.parse("5s") + System.currentTimeMillis());
                     return;
                 }

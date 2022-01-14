@@ -32,12 +32,12 @@ public class TeamRosterArgument extends KitPvPArgument {
             if (sender instanceof Player) {
                 Profile profile = ProfileManager.getProfile((Player) sender);
                 if (profile.getTeam() == null) {
-                    sender.sendMessage(ColorText.translate("&cYou are not in a team."));
+                    sender.sendMessage(ColorText.translateAmpersand("&cYou are not in a team."));
                     return;
                 }
                 sendTeamInformation(sender, profile.getTeam());
             } else {
-                sender.sendMessage(ColorText.translate("&cUsage: " + getUsage(label)));
+                sender.sendMessage(ColorText.translateAmpersand("&cUsage: " + getUsage(label)));
             }
         } else {
             Team found = Team.getByName(args[1]);
@@ -62,7 +62,7 @@ public class TeamRosterArgument extends KitPvPArgument {
                 }
             }
             if (found == null) {
-                sender.sendMessage(ColorText.translate("&cNo player teams found with player or name '" + args[1] + "'."));
+                sender.sendMessage(ColorText.translateAmpersand("&cNo player teams found with player or name '" + args[1] + "'."));
                 return;
             }
             sendTeamInformation(sender, found);
@@ -127,20 +127,20 @@ public class TeamRosterArgument extends KitPvPArgument {
             }
         }
 
-        sender.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 40)));
-        sender.sendMessage(ColorText.translate(" &9&l" + team.getName() + " &7[" + team.getOnlineMembers(sender) + '/' + team.getAllUuids().size() + ']'));
+        sender.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 40)));
+        sender.sendMessage(ColorText.translateAmpersand(" &9&l" + team.getName() + " &7[" + team.getOnlineMembers(sender) + '/' + team.getAllUuids().size() + ']'));
         if (leaderName != null) {
-            sender.sendMessage(ColorText.translate(" &eLeader: " + leaderName));
+            sender.sendMessage(ColorText.translateAmpersand(" &eLeader: " + leaderName));
         }
         if (!officerString.isEmpty()) {
-            sender.sendMessage(ColorText.translate(" &eCaptains: " + StringUtils.join(officerString, "&7, ") + "&7."));
+            sender.sendMessage(ColorText.translateAmpersand(" &eCaptains: " + StringUtils.join(officerString, "&7, ") + "&7."));
         }
         if (!membersStrings.isEmpty()) {
-            sender.sendMessage(ColorText.translate(" &eMembers: " + StringUtils.join(membersStrings, "&7, ") + "&7."));
+            sender.sendMessage(ColorText.translateAmpersand(" &eMembers: " + StringUtils.join(membersStrings, "&7, ") + "&7."));
         }
         if (team.getDescription() != null) {
-            sender.sendMessage(ColorText.translate(" &eDescription: &r") + team.getDescription());
+            sender.sendMessage(ColorText.translateAmpersand(" &eDescription: &r") + team.getDescription());
         }
-        sender.sendMessage(ColorText.translate("&7&m" + StringUtils.repeat("-", 40)));
+        sender.sendMessage(ColorText.translateAmpersand("&7&m" + StringUtils.repeat("-", 40)));
     }
 }

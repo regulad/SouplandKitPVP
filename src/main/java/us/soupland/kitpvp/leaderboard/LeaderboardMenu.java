@@ -25,7 +25,7 @@ public class LeaderboardMenu {
 
         Profile profile = ProfileManager.getProfile(player);
 
-        InventoryMaker inventoryMaker = new InventoryMaker(ColorText.translate(profile.getTheme().getPrimaryColor() + "Leaderboards"), 5);
+        InventoryMaker inventoryMaker = new InventoryMaker(ColorText.translateAmpersand(profile.getTheme().getPrimaryColor() + "Leaderboards"), 5);
 
         inventoryMaker.setItem(10, new InventoryMaker.ClickableItem() {
             @Override
@@ -44,7 +44,7 @@ public class LeaderboardMenu {
 
                 for (Profile playerData : profiles) {
                     OfflinePlayer player1 = Bukkit.getOfflinePlayer(playerData.getUuid());
-                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.KILLS)));
+                    lore.add(ColorText.translateAmpersand(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.KILLS)));
                     pos++;
                 }
 
@@ -72,7 +72,7 @@ public class LeaderboardMenu {
 
                 for (Profile playerData : profiles) {
                     OfflinePlayer player1 = Bukkit.getOfflinePlayer(playerData.getUuid());
-                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.DEATHS)));
+                    lore.add(ColorText.translateAmpersand(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.DEATHS)));
                     pos++;
                 }
 
@@ -99,7 +99,7 @@ public class LeaderboardMenu {
 
                 for (Profile playerData : profiles) {
                     OfflinePlayer player1 = Bukkit.getOfflinePlayer(playerData.getUuid());
-                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.HIGHEST_STREAK)));
+                    lore.add(ColorText.translateAmpersand(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.HIGHEST_STREAK)));
                     pos++;
                 }
 
@@ -126,7 +126,7 @@ public class LeaderboardMenu {
 
                 for (Profile playerData : profiles) {
                     OfflinePlayer player1 = Bukkit.getOfflinePlayer(playerData.getUuid());
-                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.HIGHEST_STREAK)));
+                    lore.add(ColorText.translateAmpersand(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.HIGHEST_STREAK)));
                     pos++;
                 }
 
@@ -154,7 +154,7 @@ public class LeaderboardMenu {
 
                 for (Profile playerData : profiles) {
                     OfflinePlayer player1 = Bukkit.getOfflinePlayer(playerData.getUuid());
-                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getKdr()));
+                    lore.add(ColorText.translateAmpersand(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getKdr()));
                     pos++;
                 }
 
@@ -197,7 +197,7 @@ public class LeaderboardMenu {
 
                     for (Profile playerData : profiles) {
                         OfflinePlayer player1 = Bukkit.getOfflinePlayer(playerData.getUuid());
-                        lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getEventsWin().getOrDefault(event.getName(), 0)));
+                        lore.add(ColorText.translateAmpersand(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getEventsWin().getOrDefault(event.getName(), 0)));
                         ;
                         pos++;
                     }

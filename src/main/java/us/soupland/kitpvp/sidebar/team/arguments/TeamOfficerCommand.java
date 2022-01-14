@@ -33,18 +33,18 @@ public class TeamOfficerCommand extends KitPvPArgument {
         Profile profile = ProfileManager.getProfile((Player) sender);
         Team team = profile.getTeam();
         if (team == null) {
-            sender.sendMessage(ColorText.translate("&cYou are not in a team."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou are not in a team."));
             return;
         }
         if (!team.getOfficers().contains(((Player) sender).getUniqueId())) {
-            sender.sendMessage(ColorText.translate("&cYou must be leader to edit the team roster."));
+            sender.sendMessage(ColorText.translateAmpersand("&cYou must be leader to edit the team roster."));
             return;
         }
         if (args.length < 3) {
-            sender.sendMessage(ColorText.translate("&6&m" + StringUtils.repeat("-", 25)));
-            sender.sendMessage(ColorText.translate("&c/" + label + ' ' + name + " <add> <playerName>"));
-            sender.sendMessage(ColorText.translate("&c/" + label + ' ' + name + " <remove> <playerName>"));
-            sender.sendMessage(ColorText.translate("&6&m" + StringUtils.repeat("-", 25)));
+            sender.sendMessage(ColorText.translateAmpersand("&6&m" + StringUtils.repeat("-", 25)));
+            sender.sendMessage(ColorText.translateAmpersand("&c/" + label + ' ' + name + " <add> <playerName>"));
+            sender.sendMessage(ColorText.translateAmpersand("&c/" + label + ' ' + name + " <remove> <playerName>"));
+            sender.sendMessage(ColorText.translateAmpersand("&6&m" + StringUtils.repeat("-", 25)));
         } else {
             boolean isAddArgument;
             if (args[1].equalsIgnoreCase("add")) {
@@ -52,15 +52,15 @@ public class TeamOfficerCommand extends KitPvPArgument {
             } else if (args[1].equalsIgnoreCase("remove")) {
                 isAddArgument = false;
             } else {
-                sender.sendMessage(ColorText.translate("&6&m" + StringUtils.repeat("-", 25)));
-                sender.sendMessage(ColorText.translate("&c/" + label + ' ' + name + " <add> <playerName>"));
-                sender.sendMessage(ColorText.translate("&c/" + label + ' ' + name + " <remove> <playerName>"));
-                sender.sendMessage(ColorText.translate("&6&m" + StringUtils.repeat("-", 25)));
+                sender.sendMessage(ColorText.translateAmpersand("&6&m" + StringUtils.repeat("-", 25)));
+                sender.sendMessage(ColorText.translateAmpersand("&c/" + label + ' ' + name + " <add> <playerName>"));
+                sender.sendMessage(ColorText.translateAmpersand("&c/" + label + ' ' + name + " <remove> <playerName>"));
+                sender.sendMessage(ColorText.translateAmpersand("&6&m" + StringUtils.repeat("-", 25)));
                 return;
             }
             OfflinePlayer target = Bukkit.getPlayer(args[2]);
             if ((!target.hasPlayedBefore()) && (!target.isOnline())) {
-                sender.sendMessage(ColorText.translate("&c" + args[2] + " has never played before."));
+                sender.sendMessage(ColorText.translateAmpersand("&c" + args[2] + " has never played before."));
                 return;
             }
             if (target.isOnline()) {
@@ -72,22 +72,22 @@ public class TeamOfficerCommand extends KitPvPArgument {
             Profile targetProfile = ProfileManager.getProfile(target);
             Team targetTeam = targetProfile.getTeam();
             if (targetTeam == null || team != targetTeam) {
-                sender.sendMessage(ColorText.translate("&c" + target.getName() + " is not in your team."));
+                sender.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " is not in your team."));
                 return;
             }
             if (isAddArgument) {
                 if (team.getLeader() == target.getUniqueId() || team.getOfficers().contains(target.getUniqueId())) {
-                    sender.sendMessage(ColorText.translate("&c" + target.getName() + " is already an officer."));
+                    sender.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " is already an officer."));
                 } else {
                     team.getOfficers().add(target.getUniqueId());
-                    team.sendMessage(ColorText.translate("&3[*] &c" + target.getName() + " &ehas been promoted to an &aOFFICER&e."));
+                    team.sendMessage(ColorText.translateAmpersand("&3[*] &c" + target.getName() + " &ehas been promoted to an &aOFFICER&e."));
                 }
             } else {
                 if (team.getLeader() == target.getUniqueId() || !team.getOfficers().contains(target.getUniqueId())) {
-                    sender.sendMessage(ColorText.translate("&c" + target.getName() + " is not an officer."));
+                    sender.sendMessage(ColorText.translateAmpersand("&c" + target.getName() + " is not an officer."));
                 } else {
                     team.getOfficers().remove(target.getUniqueId());
-                    team.sendMessage(ColorText.translate("&3[*] &c" + target.getName() + " &ehas been demoted to &cMEMBER&e."));
+                    team.sendMessage(ColorText.translateAmpersand("&3[*] &c" + target.getName() + " &ehas been demoted to &cMEMBER&e."));
                 }
             }
         }

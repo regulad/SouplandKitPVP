@@ -30,7 +30,6 @@ import us.soupland.kitpvp.utilities.task.TaskUtil;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SpidermanKit extends Kit {
 
@@ -52,12 +51,12 @@ public class SpidermanKit extends Kit {
         }
 
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
         }
 
     }
@@ -99,22 +98,8 @@ public class SpidermanKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 5700;
-    }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Catch your enemies in a sticky web.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
     }
 
     @EventHandler
@@ -133,12 +118,12 @@ public class SpidermanKit extends Kit {
                     return;
                 }
                 if (ProfileManager.getProfile(damager).isFrozenToUseAbility()) {
-                    damager.sendMessage(ColorText.translate("&cYou are currently jammed, so you can not use your ability."));
+                    damager.sendMessage(ColorText.translateAmpersand("&cYou are currently jammed, so you can not use your ability."));
                     return;
                 }
                 Cooldown cooldown = KitPvP.getCooldown(getName());
                 if (cooldown.isOnCooldown(damager)) {
-                    damager.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(damager), true) + "&c."));
+                    damager.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(damager), true) + "&c."));
                     return;
                 }
                 cooldown.setCooldown(damager);

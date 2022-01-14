@@ -21,7 +21,6 @@ import us.soupland.kitpvp.utilities.player.DurationFormatter;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FighterKit extends Kit {
 
@@ -37,18 +36,18 @@ public class FighterKit extends Kit {
 
         if (player.getItemInHand() == null || player.getItemInHand().getType() != Material.ENDER_CHEST) return;
         if (profile.getPlayerState() == PlayerState.SPAWN) {
-            player.sendMessage(ColorText.translate("&cYou can't do this in Spawn."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou can't do this in Spawn."));
             return;
         }
 
         if (player.getHealth() >= player.getMaxHealth()) {
-            player.sendMessage(ColorText.translate("&c" + player.getName() + " has already full heart."));
+            player.sendMessage(ColorText.translateAmpersand("&c" + player.getName() + " has already full heart."));
             return;
         }
 
         Cooldown cooldown = KitPvP.getCooldown(getName());
         if (cooldown.isOnCooldown(player)) {
-            player.sendMessage(ColorText.translate("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
+            player.sendMessage(ColorText.translateAmpersand("&cYou are on cooldown for another &e" + DurationFormatter.getRemaining(cooldown.getDuration(player), true) + "&c."));
             return;
         }
         cooldown.setCooldown(player);
@@ -68,7 +67,7 @@ public class FighterKit extends Kit {
             player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
         }
         player.updateInventory();
-        player.sendMessage(ColorText.translate("&eYou have used your &a&lHealth Package&e."));
+        player.sendMessage(ColorText.translateAmpersand("&eYou have used your &a&lHealth Package&e."));
     }
 
     @Override
@@ -103,23 +102,7 @@ public class FighterKit extends Kit {
     }
 
     @Override
-    public String getPermissions() {
-        return "soupland.kit." + getName().toLowerCase();
-    }
-
-    @Override
-    public int getCredits() {
+    public int getCreditCost() {
         return 7800;
     }
-
-    @Override
-    public List<String> getDescription() {
-        List<String> list = new ArrayList<>();
-        list.add("");
-        list.add("&7Use your Health Package");
-        list.add("&7and fight free vs. your opponents.");
-        list.add("");
-        return getConfig().getStringList("Kits." + this.getName() + ".description");
-    }
-
 }

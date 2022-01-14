@@ -116,17 +116,17 @@ public class TagGame extends Game {
                                 continue;
                             }
                             eliminate(player);
-                            player.sendMessage(ColorText.translate("&eYou were blow up!"));
+                            player.sendMessage(ColorText.translateAmpersand("&eYou were blow up!"));
                         }
                         tagged.clear();
                     }
                     if (!getPlayers(GamePlayerState.ALIVE).isEmpty()) {
                         List<Player> players = getPlayers(GamePlayerState.ALIVE);
                         Player random = players.get(KitPvPUtils.getRandomNumber(players.size()));
-                        broadcast(ColorText.translate("&f&lRound " + round + " has started!"));
+                        broadcast(ColorText.translateAmpersand("&f&lRound " + round + " has started!"));
                         if (random != null) {
                             setTagged(random, null);
-                            broadcast(ColorText.translate("&eThe TNT has been released to " + random.getName() + "&e!"));
+                            broadcast(ColorText.translateAmpersand("&eThe TNT has been released to " + random.getName() + "&e!"));
                         }
                         for (Player player : players) {
                             player.teleport(getLocation());
@@ -315,7 +315,7 @@ public class TagGame extends Game {
                     event.setDamage(0);
                     if (tagged.contains(attacker) && !tagged.contains(player)) {
                         setTagged(player, attacker);
-                        broadcast(ColorText.translate(player.getName() + " &7is IT!"));
+                        broadcast(ColorText.translateAmpersand(player.getName() + " &7is IT!"));
                     }
                 }
             }

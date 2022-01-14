@@ -77,7 +77,7 @@ public class KitPvPCache {
     private void registerCommand(KitPvPCommand axisCommand, String permission) {
         PluginCommand command = getCommand(axisCommand.getName(), javaPlugin);
 
-        command.setPermissionMessage(ColorText.translate("&cNo permission."));
+        command.setPermissionMessage(ColorText.translateAmpersand("&cNo permission."));
 
         if (permission != null) {
             command.setPermission(permission.toLowerCase());

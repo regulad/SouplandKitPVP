@@ -55,7 +55,7 @@ public class PlayerListener implements Listener {
                 int z = (int) event.getBlockPlaced().getLocation().getZ();
 
                 if (y > arena.getMaxBuildHeight()) {
-                    player.sendMessage(ColorText.translate("&cYou have reached the maximum build height."));
+                    player.sendMessage(ColorText.translateAmpersand("&cYou have reached the maximum build height."));
                     event.setCancelled(true);
                     return;
                 }
@@ -91,7 +91,7 @@ public class PlayerListener implements Listener {
                 int z = (int) block.getLocation().getZ();
 
                 if (y > arena.getMaxBuildHeight()) {
-                    player.sendMessage(ColorText.translate("&cYou have reached the maximum build height."));
+                    player.sendMessage(ColorText.translateAmpersand("&cYou have reached the maximum build height."));
                     event.setCancelled(true);
                     return;
                 }
