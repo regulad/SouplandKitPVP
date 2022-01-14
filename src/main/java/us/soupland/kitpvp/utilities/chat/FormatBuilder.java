@@ -3,15 +3,14 @@ package us.soupland.kitpvp.utilities.chat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MessageUtil {
-
+public class MessageBuilder {
     private Map<String, String> variableMap;
 
-    public MessageUtil() {
+    public MessageBuilder() {
         variableMap = new HashMap<>();
     }
 
-    public MessageUtil setVariable(String variable, String value) {
+    public MessageBuilder setVariable(String variable, String value) {
         if (variable != null && !variable.isEmpty()) {
             variableMap.put(variable, value);
         }
