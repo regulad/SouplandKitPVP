@@ -38,6 +38,7 @@ public class ExperienceIncrementArgument extends KitPvPArgument {
             try {
                 type = PlayerGainExpEvent.Type.valueOf(args[2].toUpperCase());
             } catch (Exception ignored) {
+                ignored.printStackTrace();
                 sender.sendMessage(ColorText.translate("&cInvalid type."));
                 return;
             }

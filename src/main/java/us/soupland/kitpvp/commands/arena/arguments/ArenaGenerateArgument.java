@@ -42,6 +42,7 @@ public class ArenaGenerateArgument extends KitPvPArgument {
                 try {
                     new ArenaGenerator(name, new Schematic(faggot), Bukkit.getWorld("arenas")).generate(faggot);
                 } catch (Exception ignored) {
+                    ignored.printStackTrace();
                     System.out.println("[ArenaGenerator] Arena named '" + name + "' could not be loaded.");
                 }
             });

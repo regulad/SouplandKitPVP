@@ -86,8 +86,8 @@ public class KitPvP extends JavaPlugin {
         new Metrics(this, 13949);
 
         rankConfig = new Config(this, "ranks.yml");
-        config = new Config(KitPvP.getInstance(), "settings.yml");
-        kitConfig = new Config(KitPvP.getInstance(), "kits.yml");
+        config = new Config(this, "settings.yml");
+        kitConfig = new Config(this, "kits.yml");
 
         new KitPvPCache();
         Bukkit.getPluginManager().registerEvents(new MakerListener(), this);
@@ -95,7 +95,6 @@ public class KitPvP extends JavaPlugin {
         TaskUtil.runTaskLater(() -> {
             if (aridiManager != null) {
                 Bukkit.getPluginManager().registerEvents(new AridiListener(), this);
-
             }
         }, 2 * 20L);
 

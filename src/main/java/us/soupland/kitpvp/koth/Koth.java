@@ -74,6 +74,7 @@ public class Koth implements DocumentSerializer {
                         Koth koth = new Koth(document.getString("name"));
                         koth.setCuboid(new Cuboid(LocationUtils.getLocation(document.getString("upperCorner")), LocationUtils.getLocation(document.getString("lowerCorner"))));
                     } catch (Exception ignored) {
+                        ignored.printStackTrace();
                         System.out.println("[KitPvP] A koth named '" + (document.containsKey("name") ? "Unknown Name" : document.getString("name") + "' could not be loaded."));
                     }
                 }

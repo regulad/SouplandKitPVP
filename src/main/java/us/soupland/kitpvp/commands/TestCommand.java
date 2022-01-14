@@ -28,16 +28,6 @@ public class TestCommand extends KitPvPCommand {
             return false;
         }
         Player player = (Player) sender;
-        //new CrateOpener(player, CrateType.KIT);
-        /*if (args.length < 1) {
-            player.sendMessage(ColorText.translate("&cUsage: /test <particle>"));
-        } else {
-            try {
-                ProfileManager.getProfile(player).setCurrentParticle(ParticleEffect.valueOf(args[0].toUpperCase()));
-            } catch (Exception ignored) {
-                player.sendMessage(ColorText.translate("&cUsage: /test <particle>"));
-            }
-        }*/
 
         Config config = KitPvP.getInstance().getKitConfig();
 

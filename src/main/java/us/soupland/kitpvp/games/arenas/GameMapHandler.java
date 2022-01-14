@@ -51,6 +51,7 @@ public class GameMapHandler {
                         System.out.println(serializedLocation);
                     }
                 } catch (Exception ignored) {
+                    ignored.printStackTrace();
                     System.out.println("[GAMES] ARENA " + gameName + " COULD NOT BE LOADED.");
                     continue;
                 }
