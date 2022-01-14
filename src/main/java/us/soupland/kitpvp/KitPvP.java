@@ -5,18 +5,24 @@ import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Recipe;
-import us.soupland.kitpvp.utilities.configuration.Config;
-import us.soupland.kitpvp.utilities.cooldown.Cooldown;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
 import us.soupland.kitpvp.database.KitPvPDatabase;
 import us.soupland.kitpvp.games.GameHandler;
 import us.soupland.kitpvp.games.arenas.GameMapHandler;
 import us.soupland.kitpvp.games.listeners.GamesListener;
-import us.soupland.kitpvp.utilities.inventory.MakerListener;
 import us.soupland.kitpvp.kits.KitHandler;
 import us.soupland.kitpvp.kits.KitListener;
+import us.soupland.kitpvp.kits.types.*;
 import us.soupland.kitpvp.koth.KothManager;
 import us.soupland.kitpvp.levelrank.LevelRank;
+import us.soupland.kitpvp.listener.*;
 import us.soupland.kitpvp.listener.handler.ListenerHandler;
 import us.soupland.kitpvp.managers.KillStreakManager;
 import us.soupland.kitpvp.managers.LeaderboardManager;
@@ -32,21 +38,15 @@ import us.soupland.kitpvp.practice.match.Match;
 import us.soupland.kitpvp.practice.match.MatchHandler;
 import us.soupland.kitpvp.profile.Profile;
 import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.sidebar.scoreboard.AridiManager;
-import us.soupland.kitpvp.sidebar.scoreboard.listeners.AridiListener;
 import us.soupland.kitpvp.server.ServerData;
 import us.soupland.kitpvp.sidebar.KitPvPBoard;
+import us.soupland.kitpvp.sidebar.scoreboard.AridiManager;
+import us.soupland.kitpvp.sidebar.scoreboard.listeners.AridiListener;
 import us.soupland.kitpvp.sidebar.team.Team;
 import us.soupland.kitpvp.utilities.KitPvPCache;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import us.soupland.kitpvp.kits.types.*;
-import us.soupland.kitpvp.listener.*;
+import us.soupland.kitpvp.utilities.configuration.Config;
+import us.soupland.kitpvp.utilities.cooldown.Cooldown;
+import us.soupland.kitpvp.utilities.inventory.MakerListener;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.task.TaskUtil;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
@@ -77,6 +77,7 @@ public class KitPvP extends JavaPlugin {
     private LeaderboardManager leaderboardManager;
     @Setter
     private AridiManager aridiManager;
+
     public static KitPvP getInstance() {
         return KitPvP.getPlugin(KitPvP.class);
     }
@@ -203,7 +204,7 @@ public class KitPvP extends JavaPlugin {
         TaskUtil.runTaskTimer(() -> {
             int i = Team.getTeams().size();
 
-          Team.getTeams().forEach(Team::saveTeam);
+            Team.getTeams().forEach(Team::saveTeam);
         }, 20L, 10 * 60 * 20L);
 
         for (World world : Bukkit.getWorlds()) {
@@ -234,7 +235,7 @@ public class KitPvP extends JavaPlugin {
         }, 20L, 20L);
 
         LevelRank.loadRanks();
-        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new KitPvPHook(this).register();
         }
     }

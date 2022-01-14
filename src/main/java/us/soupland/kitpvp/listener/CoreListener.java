@@ -1,18 +1,5 @@
 package us.soupland.kitpvp.listener;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.enums.*;
-import us.soupland.kitpvp.games.Game;
-import us.soupland.kitpvp.games.GameHandler;
-import us.soupland.kitpvp.games.GamePlayerState;
-import us.soupland.kitpvp.games.types.PotPvPGame;
-import us.soupland.kitpvp.kits.types.QuickdropKit;
-import us.soupland.kitpvp.managers.BountyManager;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.utilities.KitPvPUtils;
-import us.soupland.kitpvp.utilities.chat.ColorText;
-import us.soupland.kitpvp.utilities.player.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -31,6 +18,19 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.PlayerInventory;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.*;
+import us.soupland.kitpvp.games.Game;
+import us.soupland.kitpvp.games.GameHandler;
+import us.soupland.kitpvp.games.GamePlayerState;
+import us.soupland.kitpvp.games.types.PotPvPGame;
+import us.soupland.kitpvp.kits.types.QuickdropKit;
+import us.soupland.kitpvp.managers.BountyManager;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.utilities.KitPvPUtils;
+import us.soupland.kitpvp.utilities.chat.ColorText;
+import us.soupland.kitpvp.utilities.player.PlayerUtils;
 import us.soupland.kitpvp.utilities.task.TaskUtil;
 
 public class CoreListener implements Listener {
@@ -117,7 +117,7 @@ public class CoreListener implements Listener {
             Bukkit.broadcastMessage(ColorText.translate(player.getName() + " &7has disconnected."));
         }
 
-        BountyManager.getFaggotMap().remove(player.getUniqueId());
+        BountyManager.getHunterHunted().remove(player.getUniqueId());
         if (BountyManager.getPriceMap().containsKey(player.getUniqueId())) {
             profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) + BountyManager.getPriceMap().get(player.getUniqueId())));
         }

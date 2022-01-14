@@ -1,9 +1,9 @@
 package us.soupland.kitpvp.kits;
 
 import lombok.Getter;
-import us.soupland.kitpvp.KitPvP;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 
 import java.util.ArrayList;

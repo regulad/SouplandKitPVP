@@ -1,22 +1,22 @@
 package us.soupland.kitpvp.utilities;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.commands.arena.ArenaCommand;
-import us.soupland.kitpvp.commands.experience.ExperienceCommand;
-import us.soupland.kitpvp.games.GameCommand;
-import us.soupland.kitpvp.koth.commands.KothCommands;
-import us.soupland.kitpvp.levelrank.LevelRankCommand;
-import us.soupland.kitpvp.practice.duel.commands.AcceptCommand;
-import us.soupland.kitpvp.practice.duel.commands.DuelCommand;
-import us.soupland.kitpvp.sidebar.team.TeamCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.SimplePluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.commands.*;
+import us.soupland.kitpvp.commands.arena.ArenaCommand;
+import us.soupland.kitpvp.commands.experience.ExperienceCommand;
 import us.soupland.kitpvp.commands.menu.*;
+import us.soupland.kitpvp.games.GameCommand;
+import us.soupland.kitpvp.koth.commands.KothCommands;
+import us.soupland.kitpvp.levelrank.LevelRankCommand;
+import us.soupland.kitpvp.practice.duel.commands.AcceptCommand;
+import us.soupland.kitpvp.practice.duel.commands.DuelCommand;
+import us.soupland.kitpvp.sidebar.team.TeamCommand;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
 
@@ -73,6 +73,7 @@ public class KitPvPCache {
     private void registerCommand(KitPvPCommand axisCommand) {
         registerCommand(axisCommand, null);
     }
+
     private void registerCommand(KitPvPCommand axisCommand, String permission) {
         PluginCommand command = getCommand(axisCommand.getName(), javaPlugin);
 

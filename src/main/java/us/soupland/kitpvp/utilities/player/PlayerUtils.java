@@ -1,13 +1,5 @@
 package us.soupland.kitpvp.utilities.player;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.enums.PlayerItem;
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.enums.Refill;
-import us.soupland.kitpvp.games.Game;
-import us.soupland.kitpvp.kits.Kit;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -25,6 +17,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.PlayerItem;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.enums.Refill;
+import us.soupland.kitpvp.games.Game;
+import us.soupland.kitpvp.kits.Kit;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.task.TaskUtil;

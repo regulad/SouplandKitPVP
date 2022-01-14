@@ -1,10 +1,10 @@
 package us.soupland.kitpvp.commands;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.server.ServerData;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.server.ServerData;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;

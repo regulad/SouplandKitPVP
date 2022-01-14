@@ -1,13 +1,13 @@
 package us.soupland.kitpvp.practice.match.task;
 
-import us.soupland.kitpvp.practice.match.Match;
-import us.soupland.kitpvp.practice.match.MatchState;
-import us.soupland.kitpvp.utilities.player.PlayerUtils;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import us.soupland.kitpvp.practice.match.Match;
+import us.soupland.kitpvp.practice.match.MatchState;
+import us.soupland.kitpvp.utilities.player.PlayerUtils;
 
 public class MatchStartTask extends BukkitRunnable {
 

@@ -12,8 +12,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.jetbrains.annotations.Nullable;
 import us.soupland.kitpvp.KitPvP;
 
-import java.util.Collections;
-
 @Getter
 public class KitPvPDatabase {
 

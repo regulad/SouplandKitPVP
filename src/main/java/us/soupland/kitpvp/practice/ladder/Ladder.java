@@ -2,8 +2,8 @@ package us.soupland.kitpvp.practice.ladder;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import us.soupland.kitpvp.practice.kit.Kit;
 import org.bukkit.inventory.ItemStack;
+import us.soupland.kitpvp.practice.kit.Kit;
 
 @AllArgsConstructor
 @Getter

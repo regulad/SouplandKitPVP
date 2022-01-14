@@ -3,8 +3,13 @@ package us.soupland.kitpvp.games;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DurationFormatUtils;
 import org.bukkit.*;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.scheduler.BukkitRunnable;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.enums.PlayerItem;
 import us.soupland.kitpvp.enums.PlayerState;
@@ -19,12 +24,6 @@ import us.soupland.kitpvp.utilities.chat.ChatUtil;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.player.PlayerUtils;
-import org.apache.commons.lang.time.DurationFormatUtils;
-import org.apache.commons.lang.*;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.scheduler.BukkitRunnable;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.*;
@@ -233,7 +232,7 @@ public class GameHandler {
         inventory.setItem(8, PlayerItem.EVENT_LEAVE_ITEM.getItem());
         player.updateInventory();
         for (PotionEffect effect : player.getActivePotionEffects()) {
-           player.removePotionEffect(effect.getType());
+            player.removePotionEffect(effect.getType());
         }
     }
 

@@ -1,5 +1,17 @@
 package us.soupland.kitpvp.games.types;
 
+import org.apache.commons.lang3.StringUtils;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.enums.Theme;
 import us.soupland.kitpvp.games.Game;
@@ -13,15 +25,6 @@ import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.player.PlayerUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.bukkit.*;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 import us.soupland.kitpvp.utilities.task.TaskUtil;
 
 import java.util.ArrayList;

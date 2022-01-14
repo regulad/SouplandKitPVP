@@ -1,16 +1,16 @@
 package us.soupland.kitpvp.commands;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.utilities.configuration.Config;
-import us.soupland.kitpvp.kits.KitHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.kits.KitHandler;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
+import us.soupland.kitpvp.utilities.configuration.Config;
 
 import java.util.List;
 import java.util.stream.Collectors;

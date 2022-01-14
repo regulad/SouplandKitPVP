@@ -1,17 +1,17 @@
 package us.soupland.kitpvp.commands.arena.arguments;
 
-import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
-import us.soupland.kitpvp.practice.arena.Arena;
-import us.soupland.kitpvp.practice.arena.ArenaHandler;
-import us.soupland.kitpvp.practice.ladder.Ladder;
-import us.soupland.kitpvp.practice.ladder.LadderHandler;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import us.soupland.kitpvp.practice.arena.Arena;
+import us.soupland.kitpvp.practice.arena.ArenaHandler;
+import us.soupland.kitpvp.practice.ladder.Ladder;
+import us.soupland.kitpvp.practice.ladder.LadderHandler;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
+import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 public class ArenaLadderArgument extends KitPvPArgument {

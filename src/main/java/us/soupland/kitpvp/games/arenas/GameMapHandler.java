@@ -1,8 +1,8 @@
 package us.soupland.kitpvp.games.arenas;
 
 import lombok.Getter;
-import us.soupland.kitpvp.KitPvP;
 import org.bukkit.Location;
+import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.utilities.configuration.Config;
 import us.soupland.kitpvp.utilities.location.LocationUtils;
 

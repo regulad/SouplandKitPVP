@@ -1,16 +1,5 @@
 package us.soupland.kitpvp.kits.types;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.utilities.cooldown.Cooldown;
-import us.soupland.kitpvp.utilities.chat.ColorText;
-import us.soupland.kitpvp.utilities.item.ItemMaker;
-import us.soupland.kitpvp.utilities.time.TimeUtils;
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.enums.Refill;
-import us.soupland.kitpvp.kits.Kit;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.utilities.player.DurationFormatter;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -25,6 +14,17 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.enums.Refill;
+import us.soupland.kitpvp.kits.Kit;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.utilities.chat.ColorText;
+import us.soupland.kitpvp.utilities.cooldown.Cooldown;
+import us.soupland.kitpvp.utilities.item.ItemMaker;
+import us.soupland.kitpvp.utilities.player.DurationFormatter;
+import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -165,7 +165,7 @@ public class MarioKit extends Kit {
             killer = profile.getLastDamager();
         }
 
-        if(killer == null){
+        if (killer == null) {
             return;
         }
 
@@ -179,8 +179,8 @@ public class MarioKit extends Kit {
             killer.getInventory().addItem(new ItemMaker(Material.FIREBALL).setDisplayname("&cFireball").create());
         }
 
-        for(ItemStack itemStack : killer.getInventory()){
-            if(itemStack == null || itemStack.getType() == Material.AIR){
+        for (ItemStack itemStack : killer.getInventory()) {
+            if (itemStack == null || itemStack.getType() == Material.AIR) {
                 killer.getInventory().addItem(new ItemMaker((profile.getRefill() == Refill.POTION && !profile.getPlayerState().name().contains("PRACTICE") && profile.getPlayerState() != PlayerState.INGAME ? Material.POTION : Material.MUSHROOM_SOUP)).setDurability(profile.getRefill() == Refill.POTION && !profile.getPlayerState().name().contains("PRACTICE") && profile.getPlayerState() != PlayerState.INGAME ? 16421 : 0).setDisplayname(profile.getRefill() == Refill.POTION && !profile.getPlayerState().name().contains("PRACTICE") && profile.getPlayerState() != PlayerState.INGAME ? "&dPotion" : "&6Soup").addLore(profile.getRefill() == Refill.POTION && !profile.getPlayerState().name().contains("PRACTICE") && profile.getPlayerState() != PlayerState.INGAME ? "" : "&7Heals 3.5 Health").create());
             }
         }

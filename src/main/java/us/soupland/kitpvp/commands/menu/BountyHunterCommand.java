@@ -1,9 +1,5 @@
 package us.soupland.kitpvp.commands.menu;
 
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
-import us.soupland.kitpvp.managers.BountyManager;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -12,9 +8,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.managers.BountyManager;
+import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
+import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.Map;
@@ -93,7 +93,7 @@ public class BountyHunterCommand extends KitPvPCommand {
                                 return;
                             }
                             ProfileManager.getProfile(player).setCreatingBounty(true);
-                            BountyManager.getFaggotMap().put(player.getUniqueId(), online.getUniqueId());
+                            BountyManager.getHunterHunted().put(player.getUniqueId(), online.getUniqueId());
                             player.sendMessage(ColorText.translate("&4&l[Bounty] &cYou are creating a Bounty. Please type the amount in chat."));
                             player.sendMessage(ColorText.translate("&cType '&fcancel&c' to cancel it."));
                         }
@@ -131,7 +131,7 @@ public class BountyHunterCommand extends KitPvPCommand {
         });
 
         int i = 9;
-        for (Map.Entry<UUID, UUID> entry : BountyManager.getFaggotMap().entrySet()) {
+        for (Map.Entry<UUID, UUID> entry : BountyManager.getHunterHunted().entrySet()) {
             if (!BountyManager.getPriceMap().containsKey(entry.getKey())) {
                 continue;
             }

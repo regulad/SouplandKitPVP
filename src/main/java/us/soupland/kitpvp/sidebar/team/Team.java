@@ -5,11 +5,11 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
 import lombok.Getter;
 import lombok.Setter;
-import us.soupland.kitpvp.KitPvP;
 import org.bson.Document;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.KitPvP;
 
 import java.util.*;
 

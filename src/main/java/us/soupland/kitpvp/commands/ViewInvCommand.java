@@ -1,8 +1,5 @@
 package us.soupland.kitpvp.commands;
 
-import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
-import us.soupland.kitpvp.practice.match.MatchSnapshot;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -11,9 +8,12 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import us.soupland.kitpvp.practice.match.MatchSnapshot;
+import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
+import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;

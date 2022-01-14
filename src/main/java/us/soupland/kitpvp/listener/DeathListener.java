@@ -1,9 +1,13 @@
 package us.soupland.kitpvp.listener;
 
-import us.soupland.kitpvp.utilities.cooldown.Cooldown;
-import us.soupland.kitpvp.utilities.chat.ChatUtil;
-import us.soupland.kitpvp.utilities.chat.ColorText;
-import us.soupland.kitpvp.utilities.task.TaskUtil;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.enums.Achievement;
 import us.soupland.kitpvp.enums.PlayerStat;
@@ -16,15 +20,11 @@ import us.soupland.kitpvp.managers.KillStreakManager;
 import us.soupland.kitpvp.profile.Profile;
 import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.streak.KillStreak;
+import us.soupland.kitpvp.utilities.chat.ChatUtil;
+import us.soupland.kitpvp.utilities.chat.ColorText;
+import us.soupland.kitpvp.utilities.cooldown.Cooldown;
 import us.soupland.kitpvp.utilities.player.PlayerUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
+import us.soupland.kitpvp.utilities.task.TaskUtil;
 
 import java.util.Map;
 import java.util.UUID;
@@ -207,14 +207,14 @@ public class DeathListener implements Listener {
                 killerProfile.getKitKills().put(currentKit.getName(), killerProfile.getKitKills().getOrDefault(currentKit.getName(), 0) + 1);
             }
 
-            for (Map.Entry<UUID, UUID> entry : BountyManager.getFaggotMap().entrySet()) {
+            for (Map.Entry<UUID, UUID> entry : BountyManager.getHunterHunted().entrySet()) {
                 if (player.getUniqueId() != entry.getValue() || !BountyManager.getPriceMap().containsKey(entry.getKey())) {
                     continue;
                 }
                 killerProfile.setStat(PlayerStat.CREDITS, (killerProfile.getStat(PlayerStat.CREDITS) + BountyManager.getPriceMap().get(entry.getKey())));
                 Bukkit.broadcastMessage(ColorText.translate("&4&l[Bounty] " + killer.getName() + " &7received &c" + BountyManager.getPriceMap().get(entry.getKey()) + " credits &7for killing " + player.getName() + "&7."));
                 BountyManager.getPriceMap().remove(entry.getKey());
-                BountyManager.getFaggotMap().remove(entry.getKey());
+                BountyManager.getHunterHunted().remove(entry.getKey());
             }
 
             for (KillStreak streak : KillStreakManager.getStreaks()) {

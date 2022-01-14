@@ -1,12 +1,12 @@
 package us.soupland.kitpvp.sidebar.team.arguments;
 
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.sidebar.team.Team;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.sidebar.team.Team;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
 

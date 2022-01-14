@@ -1,17 +1,17 @@
 package us.soupland.kitpvp.sidebar.team.arguments;
 
 import com.mongodb.client.model.Filters;
-import us.soupland.kitpvp.sidebar.team.Team;
-import us.soupland.kitpvp.utilities.chat.ColorText;
-import us.soupland.kitpvp.utilities.task.TaskUtil;
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.sidebar.team.Team;
+import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
+import us.soupland.kitpvp.utilities.task.TaskUtil;
 
 import java.util.UUID;
 

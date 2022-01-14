@@ -1,18 +1,17 @@
 package us.soupland.kitpvp.managers;
 
 import lombok.Getter;
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.enums.Refill;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.streak.KillStreak;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.enums.Refill;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.streak.KillStreak;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
-import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;

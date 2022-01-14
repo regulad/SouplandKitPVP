@@ -13,7 +13,7 @@ public class KothDeleteArgument extends KitPvPArgument {
 
     @Override
     public String getUsage(String s) {
-        return '/' + s + ' ' + getName()+ " <kothName>";
+        return '/' + s + ' ' + getName() + " <kothName>";
     }
 
     @Override

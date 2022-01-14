@@ -1,8 +1,11 @@
 package us.soupland.kitpvp.sidebar;
 
+import org.apache.commons.lang3.StringUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.utilities.cooldown.Cooldown;
 import us.soupland.kitpvp.enums.PlayerStat;
 import us.soupland.kitpvp.enums.PlayerState;
 import us.soupland.kitpvp.enums.Theme;
@@ -13,16 +16,13 @@ import us.soupland.kitpvp.practice.match.Match;
 import us.soupland.kitpvp.practice.match.MatchState;
 import us.soupland.kitpvp.profile.Profile;
 import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.server.ServerData;
 import us.soupland.kitpvp.sidebar.scoreboard.AridiAdapter;
 import us.soupland.kitpvp.sidebar.scoreboard.AridiStyle;
-import us.soupland.kitpvp.server.ServerData;
 import us.soupland.kitpvp.sidebar.team.Team;
 import us.soupland.kitpvp.utilities.Utils;
+import us.soupland.kitpvp.utilities.cooldown.Cooldown;
 import us.soupland.kitpvp.utilities.player.DurationFormatter;
-import org.apache.commons.lang3.StringUtils;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -150,7 +150,7 @@ public class KitPvPBoard implements AridiAdapter, Listener {
                 } else {
                     toReturn.add(theme.getPrimaryColor() + "Opponent: " + theme.getSecondaryColor() + match.getOpponent(player).getName());
                     toReturn.add("");
-                    toReturn.add(theme.getPrimaryColor() + "Ping: " + theme.getSecondaryColor() + ((CraftPlayer) player).getHandle().ping+ " \u2503 " + ((CraftPlayer) match.getOpponent(player)).getHandle().ping);
+                    toReturn.add(theme.getPrimaryColor() + "Ping: " + theme.getSecondaryColor() + ((CraftPlayer) player).getHandle().ping + " \u2503 " + ((CraftPlayer) match.getOpponent(player)).getHandle().ping);
                     toReturn.add(theme.getPrimaryColor() + "CPS: " + theme.getSecondaryColor() + profile.getPlayerCps() + " \u2503 " + ProfileManager.getProfile(match.getOpponent(player)).getPlayerCps());
                 }
                 toReturn.add("");

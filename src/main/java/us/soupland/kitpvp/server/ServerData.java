@@ -3,10 +3,10 @@ package us.soupland.kitpvp.server;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
 import lombok.Data;
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.utilities.cuboid.Cuboid;
 import org.bson.Document;
 import org.bukkit.Location;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.utilities.cuboid.Cuboid;
 import us.soupland.kitpvp.utilities.location.LocationUtils;
 
 @Data

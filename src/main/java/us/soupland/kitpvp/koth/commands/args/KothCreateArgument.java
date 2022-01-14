@@ -1,13 +1,13 @@
 package us.soupland.kitpvp.koth.commands.args;
 
-import us.soupland.kitpvp.utilities.cuboid.Cuboid;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import us.soupland.kitpvp.koth.Koth;
 import us.soupland.kitpvp.koth.selection.KothListener;
 import us.soupland.kitpvp.koth.selection.KothSelection;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
+import us.soupland.kitpvp.utilities.cuboid.Cuboid;
 
 public class KothCreateArgument extends KitPvPArgument {
 

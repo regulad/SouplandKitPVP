@@ -9,10 +9,10 @@ import lombok.Getter;
 import org.bson.Document;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import us.soupland.kitpvp.utilities.DocumentSerializer;
-import us.soupland.kitpvp.utilities.location.LocationUtils;
 import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.utilities.DocumentSerializer;
 import us.soupland.kitpvp.utilities.cuboid.Cuboid;
+import us.soupland.kitpvp.utilities.location.LocationUtils;
 
 import java.util.List;
 import java.util.Map;

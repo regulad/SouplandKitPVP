@@ -1,14 +1,14 @@
 package us.soupland.kitpvp.practice.listener;
 
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
 
 public class SpawnListener implements Listener {
 

@@ -2,18 +2,17 @@ package us.soupland.kitpvp;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
-import us.soupland.kitpvp.profile.Profile;
 import us.soupland.kitpvp.profile.ProfileManager;
 
 public class KitPvPHook extends PlaceholderExpansion {
 
     private KitPvP plugin;
 
-    public KitPvPHook(KitPvP plugin){
+    public KitPvPHook(KitPvP plugin) {
         this.plugin = plugin;
     }
 
-    public boolean persist(){
+    public boolean persist() {
         return true;
     }
 
@@ -24,7 +23,7 @@ public class KitPvPHook extends PlaceholderExpansion {
      * @return Always true since it's an internal class.
      */
     @Override
-    public boolean canRegister(){
+    public boolean canRegister() {
         return true;
     }
 
@@ -35,7 +34,7 @@ public class KitPvPHook extends PlaceholderExpansion {
      * @return The name of the author as a String.
      */
     @Override
-    public String getAuthor(){
+    public String getAuthor() {
         return plugin.getDescription().getAuthors().toString();
     }
 
@@ -49,32 +48,31 @@ public class KitPvPHook extends PlaceholderExpansion {
      * @return The identifier in {@code %<identifier>_<value>%} as String.
      */
     @Override
-    public String getIdentifier(){
+    public String getIdentifier() {
         return "kitpvp";
     }
 
 
-
     @Override
-    public String getVersion(){
+    public String getVersion() {
         return plugin.getDescription().getVersion();
     }
 
     @Override
-    public String onPlaceholderRequest(Player player, String identifier){
-        if(player == null){
+    public String onPlaceholderRequest(Player player, String identifier) {
+        if (player == null) {
             return "";
         }
 
-        if(identifier.equals("chatcolor")){
+        if (identifier.equals("chatcolor")) {
             return ProfileManager.getProfile(player.getUniqueId()).getChatColor().toString();
         }
 
-        if(identifier.equals("team")){
+        if (identifier.equals("team")) {
             return (ProfileManager.getProfile(player.getUniqueId()).getTeam() == null ? "" : ProfileManager.getProfile(player.getUniqueId()).getTeam().getDisplayName());
         }
 
-        if(identifier.equals("pvplevel")){
+        if (identifier.equals("pvplevel")) {
             return (ProfileManager.getProfile(player.getUniqueId()).getLevelRank() == null ? "" : ProfileManager.getProfile(player.getUniqueId()).getLevelRank().getDisplayName());
         }
         return null;

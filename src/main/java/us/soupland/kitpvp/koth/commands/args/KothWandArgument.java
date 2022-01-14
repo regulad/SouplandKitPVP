@@ -1,8 +1,8 @@
 package us.soupland.kitpvp.koth.commands.args;
 
-import us.soupland.kitpvp.koth.selection.KothSelection;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.koth.selection.KothSelection;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
 
 public class KothWandArgument extends KitPvPArgument {

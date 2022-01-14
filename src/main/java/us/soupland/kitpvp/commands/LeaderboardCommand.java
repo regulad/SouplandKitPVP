@@ -1,9 +1,9 @@
 package us.soupland.kitpvp.commands;
 
-import us.soupland.kitpvp.leaderboard.LeaderboardMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.leaderboard.LeaderboardMenu;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
 

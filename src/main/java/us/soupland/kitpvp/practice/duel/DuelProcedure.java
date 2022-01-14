@@ -1,11 +1,11 @@
 package us.soupland.kitpvp.practice.duel;
 
 import lombok.Data;
+import org.bukkit.entity.Player;
 import us.soupland.kitpvp.practice.arena.Arena;
 import us.soupland.kitpvp.practice.ladder.Ladder;
 import us.soupland.kitpvp.profile.Profile;
 import us.soupland.kitpvp.profile.ProfileManager;
-import org.bukkit.entity.Player;
 import us.soupland.kitpvp.utilities.chat.ChatUtil;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 

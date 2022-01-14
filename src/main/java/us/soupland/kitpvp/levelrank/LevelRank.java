@@ -3,9 +3,9 @@ package us.soupland.kitpvp.levelrank;
 import com.google.common.collect.Lists;
 import lombok.Data;
 import lombok.Getter;
-import us.soupland.kitpvp.KitPvP;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
+import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.utilities.configuration.Config;
 
 import java.util.Arrays;

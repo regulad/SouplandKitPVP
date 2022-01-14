@@ -1,17 +1,5 @@
 package us.soupland.kitpvp.kits.types;
 
-import us.soupland.kitpvp.utilities.cooldown.Cooldown;
-import us.soupland.kitpvp.utilities.chat.ColorText;
-import us.soupland.kitpvp.utilities.item.ItemMaker;
-import us.soupland.kitpvp.utilities.task.TaskUtil;
-import us.soupland.kitpvp.utilities.time.TimeUtils;
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.enums.Refill;
-import us.soupland.kitpvp.kits.Kit;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.utilities.player.DurationFormatter;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -27,6 +15,18 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.enums.Refill;
+import us.soupland.kitpvp.kits.Kit;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.utilities.chat.ColorText;
+import us.soupland.kitpvp.utilities.cooldown.Cooldown;
+import us.soupland.kitpvp.utilities.item.ItemMaker;
+import us.soupland.kitpvp.utilities.player.DurationFormatter;
+import us.soupland.kitpvp.utilities.task.TaskUtil;
+import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;

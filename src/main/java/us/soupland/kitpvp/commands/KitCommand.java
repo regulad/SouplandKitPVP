@@ -1,17 +1,5 @@
 package us.soupland.kitpvp.commands;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.utilities.cooldown.Cooldown;
-import us.soupland.kitpvp.enums.KitMenuType;
-import us.soupland.kitpvp.enums.PlayerStat;
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
-import us.soupland.kitpvp.kits.Kit;
-import us.soupland.kitpvp.kits.KitHandler;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.utilities.KitPvPUtils;
-import us.soupland.kitpvp.utilities.Utils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
@@ -23,8 +11,20 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.KitMenuType;
+import us.soupland.kitpvp.enums.PlayerStat;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.kits.Kit;
+import us.soupland.kitpvp.kits.KitHandler;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.utilities.KitPvPUtils;
+import us.soupland.kitpvp.utilities.Utils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
+import us.soupland.kitpvp.utilities.cooldown.Cooldown;
+import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
 

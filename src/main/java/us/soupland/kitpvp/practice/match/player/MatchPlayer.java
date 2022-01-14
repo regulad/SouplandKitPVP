@@ -1,9 +1,9 @@
 package us.soupland.kitpvp.practice.match.player;
 
 import lombok.Data;
+import org.bukkit.entity.Player;
 import us.soupland.kitpvp.enums.PlayerStat;
 import us.soupland.kitpvp.profile.ProfileManager;
-import org.bukkit.entity.Player;
 
 import java.util.UUID;
 

@@ -1,5 +1,7 @@
 package us.soupland.kitpvp.games.arguments;
 
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.games.Game;
 import us.soupland.kitpvp.games.GameHandler;
@@ -8,8 +10,6 @@ import us.soupland.kitpvp.games.events.PlayerLeaveGameEvent;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
 import us.soupland.kitpvp.utilities.player.PlayerUtils;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class GameLeaveArgument extends KitPvPArgument {
 

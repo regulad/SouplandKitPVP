@@ -1,12 +1,5 @@
 package us.soupland.kitpvp.kits.types;
 
-import us.soupland.kitpvp.utilities.chat.ColorText;
-import us.soupland.kitpvp.utilities.item.ItemMaker;
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.enums.Refill;
-import us.soupland.kitpvp.kits.Kit;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
@@ -14,6 +7,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.enums.Refill;
+import us.soupland.kitpvp.kits.Kit;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.utilities.chat.ColorText;
+import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +47,9 @@ public class SuicidalKit extends Kit {
             }
             Profile faggot = ProfileManager.getProfile((Player) entity);
             if (faggot.getPlayerState() == PlayerState.PLAYING || faggot.getPlayerState() == PlayerState.FIGHTINGPRACTICE) {
-                if(((Player) entity).getHealth() <= 3){
+                if (((Player) entity).getHealth() <= 3) {
                     ((Player) entity).setHealth(0);
-                }else{
+                } else {
                     ((Player) entity).setHealth(3);
                 }
                 entity.sendMessage(ColorText.translate("&e" + player.getName() + " &ahas just bombed their self, and you got hurt."));

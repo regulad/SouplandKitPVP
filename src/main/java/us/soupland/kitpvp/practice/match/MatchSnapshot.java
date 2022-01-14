@@ -2,11 +2,11 @@ package us.soupland.kitpvp.practice.match;
 
 import lombok.Data;
 import lombok.Getter;
-import us.soupland.kitpvp.practice.match.player.MatchPlayer;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
+import us.soupland.kitpvp.practice.match.player.MatchPlayer;
 
 import java.util.Collection;
 import java.util.HashMap;

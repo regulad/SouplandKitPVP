@@ -1,10 +1,10 @@
 package us.soupland.kitpvp.practice.ladder.types;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 import us.soupland.kitpvp.practice.kit.Kit;
 import us.soupland.kitpvp.practice.kit.arcade.ArcherKit;
 import us.soupland.kitpvp.practice.ladder.Ladder;
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 

@@ -1,10 +1,10 @@
 package us.soupland.kitpvp.commands.arena.arguments;
 
-import us.soupland.kitpvp.practice.arena.Arena;
-import us.soupland.kitpvp.practice.arena.ArenaHandler;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.practice.arena.Arena;
+import us.soupland.kitpvp.practice.arena.ArenaHandler;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
 

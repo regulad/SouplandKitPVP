@@ -1,16 +1,5 @@
 package us.soupland.kitpvp.commands.menu;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.enums.PlayerStat;
-import us.soupland.kitpvp.games.Game;
-import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
-import us.soupland.kitpvp.kits.Kit;
-import us.soupland.kitpvp.kits.KitHandler;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.utilities.KitPvPUtils;
-import us.soupland.kitpvp.utilities.Utils;
-import us.soupland.kitpvp.utilities.WoolUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -19,8 +8,19 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.PlayerStat;
+import us.soupland.kitpvp.games.Game;
+import us.soupland.kitpvp.kits.Kit;
+import us.soupland.kitpvp.kits.KitHandler;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.utilities.KitPvPUtils;
+import us.soupland.kitpvp.utilities.Utils;
+import us.soupland.kitpvp.utilities.WoolUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
+import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class ShopCommand extends KitPvPCommand {
                 }
             });
         }
-        
+
         inventoryMaker.setItem(2, new InventoryMaker.ClickableItem() {
             @Override
             public void onClick(InventoryClickEvent inventoryClickEvent) {

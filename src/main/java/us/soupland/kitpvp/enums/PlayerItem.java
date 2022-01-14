@@ -2,11 +2,11 @@ package us.soupland.kitpvp.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.player.PlayerUtils;
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 
 @AllArgsConstructor
 @Getter

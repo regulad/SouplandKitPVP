@@ -1,21 +1,6 @@
 package us.soupland.kitpvp.games.types;
 
 import lombok.Getter;
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.enums.Theme;
-import us.soupland.kitpvp.games.Game;
-import us.soupland.kitpvp.games.GameHandler;
-import us.soupland.kitpvp.games.GamePlayerState;
-import us.soupland.kitpvp.games.GameState;
-import us.soupland.kitpvp.games.arenas.GameMap;
-import us.soupland.kitpvp.games.events.GameStartedEvent;
-import us.soupland.kitpvp.games.events.PlayerWinGameEvent;
-import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.utilities.KitPvPUtils;
-import us.soupland.kitpvp.utilities.chat.ColorText;
-import us.soupland.kitpvp.utilities.item.ItemMaker;
-import us.soupland.kitpvp.utilities.player.DurationFormatter;
-import us.soupland.kitpvp.utilities.player.PlayerUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Arrow;
@@ -32,6 +17,21 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.Theme;
+import us.soupland.kitpvp.games.Game;
+import us.soupland.kitpvp.games.GameHandler;
+import us.soupland.kitpvp.games.GamePlayerState;
+import us.soupland.kitpvp.games.GameState;
+import us.soupland.kitpvp.games.arenas.GameMap;
+import us.soupland.kitpvp.games.events.GameStartedEvent;
+import us.soupland.kitpvp.games.events.PlayerWinGameEvent;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.utilities.KitPvPUtils;
+import us.soupland.kitpvp.utilities.chat.ColorText;
+import us.soupland.kitpvp.utilities.item.ItemMaker;
+import us.soupland.kitpvp.utilities.player.DurationFormatter;
+import us.soupland.kitpvp.utilities.player.PlayerUtils;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -101,7 +101,7 @@ public class OITCGame extends Game {
         i = 5;
         new BukkitRunnable() {
             public void run() {
-                if(KitPvP.getInstance().getGameHandler().getActiveGame() == null){
+                if (KitPvP.getInstance().getGameHandler().getActiveGame() == null) {
                     this.cancel();
                 }
                 if (i == 0) {

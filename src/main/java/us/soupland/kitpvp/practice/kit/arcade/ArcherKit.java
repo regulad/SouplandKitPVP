@@ -1,10 +1,10 @@
 package us.soupland.kitpvp.practice.kit.arcade;
 
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import us.soupland.kitpvp.kits.KitHandler;
 import us.soupland.kitpvp.practice.kit.Kit;
 import us.soupland.kitpvp.profile.ProfileManager;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 

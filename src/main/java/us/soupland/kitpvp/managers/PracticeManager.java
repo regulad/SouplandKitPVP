@@ -1,9 +1,9 @@
 package us.soupland.kitpvp.managers;
 
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.profile.ProfileManager;
 
 public class PracticeManager {
 

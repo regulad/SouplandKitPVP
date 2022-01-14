@@ -5,14 +5,14 @@ import com.google.common.primitives.Ints;
 import com.mongodb.client.MongoCursor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.bson.Document;
+import org.bukkit.scheduler.BukkitRunnable;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.enums.PlayerStat;
 import us.soupland.kitpvp.games.Game;
 import us.soupland.kitpvp.kits.Kit;
 import us.soupland.kitpvp.kits.KitHandler;
 import us.soupland.kitpvp.profile.Profile;
-import org.bson.Document;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,6 +1,14 @@
 package us.soupland.kitpvp.games.types;
 
+import org.apache.commons.lang3.StringUtils;
+import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.scheduler.BukkitRunnable;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.enums.Theme;
 import us.soupland.kitpvp.games.Game;
@@ -15,14 +23,6 @@ import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.player.PlayerUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.bukkit.*;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.scheduler.BukkitRunnable;
 import us.soupland.kitpvp.utilities.task.TaskUtil;
 
 import java.util.ArrayList;
@@ -146,7 +146,7 @@ public class SumoGame extends Game {
 
         new BukkitRunnable() {
             public void run() {
-                if(KitPvP.getInstance().getGameHandler().getActiveGame() == null){
+                if (KitPvP.getInstance().getGameHandler().getActiveGame() == null) {
                     this.cancel();
                 }
                 if (i == 0) {
@@ -233,7 +233,7 @@ public class SumoGame extends Game {
                         continue;
                     }
                     Theme theme = ProfileManager.getProfile(faggot).getTheme();
-                    faggot.sendMessage(ColorText.translate("&2\u2713 " +  winner.getName() + theme.getPrimaryColor() + " won round " + round + theme.getPrimaryColor() + '!'));
+                    faggot.sendMessage(ColorText.translate("&2\u2713 " + winner.getName() + theme.getPrimaryColor() + " won round " + round + theme.getPrimaryColor() + '!'));
                 }
                 winner.sendMessage(ColorText.translate("&eYou're next up, good luck! They don't stand a chance."));
                 player.teleport(getLocation());
@@ -286,6 +286,7 @@ public class SumoGame extends Game {
     public int getPing(Player player) {
         return ((CraftPlayer) player).getHandle().ping;
     }
+
     @Override
     public int getMaxPlayers() {
         return 50;

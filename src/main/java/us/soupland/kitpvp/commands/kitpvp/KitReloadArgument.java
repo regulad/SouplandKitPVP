@@ -1,7 +1,7 @@
 package us.soupland.kitpvp.commands.kitpvp;
 
-import us.soupland.kitpvp.levelrank.LevelRank;
 import org.bukkit.command.CommandSender;
+import us.soupland.kitpvp.levelrank.LevelRank;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
 

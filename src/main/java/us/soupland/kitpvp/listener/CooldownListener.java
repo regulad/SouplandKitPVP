@@ -1,14 +1,14 @@
 package us.soupland.kitpvp.listener;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.utilities.cooldown.CooldownExpiredEvent;
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.utilities.cooldown.CooldownExpiredEvent;
 import us.soupland.kitpvp.utilities.task.TaskUtil;
 
 public class CooldownListener implements Listener {

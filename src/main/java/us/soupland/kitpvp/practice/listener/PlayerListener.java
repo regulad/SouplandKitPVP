@@ -1,13 +1,5 @@
 package us.soupland.kitpvp.practice.listener;
 
-import us.soupland.kitpvp.utilities.chat.ColorText;
-import us.soupland.kitpvp.utilities.task.TaskUtil;
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.practice.arena.Arena;
-import us.soupland.kitpvp.practice.match.Match;
-import us.soupland.kitpvp.practice.match.MatchState;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -21,6 +13,14 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.practice.arena.Arena;
+import us.soupland.kitpvp.practice.match.Match;
+import us.soupland.kitpvp.practice.match.MatchState;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.utilities.chat.ColorText;
+import us.soupland.kitpvp.utilities.task.TaskUtil;
 
 public class PlayerListener implements Listener {
 

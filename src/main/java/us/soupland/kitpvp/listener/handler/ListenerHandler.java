@@ -1,8 +1,8 @@
 package us.soupland.kitpvp.listener.handler;
 
-import us.soupland.kitpvp.KitPvP;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
+import us.soupland.kitpvp.KitPvP;
 
 public class ListenerHandler {
 

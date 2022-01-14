@@ -1,12 +1,5 @@
 package us.soupland.kitpvp.commands;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.enums.PlayerStat;
-import us.soupland.kitpvp.utilities.cooldown.Cooldown;
-import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
-import us.soupland.kitpvp.sidebar.team.Team;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -15,9 +8,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.PlayerStat;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
+import us.soupland.kitpvp.sidebar.team.Team;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
+import us.soupland.kitpvp.utilities.cooldown.Cooldown;
+import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 import us.soupland.kitpvp.utilities.player.DurationFormatter;
 import us.soupland.kitpvp.utilities.time.TimeUtils;
@@ -145,7 +145,7 @@ public class TeamsCommand extends KitPvPCommand {
                                         name = "-";
                                     }
                                     SimpleDateFormat format = new SimpleDateFormat("dd-MM HH:mm:ss");
-                                    ItemStack stack = new ItemMaker(Material.SKULL_ITEM).setDisplayname(name).addLore("Role: &fLEADER", "Joined: &f" + format.format(faggot.getPlayerJoined().getOrDefault(faggot.getLeader(), System.currentTimeMillis())), "",  "Click here for more information", "").create();
+                                    ItemStack stack = new ItemMaker(Material.SKULL_ITEM).setDisplayname(name).addLore("Role: &fLEADER", "Joined: &f" + format.format(faggot.getPlayerJoined().getOrDefault(faggot.getLeader(), System.currentTimeMillis())), "", "Click here for more information", "").create();
                                     SkullMeta meta = (SkullMeta) stack.getItemMeta();
                                     meta.setOwner(Bukkit.getOfflinePlayer(faggot.getLeader()).getName());
                                     stack.setItemMeta(meta);

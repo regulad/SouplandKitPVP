@@ -6,3 +6,6 @@ MONGO:
     USERNAME: admin
     DATABASE: admin
     PASSWORD:
+CHAT-FORMAT: "{PLAYERNAME} {MESSAGE}"
+# PlayerName and Message must ALWAYS be included!
+# Message must always be after playername.

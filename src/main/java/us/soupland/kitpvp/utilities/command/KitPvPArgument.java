@@ -48,7 +48,7 @@ public abstract class KitPvPArgument {
 
     public abstract String getUsage(String label);
 
-    public abstract void onExecute(CommandSender sender , String label, String[] args);
+    public abstract void onExecute(CommandSender sender, String label, String[] args);
 
     public List<String> onTabComplete(CommandSender sender, String label, String[] args) {
         return Collections.emptyList();

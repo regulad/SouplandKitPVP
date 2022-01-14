@@ -1,11 +1,11 @@
 package us.soupland.kitpvp.sidebar.team.arguments;
 
 import com.google.common.primitives.Ints;
-import us.soupland.kitpvp.sidebar.team.Team;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.sidebar.team.Team;
 import us.soupland.kitpvp.utilities.chat.ChatUtil;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;

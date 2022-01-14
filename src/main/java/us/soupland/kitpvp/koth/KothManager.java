@@ -1,13 +1,12 @@
 package us.soupland.kitpvp.koth;
 
-import us.soupland.kitpvp.KitPvP;
 import lombok.Data;
-
-import us.soupland.kitpvp.koth.selection.KothListener;
 import org.apache.commons.lang.time.DurationFormatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.koth.selection.KothListener;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 
 @Data

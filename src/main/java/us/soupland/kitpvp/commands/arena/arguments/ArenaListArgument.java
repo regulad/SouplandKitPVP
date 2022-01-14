@@ -1,9 +1,9 @@
 package us.soupland.kitpvp.commands.arena.arguments;
 
-import us.soupland.kitpvp.practice.arena.Arena;
-import us.soupland.kitpvp.practice.arena.ArenaHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.command.CommandSender;
+import us.soupland.kitpvp.practice.arena.Arena;
+import us.soupland.kitpvp.practice.arena.ArenaHandler;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;
 

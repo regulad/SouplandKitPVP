@@ -1,13 +1,13 @@
 package us.soupland.kitpvp.games.arguments;
 
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.enums.PlayerState;
 import us.soupland.kitpvp.enums.Theme;
 import us.soupland.kitpvp.games.GameHandler;
 import us.soupland.kitpvp.profile.ProfileManager;
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;

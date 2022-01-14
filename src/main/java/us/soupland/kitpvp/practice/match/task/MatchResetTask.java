@@ -1,8 +1,8 @@
 package us.soupland.kitpvp.practice.match.task;
 
 import lombok.AllArgsConstructor;
-import us.soupland.kitpvp.practice.match.Match;
 import org.bukkit.scheduler.BukkitRunnable;
+import us.soupland.kitpvp.practice.match.Match;
 
 @AllArgsConstructor
 public class MatchResetTask extends BukkitRunnable {

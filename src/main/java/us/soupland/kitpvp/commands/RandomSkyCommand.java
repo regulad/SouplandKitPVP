@@ -1,18 +1,18 @@
 package us.soupland.kitpvp.commands;
 
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.utilities.configuration.Config;
-import us.soupland.kitpvp.enums.PlayerState;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.PlayerState;
+import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
+import us.soupland.kitpvp.utilities.configuration.Config;
 import us.soupland.kitpvp.utilities.location.LocationUtils;
 
 public class RandomSkyCommand extends KitPvPCommand {
@@ -29,7 +29,7 @@ public class RandomSkyCommand extends KitPvPCommand {
             sender.sendMessage("Unknown command.");
             return false;
         }
-        config = new Config(KitPvP.getInstance(),"config");
+        config = new Config(KitPvP.getInstance(), "config");
         if (args.length < 1) {
             sender.sendMessage(ColorText.translate("&cUsage: /" + label + " <playerName>"));
         } else {

@@ -1,13 +1,13 @@
 package us.soupland.kitpvp.practice.listener;
 
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockFromToEvent;
 import us.soupland.kitpvp.practice.arena.Arena;
 import us.soupland.kitpvp.practice.arena.ArenaHandler;
 import us.soupland.kitpvp.practice.match.Match;
 import us.soupland.kitpvp.practice.match.MatchHandler;
 import us.soupland.kitpvp.practice.match.MatchState;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockFromToEvent;
 
 public class ArenaListener implements Listener {
 

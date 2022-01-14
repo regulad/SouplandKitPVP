@@ -1,10 +1,5 @@
 package us.soupland.kitpvp.commands.menu;
 
-import us.soupland.kitpvp.enums.KitMenuType;
-import us.soupland.kitpvp.enums.ServerTime;
-import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -12,9 +7,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import us.soupland.kitpvp.enums.KitMenuType;
+import us.soupland.kitpvp.enums.ServerTime;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
+import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 public class SettingsCommand extends KitPvPCommand {
@@ -96,8 +96,8 @@ public class SettingsCommand extends KitPvPCommand {
             @Override
             public void onClick(InventoryClickEvent inventoryClickEvent) {
                 player.closeInventory();
-             //   originalProfile.setMessagesEnabled(!originalProfile.isMessagesEnabled());
-              //  player.sendMessage(ColorText.translate("&7You have toggled your sounds " + (originalProfile.isMessagesEnabled() ? "&aON" : "&cOFF") + "&7."));
+                //   originalProfile.setMessagesEnabled(!originalProfile.isMessagesEnabled());
+                //  player.sendMessage(ColorText.translate("&7You have toggled your sounds " + (originalProfile.isMessagesEnabled() ? "&aON" : "&cOFF") + "&7."));
             }
 
             @Override
@@ -143,7 +143,7 @@ public class SettingsCommand extends KitPvPCommand {
             @Override
             public void onClick(InventoryClickEvent inventoryClickEvent) {
                 player.closeInventory();
-          //      player.sendMessage(ColorText.translate("&7You have toggled your sounds " + (originalProfile.isSoundsEnabled() ? "&aON" : "&cOFF") + "&7."));
+                //      player.sendMessage(ColorText.translate("&7You have toggled your sounds " + (originalProfile.isSoundsEnabled() ? "&aON" : "&cOFF") + "&7."));
             }
 
             @Override
@@ -183,8 +183,8 @@ public class SettingsCommand extends KitPvPCommand {
             @Override
             public void onClick(InventoryClickEvent inventoryClickEvent) {
                 player.closeInventory();
-               // originalProfile.setTipsEnabled(!originalProfile.isTipsEnabled());
-              //  player.sendMessage(ColorText.translate("&7You have toggled your Auto Messages " + (originalProfile.isTipsEnabled() ? "&aON" : "&cOFF") + "&7."));
+                // originalProfile.setTipsEnabled(!originalProfile.isTipsEnabled());
+                //  player.sendMessage(ColorText.translate("&7You have toggled your Auto Messages " + (originalProfile.isTipsEnabled() ? "&aON" : "&cOFF") + "&7."));
             }
 
             @Override

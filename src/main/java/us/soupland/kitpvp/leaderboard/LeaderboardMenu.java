@@ -1,12 +1,6 @@
 package us.soupland.kitpvp.leaderboard;
 
 import com.google.common.collect.Lists;
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.enums.PlayerStat;
-import us.soupland.kitpvp.games.Game;
-import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
-import us.soupland.kitpvp.profile.Profile;
-import us.soupland.kitpvp.profile.ProfileManager;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -14,7 +8,13 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.enums.PlayerStat;
+import us.soupland.kitpvp.games.Game;
+import us.soupland.kitpvp.profile.Profile;
+import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.chat.ColorText;
+import us.soupland.kitpvp.utilities.inventory.InventoryMaker;
 import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public class LeaderboardMenu {
 
                 for (Profile playerData : profiles) {
                     OfflinePlayer player1 = Bukkit.getOfflinePlayer(playerData.getUuid());
-                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' '+ player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.KILLS)));
+                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.KILLS)));
                     pos++;
                 }
 
@@ -72,7 +72,7 @@ public class LeaderboardMenu {
 
                 for (Profile playerData : profiles) {
                     OfflinePlayer player1 = Bukkit.getOfflinePlayer(playerData.getUuid());
-                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' '  + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.DEATHS)));
+                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.DEATHS)));
                     pos++;
                 }
 
@@ -99,7 +99,7 @@ public class LeaderboardMenu {
 
                 for (Profile playerData : profiles) {
                     OfflinePlayer player1 = Bukkit.getOfflinePlayer(playerData.getUuid());
-                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' '+ player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.HIGHEST_STREAK)));
+                    lore.add(ColorText.translate(profile.getTheme().getPrimaryColor() + (pos == 1 || pos == 2 ? "&l" : pos == 3 ? "&o" : "") + pos + ' ' + player1.getName() + "&7: &f" + playerData.getStat(PlayerStat.HIGHEST_STREAK)));
                     pos++;
                 }
 

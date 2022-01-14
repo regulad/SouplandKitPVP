@@ -1,11 +1,11 @@
 package us.soupland.kitpvp.games.arguments;
 
+import org.apache.commons.lang3.StringUtils;
+import org.bukkit.command.CommandSender;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.games.Game;
 import us.soupland.kitpvp.games.GameHandler;
 import us.soupland.kitpvp.games.GamePlayerState;
-import org.apache.commons.lang3.StringUtils;
-import org.bukkit.command.CommandSender;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPArgument;

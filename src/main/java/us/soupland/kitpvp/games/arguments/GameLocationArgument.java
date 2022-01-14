@@ -1,12 +1,12 @@
 package us.soupland.kitpvp.games.arguments;
 
 import com.google.common.primitives.Ints;
-import us.soupland.kitpvp.KitPvP;
-import us.soupland.kitpvp.games.arenas.GameMap;
-import us.soupland.kitpvp.games.arenas.GameMapHandler;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.KitPvP;
+import us.soupland.kitpvp.games.arenas.GameMap;
+import us.soupland.kitpvp.games.arenas.GameMapHandler;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ChatUtil;
 import us.soupland.kitpvp.utilities.chat.ColorText;
