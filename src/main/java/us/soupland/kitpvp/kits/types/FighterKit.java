@@ -30,7 +30,7 @@ public class FighterKit extends Kit {
     }
 
     @Override
-    public void execute(PlayerInteractEvent event) {
+    public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Profile profile = ProfileManager.getProfile(player);
 
@@ -94,15 +94,5 @@ public class FighterKit extends Kit {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200000, 1));
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.ENDER_CHEST).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 7800;
     }
 }

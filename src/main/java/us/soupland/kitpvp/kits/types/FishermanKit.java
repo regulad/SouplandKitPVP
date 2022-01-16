@@ -6,7 +6,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerFishEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.util.Vector;
 import us.soupland.kitpvp.KitPvP;
@@ -52,16 +51,6 @@ public class FishermanKit extends Kit {
 
         player.updateInventory();
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.FISHING_ROD).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 4300;
     }
 
     @EventHandler

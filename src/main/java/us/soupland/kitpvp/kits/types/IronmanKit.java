@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import us.soupland.kitpvp.enums.PlayerState;
 import us.soupland.kitpvp.enums.Refill;
@@ -52,16 +51,6 @@ public class IronmanKit extends Kit {
 
         player.updateInventory();
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.IRON_INGOT).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 4900;
     }
 
     @EventHandler

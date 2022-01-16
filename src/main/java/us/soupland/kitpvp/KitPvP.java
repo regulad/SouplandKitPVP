@@ -73,7 +73,7 @@ public class KitPvP extends JavaPlugin {
     private ArenaHandler arenaHandler;
     private GameHandler gameHandler;
     private GameMapHandler gameMapHandler;
-    private Config config, rankConfig, kitConfig;
+    private Config config, rankConfig, kitConfig, gameMapConfig;
     private LeaderboardManager leaderboardManager;
     @Setter
     private AridiManager aridiManager;
@@ -89,6 +89,7 @@ public class KitPvP extends JavaPlugin {
         rankConfig = new Config(this, "ranks.yml");
         config = new Config(this, "settings.yml");
         kitConfig = new Config(this, "kits.yml");
+        gameMapConfig = new Config(this, "gamemap.yml");
 
         new KitPvPCache();
         Bukkit.getPluginManager().registerEvents(new MakerListener(), this);
@@ -115,6 +116,7 @@ public class KitPvP extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        // Save to database
         serverData.saveServer();
 
         ArenaHandler.getArenaMap().forEach(Arena::saveArena);
@@ -127,7 +129,9 @@ public class KitPvP extends JavaPlugin {
             match.getChangedBlocks().forEach(blockState -> blockState.getLocation().getBlock().setType(blockState.getType()));
         }
 
-        LevelRank.saveRanks();
+        // Save to config
+        LevelRank.saveAllRanks();
+        KitHandler.saveKits();
     }
 
     public void removeRecipe(Material... materials) {
@@ -234,7 +238,7 @@ public class KitPvP extends JavaPlugin {
             }
         }, 20L, 20L);
 
-        LevelRank.loadRanks();
+        LevelRank.loadAllRanks();
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new KitPvPHook(this).register();
         }

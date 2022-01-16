@@ -2,7 +2,6 @@ package us.soupland.kitpvp.kits.types;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -44,15 +43,5 @@ public class QuickdropKit extends Kit {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200000, 0));
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.MUSHROOM_SOUP).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 3200;
     }
 }

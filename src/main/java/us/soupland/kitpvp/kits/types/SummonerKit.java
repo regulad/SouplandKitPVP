@@ -39,7 +39,7 @@ public class SummonerKit extends Kit {
     }
 
     @Override
-    public void execute(PlayerInteractEvent event) {
+    public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Profile profile = ProfileManager.getProfile(player);
 
@@ -117,16 +117,6 @@ public class SummonerKit extends Kit {
         player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 200000, 2));
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200000, 1));
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.IRON_BLOCK).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 7200;
     }
 
     @EventHandler

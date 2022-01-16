@@ -20,8 +20,8 @@ public class KitReloadArgument extends KitPvPArgument {
         /*KitPvP.getInstance().getConfig().reload();
         KitPvP.getInstance().getKitConfig().reload();
         KitPvP.getInstance().getRankConfig().reload();*/
-        LevelRank.getLevelRanks().clear();
-        LevelRank.loadRanks();
+        LevelRank.getAllRanks().clear();
+        LevelRank.loadAllRanks();
 
         sender.sendMessage(ColorText.translateAmpersand("&aKitpvp reloaded"));
     }

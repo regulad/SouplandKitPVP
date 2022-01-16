@@ -41,7 +41,7 @@ public class WitherKit extends Kit {
     }
 
     @Override
-    public void execute(PlayerInteractEvent event) {
+    public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Profile profile = ProfileManager.getProfile(player);
 
@@ -120,16 +120,6 @@ public class WitherKit extends Kit {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200000, 0));
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.SKULL_ITEM).setDurability(1).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 3000;
     }
 
     @EventHandler

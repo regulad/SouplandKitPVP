@@ -20,7 +20,7 @@ public class GameMapHandler {
 
     public GameMapHandler(KitPvP plugin) {
         this.gameMap = new HashMap<>();
-        this.config = new Config(plugin, "gamemap.yml");
+        this.config = plugin.getGameMapConfig();
         this.loadGameMaps();
     }
 

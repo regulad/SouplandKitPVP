@@ -5,6 +5,7 @@ import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
+import de.inventivegames.particle.ParticleEffect;
 import lombok.Data;
 import org.bson.Document;
 import org.bukkit.Bukkit;
@@ -15,6 +16,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.Scoreboard;
+import org.jetbrains.annotations.Nullable;
 import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.enums.*;
 import us.soupland.kitpvp.events.PlayerGainExpEvent;
@@ -28,7 +30,6 @@ import us.soupland.kitpvp.practice.match.Match;
 import us.soupland.kitpvp.sidebar.team.Team;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
-import us.soupland.kitpvp.utilities.player.ParticleEffect;
 
 import java.util.*;
 
@@ -191,26 +192,29 @@ public class Profile {
     }
 
     public boolean canRankUp() {
-        return LevelRank.getLevelRanks()
+        return LevelRank.getAllRanks()
                 .stream()
                 .anyMatch(rank -> this.experience >= rank.getRequiredExp() && !levelRankHistory.contains(rank.getName()));
     }
 
-    public LevelRank getRankUp() {
-        return LevelRank.getLevelRanks()
+    public @Nullable LevelRank getRankUp() {
+        return LevelRank.getAllRanks()
                 .stream()
                 .filter(rank -> rank.getRequiredExp() >= this.experience && !levelRankHistory.contains(rank.getName()))
                 .findFirst()
-                .get();
+                .orElse(null);
     }
 
-    public void rankUp() {
-        this.levelRank = LevelRank.getLevelRanks()
-                .stream()
-                .filter(rank -> rank.getRequiredExp() <= this.experience && !levelRankHistory.contains(rank.getName()))
-                .findFirst()
-                .get();
-        this.levelRankHistory.add(this.levelRank.getName());
+    public boolean rankUp() {
+        final @Nullable LevelRank possibleRankUp = getRankUp();
+        if (possibleRankUp != null) {
+            this.levelRank = possibleRankUp;
+            this.levelRankHistory.add(this.levelRank.getName());
+            return true;
+        } else {
+            KitPvP.getInstance().getLogger().warning("No rankup for " + this.playerName);
+            return false;
+        }
     }
 
     public void checkRank() {
@@ -233,7 +237,7 @@ public class Profile {
     }
 
     public boolean canRankDown() {
-        return LevelRank.getLevelRanks()
+        return LevelRank.getAllRanks()
                 .stream()
                 .anyMatch(rank -> this.experience < rank.getRequiredExp() && levelRankHistory.contains(rank.getName()));
     }

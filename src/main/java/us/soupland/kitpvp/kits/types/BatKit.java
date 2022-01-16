@@ -10,7 +10,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
@@ -38,7 +37,7 @@ public class BatKit extends Kit {
     }
 
     @Override
-    public void execute(PlayerInteractEvent event) {
+    public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Profile profile = ProfileManager.getProfile(player);
 
@@ -118,15 +117,5 @@ public class BatKit extends Kit {
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200000, 1));
         player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 200000, 0));
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.REDSTONE_TORCH_ON).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 1950;
     }
 }

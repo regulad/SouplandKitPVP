@@ -28,9 +28,9 @@ public class Arena {
     }
 
     public static void loadArenas() {
-        try (MongoCursor mongoCursor = KitPvP.getInstance().getPvPDatabase().getArenas().find().iterator()) {
+        try (MongoCursor<Document> mongoCursor = KitPvP.getInstance().getPvPDatabase().getArenas().find().iterator()) {
             while (mongoCursor.hasNext()) {
-                Document document = (Document) mongoCursor.next();
+                Document document = mongoCursor.next();
 
                 try {
                     Arena arena = new Arena(document.getString("name"));
@@ -56,7 +56,7 @@ public class Arena {
     }
 
     public int getMaxBuildHeight() {
-        int i = (int) (firstPosition.getY() >= secondPosition.getY() ? firstPosition.getY() : secondPosition.getY());
+        int i = (int) (Math.max(firstPosition.getY(), secondPosition.getY()));
         return i + 5;
     }
 

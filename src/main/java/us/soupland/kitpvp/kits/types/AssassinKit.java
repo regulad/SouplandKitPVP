@@ -31,7 +31,7 @@ public class AssassinKit extends Kit {
     }
 
     @Override
-    public void execute(PlayerInteractEvent event) {
+    public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Profile profile = ProfileManager.getProfile(player);
 
@@ -101,15 +101,5 @@ public class AssassinKit extends Kit {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200000, 1));
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.IRON_SWORD).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 8100;
     }
 }

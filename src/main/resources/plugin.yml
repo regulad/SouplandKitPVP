@@ -5,3 +5,5 @@ author: regulad
 depend:
   - WorldEdit
   - FastAsyncWorldEdit
+softdepend:
+  - PlaceholderAPI

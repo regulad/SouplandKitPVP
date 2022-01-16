@@ -24,9 +24,11 @@
  *  The views and conclusions contained in the software and documentation are those of the
  *  authors and contributors and should not be interpreted as representing official policies,
  *  either expressed or implied, of anybody else.
+ *
+ *  fixme: This class was copied from
  */
 
-package us.soupland.kitpvp.utilities.player;
+package de.inventivegames.particle;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -186,39 +188,6 @@ public enum ParticleEffect {
      */
     MOB_APPEARANCE("mobappearance");
 
-    private static Class<?> nmsPacketPlayOutParticle = ReflectionUtilities.getNMSClass("PacketPlayOutWorldParticles");
-    private static Class<?> nmsEnumParticle;
-    private static int particleRange = 25;
-    private static Class<?> nmsPlayerConnection;
-    private static Class<?> nmsEntityPlayer;
-    private static Class<?> ioNettyChannel;
-    private static Method nmsNetworkGetVersion;
-    private static Field nmsFieldPlayerConnection;
-    private static Field nmsFieldNetworkManager;
-    private static Field nmsFieldNetworkManagerI;
-    private static Field nmsFieldNetworkManagerM;
-
-    static {
-        String ver = ReflectionUtilities.getVersion();
-        try {
-            nmsPlayerConnection = ReflectionUtilities.getNMSClass("PlayerConnection");
-            nmsEntityPlayer = ReflectionUtilities.getNMSClass("EntityPlayer");
-            ioNettyChannel = ver.contains("1_7") ? Class.forName("net.minecraft.util.io.netty.channel.Channel") : Class.forName("io.netty.channel.Channel");
-
-            nmsFieldPlayerConnection = ReflectionUtilities.getField(nmsEntityPlayer, "playerConnection");
-            nmsFieldNetworkManager = ReflectionUtilities.getField(nmsPlayerConnection, "networkManager");
-            nmsFieldNetworkManagerI = ReflectionUtilities.getField(nmsFieldNetworkManager.getType(), "i");
-            nmsFieldNetworkManagerM = ReflectionUtilities.getField(nmsFieldNetworkManager.getType(), "m");
-
-            nmsNetworkGetVersion = ReflectionUtilities.getMethod(nmsFieldNetworkManager.getType(), "getVersion", ioNettyChannel);
-
-        } catch (Exception e) {
-            System.err.println("[ParticleLIB] Error while loading: " + e.getMessage());
-            e.printStackTrace(System.err);
-            Bukkit.getPluginManager().disablePlugin(Bukkit.getPluginManager().getPlugin("ParticleLIB"));
-        }
-    }
-
     private String particleName;
     private String enumValue;
     private boolean hasColor;
@@ -241,10 +210,17 @@ public enum ParticleEffect {
         this(particleName, null, hasColor);
     }
 
-    @Deprecated
-    public static int getRange() {
-        return particleRange;
+    public String getName() {
+        return this.particleName;
     }
+
+    public boolean hasColor() {
+        return hasColor;
+    }
+
+    private static Class<?> nmsPacketPlayOutParticle = ReflectionUtilities.getNMSClass("PacketPlayOutWorldParticles");
+    private static Class<?> nmsEnumParticle;
+    private static int particleRange = 25;
 
     @Deprecated
     public static void setRange(int range) {
@@ -254,62 +230,9 @@ public enum ParticleEffect {
         particleRange = range;
     }
 
-    // Color methods
-
-    protected static int getVersion(Player p) {
-        try {
-            final Object handle = ReflectionUtilities.getHandle(p);
-            final Object connection = nmsFieldPlayerConnection.get(handle);
-            final Object network = nmsFieldNetworkManager.get(connection);
-            final Object channel;
-            if (ReflectionUtilities.getVersion().contains("1_7")) {
-                channel = nmsFieldNetworkManagerM.get(network);
-            } else {
-                channel = nmsFieldNetworkManagerI.get(network);
-            }
-            final Object version = ReflectionUtilities.getVersion().contains("1_7") ? nmsNetworkGetVersion.invoke(network, channel) : 47;
-            return (int) version;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    @SuppressWarnings({
-            "unchecked",
-            "rawtypes"})
-    private static Enum<?> getEnum(String enumFullName) {
-        String[] x = enumFullName.split("\\.(?=[^\\.]+$)");
-        if (x.length == 2) {
-            String enumClassName = x[0];
-            String enumName = x[1];
-            try {
-                Class<Enum> cl = (Class<Enum>) Class.forName(enumClassName);
-                return Enum.valueOf(cl, enumName);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
-
-    public static boolean isPlayerInRange(Player p, Location center) {
-        double distance = 0;
-        if (!p.getLocation().getWorld().equals(center.getWorld())) {
-            return false;
-        }
-        if ((distance = center.distanceSquared(p.getLocation())) > Double.MAX_VALUE) {
-            return false;
-        }
-        return distance < particleRange * particleRange;
-    }
-
-    public String getName() {
-        return this.particleName;
-    }
-
-    public boolean hasColor() {
-        return hasColor;
+    @Deprecated
+    public static int getRange() {
+        return particleRange;
     }
 
     @Deprecated
@@ -353,7 +276,7 @@ public enum ParticleEffect {
                         int[].class}).newInstance(getEnum(nmsEnumParticle.getName() + "." + (this.enumValue != null ? this.enumValue : this.name().toUpperCase())), true, (float) location.getX(), (float) location.getY(), (float) location.getZ(), offsetX, offsetY, offsetZ, speed, count, extra);
                 Object handle = ReflectionUtilities.getHandle(player);
                 Object connection = ReflectionUtilities.getField(handle.getClass(), "playerConnection").get(handle);
-                ReflectionUtilities.getMethod(connection.getClass(), "sendPacket").invoke(connection, packet);
+                ReflectionUtilities.getMethod(connection.getClass(), "sendPacket", new Class[0]).invoke(connection, new Object[]{packet});
             } catch (Exception e) {
                 // throw new IllegalArgumentException("Unable to send Particle " + name() + ". (Version 1.8): " + e.getMessage());
                 throw e;
@@ -387,7 +310,7 @@ public enum ParticleEffect {
                         int.class}).newInstance(name, (float) location.getX(), (float) location.getY(), (float) location.getZ(), offsetX, offsetY, offsetZ, speed, count);
                 Object handle = ReflectionUtilities.getHandle(player);
                 Object connection = ReflectionUtilities.getField(handle.getClass(), "playerConnection").get(handle);
-                ReflectionUtilities.getMethod(connection.getClass(), "sendPacket").invoke(connection, packet);
+                ReflectionUtilities.getMethod(connection.getClass(), "sendPacket", new Class[0]).invoke(connection, new Object[]{packet});
             } catch (Exception e) {
                 // throw new IllegalArgumentException("Unable to send Particle " + name() + ". (Server Version: 1.7) " + e.getMessage());
                 throw e;
@@ -417,14 +340,14 @@ public enum ParticleEffect {
         }
     }
 
-    // BLOCK_CRACK
-
     @Deprecated
     public void sendToPlayers(Player[] players, Location location, float offsetX, float offsetY, float offsetZ, float speed, int count) throws Exception {
         for (Player p : players) {
             this.sendToPlayer(p, location, offsetX, offsetY, offsetZ, speed, count);
         }
     }
+
+    // Color methods
 
     @Deprecated
     public void sendColor(Player p, Location location, org.bukkit.Color color) throws Exception {
@@ -455,8 +378,6 @@ public enum ParticleEffect {
         }
         this.sendToPlayer(p, location, this.getColor(color.getRed()), this.getColor(color.getGreen()), this.getColor(color.getBlue()), 1, 0, force);
     }
-
-    // ITEM_CRACK
 
     @Deprecated
     public void sendColor(Collection<? extends Player> players, Location location, java.awt.Color color) throws Exception {
@@ -506,8 +427,6 @@ public enum ParticleEffect {
         }
     }
 
-    // BLOCK_DUST
-
     @Deprecated
     public void sendColor(Player[] players, Location location, java.awt.Color color) throws Exception {
         if (!this.hasColor) {
@@ -524,6 +443,8 @@ public enum ParticleEffect {
         }
         return value / 255;
     }
+
+    // BLOCK_CRACK
 
     @Deprecated
     public void sendBlockCrack(Player player, Location location, int id, byte data, float offsetX, float offsetY, float offsetZ, float speed, int count) throws Exception {
@@ -550,8 +471,6 @@ public enum ParticleEffect {
         }
     }
 
-    // Reflection
-
     public void sendBlockCrack(Collection<? extends Player> players, Location location, int id, byte data, float offsetX, float offsetY, float offsetZ, float speed, int count, boolean force) throws Exception {
         if (this != BLOCK_CRACK) {
             throw new IllegalArgumentException("This method is only available for BLOCK_CRACK!");
@@ -570,6 +489,8 @@ public enum ParticleEffect {
             this.sendBlockCrack(p, location, id, data, offsetX, offsetY, offsetZ, speed, count);
         }
     }
+
+    // ITEM_CRACK
 
     @Deprecated
     public void sendItemCrack(Player player, Location location, int id, byte data, float offsetX, float offsetY, float offsetZ, float speed, int count) throws Exception {
@@ -615,6 +536,8 @@ public enum ParticleEffect {
         }
     }
 
+    // BLOCK_DUST
+
     @Deprecated
     public void sendBlockDust(Player p, Location location, int id, float offsetX, float offsetY, float offsetZ, float speed, int count) throws Exception {
         if (this != BLOCK_DUST) {
@@ -657,6 +580,87 @@ public enum ParticleEffect {
         for (Player p : players) {
             this.sendBlockDust(p, location, id, offsetX, offsetY, offsetZ, speed, count);
         }
+    }
+
+    // Reflection
+
+    private static Class<?> nmsPlayerConnection;
+    private static Class<?> nmsEntityPlayer;
+    private static Class<?> ioNettyChannel;
+    private static Method nmsNetworkGetVersion;
+
+    private static Field nmsFieldPlayerConnection;
+    private static Field nmsFieldNetworkManager;
+    private static Field nmsFieldNetworkManagerI;
+    private static Field nmsFieldNetworkManagerM;
+
+    protected static int getVersion(Player p) {
+        try {
+            final Object handle = ReflectionUtilities.getHandle(p);
+            final Object connection = nmsFieldPlayerConnection.get(handle);
+            final Object network = nmsFieldNetworkManager.get(connection);
+            final Object channel;
+            if (ReflectionUtilities.getVersion().contains("1_7")) {
+                channel = nmsFieldNetworkManagerM.get(network);
+            } else {
+                channel = nmsFieldNetworkManagerI.get(network);
+            }
+            final Object version = ReflectionUtilities.getVersion().contains("1_7") ? nmsNetworkGetVersion.invoke(network, channel) : 47;
+            return (int) version;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    static {
+        String ver = ReflectionUtilities.getVersion();
+        try {
+            nmsPlayerConnection = ReflectionUtilities.getNMSClass("PlayerConnection");
+            nmsEntityPlayer = ReflectionUtilities.getNMSClass("EntityPlayer");
+            ioNettyChannel = ver.contains("1_7") ? Class.forName("net.minecraft.util.io.netty.channel.Channel") : Class.forName("io.netty.channel.Channel");
+
+            nmsFieldPlayerConnection = ReflectionUtilities.getField(nmsEntityPlayer, "playerConnection");
+            nmsFieldNetworkManager = ReflectionUtilities.getField(nmsPlayerConnection, "networkManager");
+            nmsFieldNetworkManagerI = ReflectionUtilities.getField(nmsFieldNetworkManager.getType(), "i");
+            nmsFieldNetworkManagerM = ReflectionUtilities.getField(nmsFieldNetworkManager.getType(), "m");
+
+            nmsNetworkGetVersion = ReflectionUtilities.getMethod(nmsFieldNetworkManager.getType(), "getVersion", ioNettyChannel);
+
+        } catch (Exception e) {
+            System.err.println("[ParticleLIB] Error while loading: " + e.getMessage());
+            e.printStackTrace(System.err);
+            Bukkit.getPluginManager().disablePlugin(Bukkit.getPluginManager().getPlugin("ParticleLIB"));
+        }
+    }
+
+    @SuppressWarnings({
+            "unchecked",
+            "rawtypes"})
+    private static Enum<?> getEnum(String enumFullName) {
+        String[] x = enumFullName.split("\\.(?=[^\\.]+$)");
+        if (x.length == 2) {
+            String enumClassName = x[0];
+            String enumName = x[1];
+            try {
+                Class<Enum> cl = (Class<Enum>) Class.forName(enumClassName);
+                return Enum.valueOf(cl, enumName);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    public static boolean isPlayerInRange(Player p, Location center) {
+        double distance = 0;
+        if (!p.getLocation().getWorld().equals(center.getWorld())) {
+            return false;
+        }
+        if ((distance = center.distanceSquared(p.getLocation())) > Double.MAX_VALUE) {
+            return false;
+        }
+        return distance < particleRange * particleRange;
     }
 
     public static class ReflectionUtilities {
@@ -703,7 +707,7 @@ public enum ParticleEffect {
 
         public static Object getHandle(Object obj) {
             try {
-                return getMethod(obj.getClass(), "getHandle").invoke(obj);
+                return getMethod(obj.getClass(), "getHandle", new Class[0]).invoke(obj, new Object[0]);
             } catch (Exception e) {
                 e.printStackTrace();
             }

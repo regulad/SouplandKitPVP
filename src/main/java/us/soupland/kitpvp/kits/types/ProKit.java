@@ -2,7 +2,6 @@ package us.soupland.kitpvp.kits.types;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import us.soupland.kitpvp.enums.PlayerState;
 import us.soupland.kitpvp.enums.Refill;
@@ -40,15 +39,5 @@ public class ProKit extends Kit {
 
         player.updateInventory();
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.IRON_CHESTPLATE).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 0;
     }
 }

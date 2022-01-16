@@ -39,7 +39,7 @@ public class SpidermanKit extends Kit {
     }
 
     @Override
-    public void execute(PlayerInteractEvent event) {
+    public void onInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Profile profile = ProfileManager.getProfile(player);
 
@@ -90,16 +90,6 @@ public class SpidermanKit extends Kit {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200000, 0));
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.WEB).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 5700;
     }
 
     @EventHandler

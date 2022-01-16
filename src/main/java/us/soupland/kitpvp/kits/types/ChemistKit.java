@@ -86,14 +86,4 @@ public class ChemistKit extends Kit {
         }
 
     }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.POTION).setDurability(8236).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 4300;
-    }
 }

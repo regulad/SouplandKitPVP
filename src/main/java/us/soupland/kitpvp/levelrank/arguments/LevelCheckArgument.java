@@ -3,6 +3,8 @@ package us.soupland.kitpvp.levelrank.arguments;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.Nullable;
+import us.soupland.kitpvp.levelrank.LevelRank;
 import us.soupland.kitpvp.profile.Profile;
 import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.chat.ColorText;
@@ -35,7 +37,11 @@ public class LevelCheckArgument extends KitPvPArgument {
         Profile profile = ProfileManager.getProfile(target);
 
         sender.sendMessage(ColorText.translateAmpersand("&eLevel rank of " + target.getName() + " is " + profile.getLevelRank().getName()));
-        sender.sendMessage(ColorText.translateAmpersand("&aNext rankup &e" + profile.getRankUp().getName() + " &axp&7:&f " + profile.getExperience() + "&7/&c" + profile.getRankUp().getRequiredExp()));
-
+        final @Nullable LevelRank maybeRankUp = profile.getRankUp();
+        if (maybeRankUp != null) {
+            sender.sendMessage(ColorText.translateAmpersand("&aNext rankup &e" + profile.getRankUp().getName() + " &axp&7:&f " + profile.getExperience() + "&7/&c" + profile.getRankUp().getRequiredExp()));
+        } else {
+            sender.sendMessage("Cannot rank up at this time.");
+        }
     }
 }

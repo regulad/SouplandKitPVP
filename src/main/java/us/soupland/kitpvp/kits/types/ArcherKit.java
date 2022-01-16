@@ -118,14 +118,4 @@ public class ArcherKit extends Kit {
             }
         }
     }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.BOW).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 4200;
-    }
 }

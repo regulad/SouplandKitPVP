@@ -3,6 +3,8 @@ package us.soupland.kitpvp.levelrank.arguments;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.NotNull;
+import us.soupland.kitpvp.levelrank.LevelRank;
 import us.soupland.kitpvp.profile.Profile;
 import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.chat.ColorText;
@@ -35,13 +37,19 @@ public class LevelRankUpArgument extends KitPvPArgument {
 
         Profile profile = ProfileManager.getProfile(target);
 
-        sender.sendMessage(ColorText.translateAmpersand("&aYou've ranked up " + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " level from " + profile.getLevelRank().getName() + " to " + profile.getRankUp().getName() + '.'));
+        final @NotNull LevelRank currentRank = profile.getLevelRank();
 
-        profile.setExperience(profile.getRankUp().getRequiredExp());
-        profile.rankUp();
+        if (profile.rankUp()) {
+            sender.sendMessage(ColorText.translateAmpersand("&aYou've ranked up " + target.getName() + '\'' + (target.getName().endsWith("s") ? "" : "s") + " level from " + currentRank.getName() + " to " + profile.getLevelRank().getName() + '.'));
 
-        if (!target.isOnline()) {
-            TaskUtil.runTask(() -> ProfileManager.saveProfile(profile, true));
+            profile.setExperience(profile.getRankUp().getRequiredExp());
+            profile.rankUp();
+
+            if (!target.isOnline()) {
+                TaskUtil.runTask(() -> ProfileManager.saveProfile(profile, true));
+            }
+        } else {
+            sender.sendMessage("Cannot rank up at this time.");
         }
     }
 }

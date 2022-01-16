@@ -54,16 +54,6 @@ public class BackstabKit extends Kit {
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
     }
 
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.GOLD_SWORD).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 2500;
-    }
-
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {

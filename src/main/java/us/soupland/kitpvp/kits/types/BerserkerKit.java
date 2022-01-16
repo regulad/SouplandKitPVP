@@ -5,7 +5,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -46,16 +45,6 @@ public class BerserkerKit extends Kit {
         setInventory(inventory.getContents());
         setEffects(new ArrayList<>(player.getActivePotionEffects()));
         player.updateInventory();
-    }
-
-    @Override
-    public ItemStack getItem() {
-        return new ItemMaker(Material.POTION).setDisplayname(getDisplayName()).addLore(getDescription()).create();
-    }
-
-    @Override
-    public int getCreditCost() {
-        return 5300;
     }
 
     @EventHandler

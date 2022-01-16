@@ -20,7 +20,7 @@ public class KitListener implements Listener {
                 player.sendMessage(ColorText.translateAmpersand("&cYou are currently jammed, so you can not use your ability."));
                 return;
             }
-            kit.execute(event);
+            kit.onInteract(event);
         }
     }
 }
