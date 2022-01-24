@@ -28,15 +28,14 @@ import us.soupland.kitpvp.utilities.player.PlayerUtils;
 import us.soupland.kitpvp.utilities.task.TaskUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
 
 public class TagGame extends Game {
 
+    private final List<Player> tagged = Collections.synchronizedList(new ArrayList<>());
     private GameState gameState;
-
-    private List<Player> tagged = new ArrayList<>();
-
     private int round, i;
 
     private GameMap gameMap;
@@ -57,7 +56,9 @@ public class TagGame extends Game {
                 attacker.removePotionEffect(effect.getType());
             }
             attacker.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200000, 1));
-            tagged.remove(attacker);
+            synchronized (tagged) {
+                tagged.remove(attacker);
+            }
             attacker.getInventory().clear();
             attacker.getInventory().setArmorContents(null);
         }
@@ -68,7 +69,9 @@ public class TagGame extends Game {
         inventory.setArmorContents(null);
         inventory.setHelmet(new ItemMaker(Material.TNT).setDisplayname("&cTag Someone!").create());
 
-        tagged.add(player);
+        synchronized (tagged) {
+            tagged.add(player);
+        }
 
         player.playSound(player.getLocation(), Sound.FIZZ, 1, 1);
         for (int i = 0; i < 9; i++) {
@@ -110,15 +113,17 @@ public class TagGame extends Game {
                     this.cancel();
                 }
                 if (i <= 0) {
-                    if (!tagged.isEmpty()) {
-                        for (Player player : tagged) {
-                            if (player == null) {
-                                continue;
+                    synchronized (tagged) {
+                        if (!tagged.isEmpty()) {
+                            for (Player player : tagged) {
+                                if (player == null) {
+                                    continue;
+                                }
+                                eliminate(player);
+                                player.sendMessage(ColorText.translateAmpersand("&eYou were blow up!"));
                             }
-                            eliminate(player);
-                            player.sendMessage(ColorText.translateAmpersand("&eYou were blow up!"));
+                            tagged.clear();
                         }
-                        tagged.clear();
                     }
                     if (!getPlayers(GamePlayerState.ALIVE).isEmpty()) {
                         List<Player> players = getPlayers(GamePlayerState.ALIVE);
@@ -188,7 +193,9 @@ public class TagGame extends Game {
             }
         }
         this.getPlayers().clear();
-        tagged.clear();
+        synchronized (tagged) {
+            tagged.clear();
+        }
         KitPvP.getInstance().getGameHandler().destroy();
     }
 
@@ -203,7 +210,9 @@ public class TagGame extends Game {
         if (gameState == GameState.STARTED) {
             lines.add(theme.getPrimaryColor() + "Explosion: " + theme.getSecondaryColor() + i + 's');
             if (getPlayers(GamePlayerState.ALIVE).contains(player)) {
-                lines.add(theme.getPrimaryColor() + "Goal: " + (tagged.contains(player) ? "&cTag someone" : "&aRun away") + '!');
+                synchronized (tagged) {
+                    lines.add(theme.getPrimaryColor() + "Goal: " + (tagged.contains(player) ? "&cTag someone" : "&aRun away") + '!');
+                }
             }
             int alive = getPlayers(GamePlayerState.ALIVE).size();
             lines.add(theme.getPrimaryColor() + "Alive: " + theme.getSecondaryColor() + alive + " player" + (alive == 1 ? "" : "s"));
@@ -313,9 +322,11 @@ public class TagGame extends Game {
                         return;
                     }
                     event.setDamage(0);
-                    if (tagged.contains(attacker) && !tagged.contains(player)) {
-                        setTagged(player, attacker);
-                        broadcast(ColorText.translateAmpersand(player.getName() + " &7is IT!"));
+                    synchronized (tagged) {
+                        if (tagged.contains(attacker) && !tagged.contains(player)) {
+                            setTagged(player, attacker);
+                            broadcast(ColorText.translateAmpersand(player.getName() + " &7is IT!"));
+                        }
                     }
                 }
             }
