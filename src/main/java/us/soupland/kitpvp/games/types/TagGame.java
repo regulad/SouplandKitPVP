@@ -29,6 +29,7 @@ import us.soupland.kitpvp.utilities.task.TaskUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -115,7 +116,9 @@ public class TagGame extends Game {
                 if (i <= 0) {
                     synchronized (tagged) {
                         if (!tagged.isEmpty()) {
-                            for (Player player : tagged) {
+                            Iterator<Player> taggedIt =  tagged.iterator();
+                            while (taggedIt.hasNext()) {
+                                Player player = taggedIt.next();
                                 if (player == null) {
                                     continue;
                                 }

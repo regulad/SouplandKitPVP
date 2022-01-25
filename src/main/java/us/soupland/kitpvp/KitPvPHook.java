@@ -2,6 +2,8 @@ package us.soupland.kitpvp;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import us.soupland.kitpvp.profile.ProfileManager;
 
 public class KitPvPHook extends PlaceholderExpansion {
@@ -48,33 +50,28 @@ public class KitPvPHook extends PlaceholderExpansion {
      * @return The identifier in {@code %<identifier>_<value>%} as String.
      */
     @Override
-    public String getIdentifier() {
+    public @NotNull String getIdentifier() {
         return "kitpvp";
     }
 
 
     @Override
-    public String getVersion() {
+    public @NotNull String getVersion() {
         return plugin.getDescription().getVersion();
     }
 
     @Override
-    public String onPlaceholderRequest(Player player, String identifier) {
+    public String onPlaceholderRequest(@Nullable Player player, @NotNull String identifier) {
         if (player == null) {
             return "";
         }
-
-        if (identifier.equals("chatcolor")) {
-            return ProfileManager.getProfile(player.getUniqueId()).getChatColor().toString();
+        switch (identifier) {
+            case "teams":
+                return (ProfileManager.getProfile(player.getUniqueId()).getTeam() == null ? "" : ProfileManager.getProfile(player.getUniqueId()).getTeam().getDisplayName());
+            case "pvplevel":
+                return (ProfileManager.getProfile(player.getUniqueId()).getLevelRank() == null ? "" : ProfileManager.getProfile(player.getUniqueId()).getLevelRank().getDisplayName());
+            default:
+                return null;
         }
-
-        if (identifier.equals("team")) {
-            return (ProfileManager.getProfile(player.getUniqueId()).getTeam() == null ? "" : ProfileManager.getProfile(player.getUniqueId()).getTeam().getDisplayName());
-        }
-
-        if (identifier.equals("pvplevel")) {
-            return (ProfileManager.getProfile(player.getUniqueId()).getLevelRank() == null ? "" : ProfileManager.getProfile(player.getUniqueId()).getLevelRank().getDisplayName());
-        }
-        return null;
     }
 }
