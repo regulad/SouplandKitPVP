@@ -30,6 +30,7 @@ import us.soupland.kitpvp.utilities.time.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class KitCommand extends KitPvPCommand {
 
@@ -176,7 +177,7 @@ public class KitCommand extends KitPvPCommand {
                                         profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost()));
                                         player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
+                                        Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                                     }
                                 }
                             }
@@ -280,7 +281,7 @@ public class KitCommand extends KitPvPCommand {
                                                     profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost()));
                                                     player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
+                                                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                                                 }
                                             }
                                         }
@@ -397,7 +398,7 @@ public class KitCommand extends KitPvPCommand {
                                         profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost()));
                                         player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
+                                        Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                                     }
                                 }
                             }
@@ -502,7 +503,7 @@ public class KitCommand extends KitPvPCommand {
                                                     profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost()));
                                                     player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
+                                                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                                                 }
                                             }
                                         }
@@ -943,7 +944,7 @@ public class KitCommand extends KitPvPCommand {
                             profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost()));
                             player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
+                            Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                         }
                     }
                 }
@@ -1047,7 +1048,7 @@ public class KitCommand extends KitPvPCommand {
                                         profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost() - 1000));
                                         player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
+                                        Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                                     }
                                 }
                             }

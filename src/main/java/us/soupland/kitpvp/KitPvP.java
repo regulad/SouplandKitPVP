@@ -4,6 +4,7 @@ import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
+import net.milkbowl.vault.permission.Permission;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -11,8 +12,10 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Recipe;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
+import org.jetbrains.annotations.Nullable;
 import us.soupland.kitpvp.database.KitPvPDatabase;
 import us.soupland.kitpvp.games.GameHandler;
 import us.soupland.kitpvp.games.arenas.GameMapHandler;
@@ -77,14 +80,31 @@ public class KitPvP extends JavaPlugin {
     private LeaderboardManager leaderboardManager;
     @Setter
     private AridiManager aridiManager;
+    @Getter
+    private @Nullable Permission permission;
 
     public static KitPvP getInstance() {
         return KitPvP.getPlugin(KitPvP.class);
     }
 
+    private boolean setupPermissions() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        this.permission = rsp.getProvider();
+        return this.permission != null;
+    }
+
     @Override
     public void onEnable() {
         new Metrics(this, 13949);
+
+        if (!setupPermissions()) {
+            getLogger().warning("Vault or a compatible permissions plugin not found, disabling plugin.");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
 
         rankConfig = new Config(this, "ranks.yml");
         config = new Config(this, "settings.yml");

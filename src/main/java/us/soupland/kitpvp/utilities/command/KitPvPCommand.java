@@ -57,7 +57,7 @@ public class KitPvPCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(ColorText.translateAmpersand("&cNo argument found."));
             } else {
                 if (kitPvPArgument.onlyplayers && sender instanceof ConsoleCommandSender) {
-                    Bukkit.getConsoleSender().sendMessage(KitPvPUtils.ONLY_PLAYERS);
+                    sender.sendMessage(KitPvPUtils.ONLY_PLAYERS);
                     return false;
                 }
                 kitPvPArgument.onExecute(sender, label, args);

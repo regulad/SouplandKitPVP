@@ -142,7 +142,7 @@ public class Profile {
             if (kit.getPermissionNode() == null) {
                 continue;
             }
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms remove " + player.getName() + ' ' + kit.getPermissionNode());
+            Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerRemove(player.getPlayer(), kit.getPermissionNode());
         }
     }
 

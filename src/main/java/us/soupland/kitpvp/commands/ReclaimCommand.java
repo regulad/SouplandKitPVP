@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import us.soupland.kitpvp.KitPvP;
 import us.soupland.kitpvp.enums.PlayerStat;
 import us.soupland.kitpvp.kits.Kit;
 import us.soupland.kitpvp.kits.KitHandler;
@@ -12,6 +13,8 @@ import us.soupland.kitpvp.profile.ProfileManager;
 import us.soupland.kitpvp.utilities.KitPvPUtils;
 import us.soupland.kitpvp.utilities.chat.ColorText;
 import us.soupland.kitpvp.utilities.command.KitPvPCommand;
+
+import java.util.Objects;
 
 public class ReclaimCommand extends KitPvPCommand {
 
@@ -35,7 +38,7 @@ public class ReclaimCommand extends KitPvPCommand {
             profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) + 1000));
             Kit kit = KitHandler.getRandomPermissableKit(player);
             if (kit != null) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "permission add " + player.getName() + ' ' + kit.getPermissionNode());
+                Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                 player.sendMessage(ColorText.translateAmpersand("&4&l[RECLAIM] &7You just unlocked a new &aKit&7. &c(" + kit.getName() + ')'));
             }
         } else if (player.hasPermission("Reclaim.2")) {
@@ -43,7 +46,7 @@ public class ReclaimCommand extends KitPvPCommand {
             for (int i = 0; i < 2; i++) {
                 Kit kit = KitHandler.getRandomPermissableKit(player);
                 if (kit != null) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "permission add " + player.getName() + ' ' + kit.getPermissionNode());
+                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                     player.sendMessage(ColorText.translateAmpersand("&4&l[RECLAIM] &7You just unlocked a new &aKit&7. &c(" + kit.getName() + ')'));
                 }
             }
@@ -52,7 +55,7 @@ public class ReclaimCommand extends KitPvPCommand {
             for (int i = 0; i < 3; i++) {
                 Kit kit = KitHandler.getRandomPermissableKit(player);
                 if (kit != null) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "permission add " + player.getName() + ' ' + kit.getPermissionNode());
+                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                     player.sendMessage(ColorText.translateAmpersand("&4&l[RECLAIM] &7You just unlocked a new &aKit&7. &c(" + kit.getName() + ')'));
                 }
             }
@@ -61,7 +64,7 @@ public class ReclaimCommand extends KitPvPCommand {
             for (int i = 0; i < 4; i++) {
                 Kit kit = KitHandler.getRandomPermissableKit(player);
                 if (kit != null) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "permission add " + player.getName() + ' ' + kit.getPermissionNode());
+                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                     player.sendMessage(ColorText.translateAmpersand("&4&l[RECLAIM] &7You just unlocked a new &aKit&7. &c(" + kit.getName() + ')'));
                 }
             }
@@ -70,7 +73,7 @@ public class ReclaimCommand extends KitPvPCommand {
             for (int i = 0; i < 5; i++) {
                 Kit kit = KitHandler.getRandomPermissableKit(player);
                 if (kit != null) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "permission add " + player.getName() + ' ' + kit.getPermissionNode());
+                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                     player.sendMessage(ColorText.translateAmpersand("&4&l[RECLAIM] &7You just unlocked a new &aKit&7. &c(" + kit.getName() + ')'));
                 }
             }
@@ -79,7 +82,7 @@ public class ReclaimCommand extends KitPvPCommand {
             for (int i = 0; i < 6; i++) {
                 Kit kit = KitHandler.getRandomPermissableKit(player);
                 if (kit != null) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "permission add " + player.getName() + ' ' + kit.getPermissionNode());
+                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                     player.sendMessage(ColorText.translateAmpersand("&4&l[RECLAIM] &7You just unlocked a new &aKit&7. &c(" + kit.getName() + ')'));
                 }
             }
@@ -88,7 +91,7 @@ public class ReclaimCommand extends KitPvPCommand {
             for (int i = 0; i < 7; i++) {
                 Kit kit = KitHandler.getRandomPermissableKit(player);
                 if (kit != null) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "permission add " + player.getName() + ' ' + kit.getPermissionNode());
+                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                     player.sendMessage(ColorText.translateAmpersand("&4&l[RECLAIM] &7You just unlocked a new &aKit&7. &c(" + kit.getName() + ')'));
                 }
             }

@@ -114,6 +114,10 @@
             <id>sonatype-nexus-releases</id>
             <url>https://repo.inventivetalent.org/content/repositories/public/</url>
         </repository>
+        <repository> <!--Vault-->
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -153,6 +157,12 @@
             <version>6.1.7</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/WorldEdit.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
         </dependency>
         <!--Analytics-->
         <dependency>

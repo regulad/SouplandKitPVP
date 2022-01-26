@@ -25,6 +25,7 @@ import us.soupland.kitpvp.utilities.item.ItemMaker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ShopCommand extends KitPvPCommand {
 
@@ -176,7 +177,7 @@ public class ShopCommand extends KitPvPCommand {
                                 return;
                             }
                             profile.getGamesPurchased().add(game);
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + game.getPermission());
+                            Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, game.getPermission());
                             profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - game.getCredits()));
                             player.sendMessage(ColorText.translateAmpersand("&c" + game.getName() + " &ahas been successfully purchased."));
                         }
@@ -262,7 +263,7 @@ public class ShopCommand extends KitPvPCommand {
                                     profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost()));
                                     player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
+                                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                                 }
                             }
                         }
@@ -352,7 +353,7 @@ public class ShopCommand extends KitPvPCommand {
                                                 profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - kit.getCreditCost()));
                                                 player.sendMessage(ColorText.translateAmpersand(kit.getDisplayName() + " &ahas been successfully purchased."));
 
-                                                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + ' ' + kit.getPermissionNode());
+                                                Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, kit.getPermissionNode());
                                             }
                                         }
                                     }
@@ -450,7 +451,7 @@ public class ShopCommand extends KitPvPCommand {
                                     player.sendMessage(ColorText.translateAmpersand("&cYou don't have credits enough to acquire this &aColor&c."));
                                 } else {
                                     profile.setStat(PlayerStat.CREDITS, (profile.getStat(PlayerStat.CREDITS) - 2000));
-                                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "perms add " + player.getName() + " soupland.chatcolor." + color.name().toLowerCase().replace("_", ""));
+                                    Objects.requireNonNull(KitPvP.getInstance().getPermission()).playerAdd(player, "soupland.chatcolor." + color.name().toLowerCase().replace("_", ""));
                                     player.sendMessage(ColorText.translateAmpersand(color + color.name().replace("_", " ") + " &ahas been successfully purchased."));
                                 }
                             }
